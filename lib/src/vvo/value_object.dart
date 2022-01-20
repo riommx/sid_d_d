@@ -2,9 +2,9 @@ import 'package:meta/meta.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 //
-import 'failures/value_error.dart';
-import 'failures/value_failure.dart';
-import 'validation/i_validatable.dart';
+import '../failures/value_error.dart';
+import '../failures/value_failure.dart';
+import '../validation/i_validatable.dart';
 
 // #############################################################################
 // #  Ver: 1.0 - last: 12/01/22

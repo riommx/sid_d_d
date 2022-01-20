@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 //
 import 'value_object.dart';
-import 'failures/value_failure.dart';
-import 'validation/string_vo_validator.dart';
+import '../failures/value_failure.dart';
+import '../validation/string_vo_validator.dart';
 
 // #############################################################################
 // #  Ver: 1.0 - last: 12/01/22

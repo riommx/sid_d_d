@@ -1,4 +1,4 @@
-import 'package:vo/vo.dart';
+import 'package:vo/validated_value_object.dart';
 
 void main() {
   final name = VoNameExemple(value: 'Sid');
@@ -7,10 +7,9 @@ void main() {
   //print(name.getOrCrash());
   var failures = name.failures;
   for (var failure in failures) {
-  print('test');
-  print(failure);
-}
+    print('test');
+    print(failure);
+  }
 
-failures.forEach(print);
-
+  failures.forEach(print);
 }
