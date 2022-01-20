@@ -1,4 +1,4 @@
-import 'package:vo/validated_value_object.dart';
+import 'package:vvo/validated_value_object.dart';
 
 void main() {
   final name = VoNameExemple(value: 'Sid');

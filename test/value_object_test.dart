@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:vo/validated_value_object.dart';
+import 'package:vvo/validated_value_object.dart';
 
 void main() {
   group('A group of tests', () {

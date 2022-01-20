@@ -1,4 +1,4 @@
-name: vo
+name: vvo
 description: A starting point for Dart libraries or applications.
 version: 1.0.0
 # homepage: https://www.example.com
@@ -17,3 +17,4 @@ dependencies:
   freezed: ^1.1.1
   freezed_annotation: ^1.1.0
   kt_dart: ^0.10.0
+  uuid: ^3.0.5
