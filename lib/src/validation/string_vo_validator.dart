@@ -8,19 +8,19 @@ import 'string_validator.dart';
 // #############################################################################
 //
 enum Constrains {
-  NotEmpty,
+  notEmpty,
 
-  SingleLine,
+  singleLine,
 
-  DateTime,
+  dateTime,
 
-  MinLength,
+  minLength,
 
-  MaxLength,
+  maxLength,
 
-  Regex,
+  regex,
 
-  OtheValitadion,
+  otheValitadion,
 }
 
 //
@@ -32,15 +32,15 @@ class StringVOValidator {
   StringVOValidator._(this._constrains);
 
   factory StringVOValidator({required Map<Constrains, dynamic> constrains}) {
-    if (constrains.containsKey(Constrains.MaxLength)) {
-      constrains[Constrains.MaxLength] = constrains[Constrains.MaxLength] < 0
+    if (constrains.containsKey(Constrains.maxLength)) {
+      constrains[Constrains.maxLength] = constrains[Constrains.maxLength] < 0
           ? 0
-          : constrains[Constrains.MaxLength];
+          : constrains[Constrains.maxLength];
     }
-    if (constrains.containsKey(Constrains.MinLength)) {
-      constrains[Constrains.MinLength] = constrains[Constrains.MinLength] < 0
+    if (constrains.containsKey(Constrains.minLength)) {
+      constrains[Constrains.minLength] = constrains[Constrains.minLength] < 0
           ? 0
-          : constrains[Constrains.MinLength];
+          : constrains[Constrains.minLength];
     }
     return StringVOValidator._(constrains);
   }
@@ -49,41 +49,41 @@ class StringVOValidator {
     final failures = <ValueFailure<String>>[];
     _constrains.forEach((constrain, v) {
       switch (constrain) {
-        case Constrains.DateTime:
+        case Constrains.dateTime:
           if (!_validator.dateTime(value: value)) {
             failures.add(ValueFailure.invalidDateTime(failedValue: value));
           }
           break;
-        case Constrains.MaxLength:
+        case Constrains.maxLength:
           if (!_validator.maxLength(value: value, max: v)) {
             failures.add(ValueFailure.exceedingLength(
                 failedValue: value, length: value.length, maxLength: v));
           }
           break;
-        case Constrains.MinLength:
+        case Constrains.minLength:
           if (!_validator.minLength(value: value, min: v)) {
             failures.add(ValueFailure.shortLength(
                 failedValue: value, length: value.length, minLength: v));
           }
           break;
-        case Constrains.NotEmpty:
+        case Constrains.notEmpty:
           if (!_validator.notEmpty(value: value)) {
             failures.add(ValueFailure.empty(failedValue: value));
           }
           break;
-        case Constrains.OtheValitadion:
+        case Constrains.otheValitadion:
           if (!_validator.otherValidation(value: value, fun: v['function'])) {
             failures.add(ValueFailure.notPassTheValidation(
                 failedValue: value, type: String, message: v['message']));
           }
           break;
-        case Constrains.Regex:
+        case Constrains.regex:
           if (!_validator.regex(value: value, reg: v)) {
             failures.add(ValueFailure.invalidRegex(
                 failedValue: value, regex: v.toString(), type: String));
           }
           break;
-        case Constrains.SingleLine:
+        case Constrains.singleLine:
           if (!_validator.singleLine(value: value)) {
             failures.add(ValueFailure.notSingleLine(failedValue: value));
           }

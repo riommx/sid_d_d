@@ -19,13 +19,13 @@ class VoNameExemple extends ValueObject<String> {
   factory VoNameExemple({required String value}) {
     //
     final constrains = {
-      Constrains.MaxLength: 4,
-      Constrains.SingleLine: null,
-      Constrains.OtheValitadion: {
+      Constrains.maxLength: 4,
+      Constrains.singleLine: null,
+      Constrains.otheValitadion: {
         'function': (v) => v == 'Sid',
         'message': 'Nome precisa ser Sid',
       },
-      Constrains.Regex: RegExp(r'^[a-zA-Z]+$'),
+      Constrains.regex: RegExp(r'^[a-zA-Z]+$'),
     };
     //
     var validator = StringVOValidator(constrains: constrains);
