@@ -10,12 +10,16 @@ class StringValidator implements IValidator<String>, IStringValidator {
   //
   StringValidator();
 
+  @override
   bool notEmpty({required String value}) => value.isNotEmpty;
 
+  @override
   bool singleLine({required String value}) => !value.contains('\n');
 
+  @override
   bool dateTime({required String value}) => DateTime.tryParse(value) != null;
 
+  @override
   bool minLength({
     required String value,
     required int min,
@@ -24,6 +28,7 @@ class StringValidator implements IValidator<String>, IStringValidator {
     return value.length >= min;
   }
 
+  @override
   bool maxLength({
     required String value,
     required int max,
@@ -32,12 +37,14 @@ class StringValidator implements IValidator<String>, IStringValidator {
     return value.length <= max;
   }
 
+  @override
   bool regex({
     required String value,
     required RegExp reg,
   }) =>
       reg.hasMatch(value);
 
+  @override
   bool otherValidation({
     required String value,
     required bool Function(String value) fun,
