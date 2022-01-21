@@ -29,12 +29,14 @@ abstract class ValueObject<T> extends Equatable implements IValidatable {
       );
   //
   // ===========================================================================
-  /// Throws [UnexpectedValueError] containing the [ValueFailures]
   //
-  T get value => _value.fold(
-        (failures) => throw ValueError(failures),
-        id, // id = identity - same as writing (right) => right
-      );
+  Either<List<ValueFailure<dynamic>>, Unit> get failuresOrUnit {
+    return _value.fold(
+      (failures) => left(failures),
+      (_) => right(unit),
+    );
+  }
+
   //
   // ===========================================================================
   T getOrElse(T defaultValue) => _value.getOrElse(() => defaultValue);

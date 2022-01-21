@@ -33,7 +33,7 @@ void main() {
     test('Value Failure Get', () {
       var failure =
           '[ValueFailure<String>.notPassTheValidation(failedValue: Sod, type: String, message: Nome precisa ser Sid)]';
-      expect(sid1.value.toString(), 'Sid');
+      expect(sid1.failures, []);
       expect(sod1.failures.toString(), failure);
     });
 
