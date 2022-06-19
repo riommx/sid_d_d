@@ -1,8 +1,4 @@
-import 'package:dartz/dartz.dart';
-//
-import 'value_object.dart';
-import '../failures/value_failure.dart';
-import '../validation/string_vo_validator.dart';
+import 'package:vvo/ddd.dart';
 
 // #############################################################################
 // #  Ver: 1.0 - last: 12/01/22
@@ -12,29 +8,40 @@ import '../validation/string_vo_validator.dart';
 class VoNameExemple extends ValueObject<String> {
   //
   // ===========================================================================
-  VoNameExemple._(Either<List<ValueFailure<String>>, String> value)
-      : super(value);
+  VoNameExemple._(
+    Either<Failures<String>, String> value,
+  ) : super(value);
   //
   // ===========================================================================
   factory VoNameExemple({required String value}) {
     //
-    final constrains = {
-      Constrains.maxLength: 4,
-      Constrains.singleLine: null,
-      Constrains.otheValitadion: {
+    Validations<String> validations = Validations();
+    //
+    validations.add(
+      validation: stringValidationsEnum.maxLength,
+      options: 4,
+    );
+    validations.add(
+      validation: stringValidationsEnum.singleLine,
+      options: null,
+    );
+    validations.add(
+      validation: stringValidationsEnum.regex,
+      options: RegExp(r'^[a-zA-Z]+$'),
+    );
+    validations.add(
+      validation: stringValidationsEnum.otherValitadion,
+      options: {
         'function': (v) => v == 'Sid',
         'message': 'Nome precisa ser Sid',
       },
-      Constrains.regex: RegExp(r'^[a-zA-Z]+$'),
-    };
+    );
     //
-    var validator = StringVOValidator(constrains: constrains);
+    var failures = validations.validate(value: value);
     //
-    var failures = validator.validate(value: value);
-    //
-    if (failures.isEmpty) return VoNameExemple._(right(value));
-    //
-    return VoNameExemple._(left(failures));
+    return (failures.list.isEmpty)
+        ? VoNameExemple._(right(value))
+        : VoNameExemple._(left(failures));
   }
 }
 // ******************************************************************

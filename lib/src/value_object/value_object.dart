@@ -2,10 +2,11 @@ import 'package:meta/meta.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 //
-import '../failures/value_error.dart';
-import '../failures/value_failure.dart';
 import '../validation/i_validatable.dart';
+import '../failures/value_error.dart';
+import 'package:vvo/src/failures/failures.dart';
 
+//
 // #############################################################################
 // #  Ver: 1.0 - last: 12/01/22
 // #  Nullsafety
@@ -15,7 +16,7 @@ import '../validation/i_validatable.dart';
 abstract class ValueObject<T> extends Equatable implements IValidatable {
   //
   // ===========================================================================
-  final Either<List<ValueFailure<T>>, T> _value;
+  final Either<Failures<T>, T> _value;
   //
   // ===========================================================================
   const ValueObject(this._value);
@@ -30,7 +31,7 @@ abstract class ValueObject<T> extends Equatable implements IValidatable {
   //
   // ===========================================================================
   //
-  Either<List<ValueFailure<dynamic>>, Unit> get failuresOrUnit {
+  Either<Failures<T>, Unit> get failuresOrUnit {
     return _value.fold(
       (failures) => left(failures),
       (_) => right(unit),
@@ -42,10 +43,7 @@ abstract class ValueObject<T> extends Equatable implements IValidatable {
   T getOrElse(T defaultValue) => _value.getOrElse(() => defaultValue);
   //
   // ===========================================================================
-  List<ValueFailure<T>> get failures => _value.fold(
-        (l) => l,
-        (r) => <ValueFailure<T>>[],
-      );
+
   //
   // ===========================================================================
   // FOR IValidatable

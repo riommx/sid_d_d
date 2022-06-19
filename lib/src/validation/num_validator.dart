@@ -1,25 +1,48 @@
+import 'i_num_validator.dart';
+import 'i_validator.dart';
+
 // #############################################################################
 // #  Ver: 1.0 - last: 12/01/22
 // #  Nullsafety
-// #  Interface to validate a String
+// #  Validator of nums
 // #############################################################################
-abstract class IStringValidator {
+class NumValidator implements IValidator<num>, INumValidator {
   //
-  bool notEmpty({required String value});
-  //
-  bool singleLine({required String value});
-  //
-  bool dateTime({required String value});
-  //
-  bool minLength({
-    required String value,
-    required int min,
-  });
-  //
-  bool maxLength({
-    required String value,
-    required int max,
-  });
+  NumValidator();
+
+  @override
+  bool positive({required num value}) => !(value.isNegative);
+
+  @override
+  bool negative({required num value}) => value.isNegative;
+
+  @override
+  bool maxValue({
+    required num value,
+    required num max,
+  }) =>
+      value < max;
+
+  @override
+  bool minValue({
+    required num value,
+    required num min,
+  }) =>
+      value > min;
+
+  @override
+  bool regex({
+    required num value,
+    required RegExp reg,
+  }) =>
+      reg.hasMatch(value.toString());
+
+  @override
+  bool otherValidation({
+    required num value,
+    required bool Function(num value) fun,
+  }) =>
+      fun(value);
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _

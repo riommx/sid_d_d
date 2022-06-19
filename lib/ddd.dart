@@ -1,8 +1,9 @@
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
-library validated_value_object;
+library ddd;
 
-export 'src/vvo/vo_name_exemple.dart';
+export 'package:dartz/dartz.dart';
+export 'src/ddd_base.dart';
 
 // TODO: Export any libraries intended for clients of this package.

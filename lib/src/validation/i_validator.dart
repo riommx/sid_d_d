@@ -3,6 +3,12 @@
 // #  Interface for a all types validator
 // #############################################################################
 abstract class IValidator<T> {
+  //
+  bool regex({
+    required T value,
+    required RegExp reg,
+  });
+  //
   bool otherValidation({
     required T value,
     required bool Function(T value) fun,

@@ -1,24 +1,22 @@
 // #############################################################################
 // #  Ver: 1.0 - last: 12/01/22
 // #  Nullsafety
-// #  Interface to validate a String
+// #  Interface to validate a Num
 // #############################################################################
-abstract class IStringValidator {
+abstract class INumValidator {
   //
-  bool notEmpty({required String value});
+  bool positive({required num value});
   //
-  bool singleLine({required String value});
+  bool negative({required num value});
   //
-  bool dateTime({required String value});
-  //
-  bool minLength({
-    required String value,
-    required int min,
+  bool minValue({
+    required num value,
+    required num min,
   });
   //
-  bool maxLength({
-    required String value,
-    required int max,
+  bool maxValue({
+    required num value,
+    required num max,
   });
 }
 // ******************************************************************

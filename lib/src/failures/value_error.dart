@@ -1,3 +1,5 @@
+import 'package:vvo/src/failures/failures.dart';
+
 import 'value_failure.dart';
 
 // #############################################################################
@@ -6,17 +8,17 @@ import 'value_failure.dart';
 // #  Exeption for Value
 // #############################################################################
 //
-class ValueError extends Error {
-  final List<ValueFailure> valueFailure;
+class ValueError<T> extends Error {
+  final Failures<T> failures;
 
-  ValueError(this.valueFailure);
+  ValueError(this.failures);
 
   @override
   String toString() {
     const explanation =
         'Encountered an unexpected ValueFailure at an unrecoverable point.';
     return Error.safeToString(
-        '$explanation - Terminating. Failure was: $valueFailure');
+        '$explanation - Terminating. Failure was: ${failures.list}');
   }
 }
 // ******************************************************************
