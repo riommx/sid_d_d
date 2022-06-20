@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 import 'package:vvo/src/failures/failures.dart';
-import 'package:vvo/src/validation/validations.dart';
+import 'package:vvo/src/validation/validation.dart';
 
 // #############################################################################
 // #  Ver: 0.1
