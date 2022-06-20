@@ -21,14 +21,14 @@ class NumValidator implements IValidator<num>, INumValidator {
     required num value,
     required num max,
   }) =>
-      value < max;
+      value <= max;
 
   @override
   bool minValue({
     required num value,
     required num min,
   }) =>
-      value > min;
+      value >= min;
 
   @override
   bool regex({

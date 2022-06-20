@@ -1,9 +1,11 @@
 import 'package:vvo/src/failures/failures.dart';
+import 'package:vvo/src/validation/i_validation.dart';
 import 'string_validator.dart';
-
 import 'num_validator.dart';
 
-enum stringValidationsEnum {
+
+
+enum StringValidationsEnum {
   notEmpty,
 
   singleLine,
@@ -19,7 +21,7 @@ enum stringValidationsEnum {
   otherValitadion,
 }
 
-enum numValidationsEnum {
+enum NumValidationsEnum {
   positive,
 
   negative,
@@ -33,36 +35,40 @@ enum numValidationsEnum {
   otherValitadion,
 }
 
-class Validations<T> {
+class Validation<T>  implements IValidation{
   //final Type _type; Type this._type
 
   var _validations;
 
-  Validations() {
+  Validation() {
     _validations = T == String
-        ? <stringValidationsEnum, dynamic>{}
-        : <numValidationsEnum, dynamic>{};
+        ? <StringValidationsEnum, dynamic>{}
+        : <NumValidationsEnum, dynamic>{};
   }
 
-  void add({required dynamic validation, required dynamic options}) {
-    if (validation is stringValidationsEnum) {
-      if (validation == stringValidationsEnum.maxLength) {
-        options = options < 0 ? 0 : options;
-      }
-      //
-      if (validation == stringValidationsEnum.minLength) {
-        options = options < 0 ? 0 : options;
-      }
-      //
-      _validations.putIfAbsent(validation, () => options);
-    }
+  @override
+  bool add({required dynamic validation, required dynamic options}) {
 
-    if (validation is numValidationsEnum) {
-      _validations.putIfAbsent(validation, () => options);
-    }
+    var validOption = false;
+    
+    if (validation == StringValidationsEnum.notEmpty && options is bool) validOption = true;
+    if (validation == StringValidationsEnum.singleLine && options is bool) validOption = true;
+    if (validation == StringValidationsEnum.dateTime && options is bool) validOption = true;
+     if (validation == StringValidationsEnum.maxLength && options is int && options >= 0) validOption = true;
+     if (validation == StringValidationsEnum.minLength && options is int && options >= 0) validOption = true;
+
+
+      if (validation == StringValidationsEnum.regex || validation == NumValidationsEnum.regex  && options is RegExp) validOption = true;
+      if (validation == StringValidationsEnum.otherValitadion || validation == NumValidationsEnum.otherValitadion  && options is Function(T value)) validOption = true;
+ 
+     if (validation == NumValidationsEnum.maxValue || validation == NumValidationsEnum.minValue || validation == NumValidationsEnum.positive || validation == NumValidationsEnum.negative && options is num) validOption = true;
+
+    if (validOption) _validations.putIfAbsent(validation, () => options);
+     return validOption;
   }
 
-  Failures<T> validate({required T value}) {
+  @override
+  Failures validate({required dynamic value}) {
     if (T == String) return stringValidade(value: value);
     return numValidade(value: value);
   }
@@ -81,7 +87,7 @@ class Validations<T> {
       //
       switch (validationKind) {
         //
-        case numValidationsEnum.positive:
+        case NumValidationsEnum.positive:
           if (!validator.positive(value: value as num)) {
             failures.add(
                 validation: validationKind,
@@ -90,7 +96,7 @@ class Validations<T> {
           }
           break;
         //
-        case numValidationsEnum.negative:
+        case NumValidationsEnum.negative:
           if (!validator.negative(value: value as num)) {
             failures.add(
                 validation: validationKind,
@@ -99,7 +105,7 @@ class Validations<T> {
           }
           break;
         //
-        case numValidationsEnum.minValue:
+        case NumValidationsEnum.minValue:
           if (!validator.minValue(
             value: value as num,
             min: validationArgument,
@@ -111,7 +117,7 @@ class Validations<T> {
           }
           break;
         //
-        case numValidationsEnum.maxValue:
+        case NumValidationsEnum.maxValue:
           if (!validator.maxValue(
             value: value as num,
             max: validationArgument,
@@ -123,7 +129,7 @@ class Validations<T> {
           }
           break;
         //
-        case numValidationsEnum.regex:
+        case NumValidationsEnum.regex:
           if (!validator.regex(
             value: value as num,
             reg: validationArgument,
@@ -135,7 +141,7 @@ class Validations<T> {
           }
           break;
         //
-        case numValidationsEnum.otherValitadion:
+        case NumValidationsEnum.otherValitadion:
           if (!validator.otherValidation(
             value: value as num,
             fun: validationArgument['function'],
@@ -161,7 +167,7 @@ class Validations<T> {
       //
       switch (validationKind) {
         //
-        case stringValidationsEnum.dateTime:
+        case StringValidationsEnum.dateTime:
           if (!validator.dateTime(value: value as String)) {
             failures.add(
                 validation: validationKind,
@@ -170,7 +176,7 @@ class Validations<T> {
           }
           break;
         //
-        case stringValidationsEnum.maxLength:
+        case StringValidationsEnum.maxLength:
           if (!validator.maxLength(
               value: value as String, max: validationArgument)) {
             failures.add(
@@ -180,7 +186,7 @@ class Validations<T> {
           }
           break;
         //
-        case stringValidationsEnum.minLength:
+        case StringValidationsEnum.minLength:
           if (!validator.minLength(
               value: value as String, min: validationArgument)) {
             failures.add(
@@ -190,7 +196,7 @@ class Validations<T> {
           }
           break;
         //
-        case stringValidationsEnum.notEmpty:
+        case StringValidationsEnum.notEmpty:
           if (!validator.notEmpty(value: value as String)) {
             failures.add(
                 validation: validationKind,
@@ -199,7 +205,7 @@ class Validations<T> {
           }
           break;
         //
-        case stringValidationsEnum.otherValitadion:
+        case StringValidationsEnum.otherValitadion:
           if (!validator.otherValidation(
               value: value as String, fun: validationArgument['function'])) {
             failures.add(
@@ -209,7 +215,7 @@ class Validations<T> {
           }
           break;
         //
-        case stringValidationsEnum.regex:
+        case StringValidationsEnum.regex:
           if (!validator.regex(
               value: value as String, reg: validationArgument)) {
             failures.add(
@@ -219,7 +225,7 @@ class Validations<T> {
           }
           break;
         //
-        case stringValidationsEnum.singleLine:
+        case StringValidationsEnum.singleLine:
           if (!validator.singleLine(value: value as String)) {
             failures.add(
                 validation: validationKind,
