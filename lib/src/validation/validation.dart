@@ -2,52 +2,17 @@ import 'package:vvo/src/failures/failures.dart';
 import 'package:vvo/src/validation/i_validation.dart';
 import 'string_validator.dart';
 import 'num_validator.dart';
+import 'validations_enum.dart';
 
 
-
-enum StringValidationsEnum {
-  notEmpty,
-
-  singleLine,
-
-  dateTime,
-
-  minLength,
-
-  maxLength,
-
-  regex,
-
-  otherValitadion,
-}
-
-enum NumValidationsEnum {
-  positive,
-
-  negative,
-
-  maxValue,
-
-  minValue,
-
-  regex,
-
-  otherValitadion,
-}
-
-class Validation<T>  implements IValidation{
+class Validation<T>  implements IValidation<T>{
   //final Type _type; Type this._type
 
-  var _validations;
-
-  Validation() {
-    _validations = T == String
-        ? <StringValidationsEnum, dynamic>{}
-        : <NumValidationsEnum, dynamic>{};
-  }
+  final _stringValidations = <StringValidationsEnum, dynamic>{};
+  final _numValidations = <NumValidationsEnum, dynamic>{};
 
   @override
-  bool add({required dynamic validation, required dynamic options}) {
+  bool stringAddValidation({required StringValidationsEnum validation, required dynamic options}) {
 
     var validOption = false;
     
@@ -58,19 +23,39 @@ class Validation<T>  implements IValidation{
      if (validation == StringValidationsEnum.minLength && options is int && options >= 0) validOption = true;
 
 
-      if (validation == StringValidationsEnum.regex || validation == NumValidationsEnum.regex  && options is RegExp) validOption = true;
-      if (validation == StringValidationsEnum.otherValitadion || validation == NumValidationsEnum.otherValitadion  && options is Function(T value)) validOption = true;
+      if (validation == StringValidationsEnum.regex && options is RegExp) validOption = true;
+      if (validation == StringValidationsEnum.otherValitadion && options is Function(T value)) validOption = true;
+ 
+         if (validOption) _stringValidations.putIfAbsent(validation, () => options);
+
+     return validOption;
+  }
+
+
+
+
+
+  @override
+  bool numAddValidation({required NumValidationsEnum validation, required dynamic options}) {
+
+    var validOption = false;
+    
+    
+      if (validation == NumValidationsEnum.regex  && options is RegExp) validOption = true;
+      if (validation == NumValidationsEnum.otherValitadion  && options is Function(T value)) validOption = true;
  
      if (validation == NumValidationsEnum.maxValue || validation == NumValidationsEnum.minValue || validation == NumValidationsEnum.positive || validation == NumValidationsEnum.negative && options is num) validOption = true;
 
-    if (validOption) _validations.putIfAbsent(validation, () => options);
+    if (validOption) _numValidations.putIfAbsent(validation, () => options);
+
      return validOption;
   }
 
   @override
-  Failures validate({required dynamic value}) {
-    if (T == String) return stringValidade(value: value);
-    return numValidade(value: value);
+  Failures validate() {
+    if (T == String) return stringValidade();
+    if (T == String) return numValidade();
+    return Failures();
   }
 
   Failures<T> numValidade({required T value}) {

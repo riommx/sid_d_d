@@ -1,8 +1,13 @@
+
 import 'package:vvo/src/failures/failures.dart';
+import 'validations_enum.dart';
 
-abstract class IValidation<T>  {
+abstract class IValidation  {
 
-  bool add({required dynamic validation, required dynamic options});
+  bool stringAddValidation({required StringValidationsEnum validation, required dynamic options});
+  Failures<String> stringValidate({required num value});
 
-  Failures validate({required dynamic value});
+  bool numAddValidation({required NumValidationsEnum validation, required dynamic options});
+  Failures<num> numValidate({required num value});
+
 }
