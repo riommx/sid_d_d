@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 import 'package:vvo/src/failures/failures.dart';
-import 'package:vvo/src/validation/validation.dart';
+import 'package:vvo/src/validation/validations_enum.dart';
 
 // #############################################################################
 // #  Ver: 0.1
@@ -23,7 +23,7 @@ void main() {
     test('', () {
       Failures<String> failures = Failures();
       failures.add(
-        validation: stringValidationsEnum.dateTime,
+        validation: StringValidationsEnum.dateTime,
         options: true,
         value: 'not a date',
       );

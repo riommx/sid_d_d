@@ -1,35 +1,32 @@
-import 'package:dartz/dartz.dart';
-import 'package:uuid/uuid.dart';
-//
-import '../failures/failures.dart';
-import 'value_object.dart';
+import 'package:vvo/ddd.dart';
 
 // #############################################################################
-// #  Ver: 1.0 - last: 19/06/22
+// #  Ver: 1.0 - last: 12/01/22
 // #  Nullsafety
-// #
+// #  Exemple of how to create a String Validated Value Object
 // #############################################################################
-class VoUniqueId extends ValueObject<String> {
+class NameSidVO extends ValueObject<String> {
   //
-  // =========================================
-  VoUniqueId._(
+  // ===========================================================================
+  NameSidVO._(
     Either<Failures<String>, String> value,
   ) : super(value);
-
   //
-  // =========================================
-  factory VoUniqueId() {
-    return VoUniqueId._(
-      right(Uuid().v1()),
-    );
-  }
-
-  //
-  // =========================================
-  factory VoUniqueId.fromUniqueString({required String uniqueId}) {
-    return VoUniqueId._(
-      right(uniqueId),
-    );
+  // ===========================================================================
+  factory NameSidVO({required String value}) {
+    //
+    final validation = StringValidation();
+    //
+    validation.maxLength(max: 4);
+    validation.singleLine();
+    validation.regex(reg: RegExp(r'^[a-zA-Z]+$'));
+    validation.otherValidation(fun: (v) => v == 'Sid', message: 'Nome precisa ser Sid',);
+    //
+    var failures = validation.validate(value: value);
+    //
+    return (failures.list.isEmpty)
+        ? NameSidVO._(right(value))
+        : NameSidVO._(left(failures));
   }
 }
 // ******************************************************************

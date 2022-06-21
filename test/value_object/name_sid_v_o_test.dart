@@ -1,12 +1,12 @@
 import 'package:test/test.dart';
-import 'package:vvo/validated_value_object.dart';
+import 'package:vvo/src/value_object/vo/name_sid_v_o.dart';
 
 void main() {
   group('A group of tests', () {
-    final sid1 = VoNameExemple(value: 'Sid');
-    final sid2 = VoNameExemple(value: 'Sid');
-    final sidex1 = VoNameExemple(value: 'Sidex');
-    final sod1 = VoNameExemple(value: 'Sod');
+    final sid1 = NameSidVO(value: 'Sid');
+    final sid2 = NameSidVO(value: 'Sid');
+    final sidex1 = NameSidVO(value: 'Sidex');
+    final sod1 = NameSidVO(value: 'Sod');
 
     setUp(() {
       // Additional setup goes here.
@@ -28,13 +28,6 @@ void main() {
     test('Get or Else ', () {
       expect(sid1.getOrElse('Erro'), 'Sid');
       expect(sidex1.getOrElse('Erro'), 'Erro');
-    });
-
-    test('Value Failure Get', () {
-      var failure =
-          '[ValueFailure<String>.notPassTheValidation(failedValue: Sod, type: String, message: Nome precisa ser Sid)]';
-      expect(sid1.failures, []);
-      expect(sod1.failures.toString(), failure);
     });
 
     test('Is Valid ', () {
