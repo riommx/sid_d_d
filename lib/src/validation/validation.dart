@@ -5,7 +5,7 @@ import 'num_validator.dart';
 import 'validations_enum.dart';
 
 
-class Validation<T>  implements IValidation<T>{
+class Validation<T> implements IValidation{
   //final Type _type; Type this._type
 
   final _stringValidations = <StringValidationsEnum, dynamic>{};
@@ -52,20 +52,14 @@ class Validation<T>  implements IValidation<T>{
   }
 
   @override
-  Failures validate() {
-    if (T == String) return stringValidade();
-    if (T == String) return numValidade();
-    return Failures();
-  }
-
-  Failures<T> numValidade({required T value}) {
+  Failures<num> numValidade({required num value}) {
     //
     final validator = NumValidator();
 
     Failures<T> failures = Failures();
     //
     //
-    _validations.forEach((
+    _numValidations.forEach((
       validationKind,
       validationArgument,
     ) {
@@ -73,68 +67,68 @@ class Validation<T>  implements IValidation<T>{
       switch (validationKind) {
         //
         case NumValidationsEnum.positive:
-          if (!validator.positive(value: value as num)) {
+          if (!validator.positive(value: value)) {
             failures.add(
                 validation: validationKind,
                 options: validationArgument,
-                value: value);
+                value: value as T);
           }
           break;
         //
         case NumValidationsEnum.negative:
-          if (!validator.negative(value: value as num)) {
+          if (!validator.negative(value: value)) {
             failures.add(
                 validation: validationKind,
                 options: validationArgument,
-                value: value);
+                value: value as T);
           }
           break;
         //
         case NumValidationsEnum.minValue:
           if (!validator.minValue(
-            value: value as num,
+            value: value,
             min: validationArgument,
           )) {
             failures.add(
                 validation: validationKind,
                 options: validationArgument,
-                value: value);
+                value: value as T);
           }
           break;
         //
         case NumValidationsEnum.maxValue:
           if (!validator.maxValue(
-            value: value as num,
+            value: value,
             max: validationArgument,
           )) {
             failures.add(
                 validation: validationKind,
                 options: validationArgument,
-                value: value);
+                value: value as T);
           }
           break;
         //
         case NumValidationsEnum.regex:
           if (!validator.regex(
-            value: value as num,
+            value: value,
             reg: validationArgument,
           )) {
             failures.add(
                 validation: validationKind,
                 options: validationArgument,
-                value: value);
+                value: value as T);
           }
           break;
         //
         case NumValidationsEnum.otherValitadion:
           if (!validator.otherValidation(
-            value: value as num,
+            value: value,
             fun: validationArgument['function'],
           )) {
             failures.add(
                 validation: validationKind,
                 options: validationArgument,
-                value: value);
+                value: value as T);
           }
           break;
       }
