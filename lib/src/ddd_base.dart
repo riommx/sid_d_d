@@ -1,4 +1,7 @@
 export 'value_object/value_object.dart';
-export 'value_object/vo_unique_id.dart';
-export 'validation/validation.dart';
+export 'value_object/vo/unique_id_v_o.dart';
+export 'value_object/vo/date_v_o.dart';
+export 'value_object/vo/name_sid_v_o.dart';
+export 'validation/string_validation.dart';
+export 'validation/num_validation.dart';
 export 'failures/failures.dart';

@@ -1,4 +1,4 @@
-import 'package:vvo/src/validation/validation.dart';
+import 'package:vvo/src/validation/validations_enum.dart';
 import 'value_failure.dart';
 
 // #############################################################################
@@ -22,10 +22,10 @@ class Failures<T> {
     required dynamic options,
     required T value,
   }) {
-    if (validation is stringValidationsEnum) {
+    if (validation is StringValidationsEnum) {
       addString(validation: validation, options: options, value: value);
     }
-    if (validation is numValidationsEnum) {
+    if (validation is NumValidationsEnum) {
       addNum(validation: validation, options: options, value: value);
     }
   }
@@ -39,33 +39,33 @@ class Failures<T> {
   }) {
     switch (validation) {
       //
-      case stringValidationsEnum.dateTime:
+      case StringValidationsEnum.dateTime:
         _list.add(ValueFailure.invalidDateTime(failedValue: value));
         break;
       //
-      case stringValidationsEnum.maxLength:
+      case StringValidationsEnum.maxLength:
         _list.add(ValueFailure.exceedingLength(
           failedValue: value,
           maxLength: options,
         ));
         break;
       //
-      case stringValidationsEnum.minLength:
+      case StringValidationsEnum.minLength:
         _list.add(ValueFailure.shortLength(
           failedValue: value,
           minLength: options,
         ));
         break;
       //
-      case stringValidationsEnum.notEmpty:
+      case StringValidationsEnum.notEmpty:
         _list.add(ValueFailure.empty(failedValue: value));
         break;
       //
-      case stringValidationsEnum.singleLine:
+      case StringValidationsEnum.singleLine:
         _list.add(ValueFailure.notSingleLine(failedValue: value));
         break;
       //
-      case stringValidationsEnum.regex:
+      case StringValidationsEnum.regex:
         _list.add(ValueFailure.invalidRegex(
           failedValue: value,
           regex: options.toString(),
@@ -73,7 +73,7 @@ class Failures<T> {
         ));
         break;
       //
-      case stringValidationsEnum.otherValitadion:
+      case StringValidationsEnum.otherValitadion:
         _list.add(ValueFailure.notPassTheValidation(
           failedValue: value,
           type: T,
@@ -92,29 +92,29 @@ class Failures<T> {
   }) {
     switch (validation) {
       //
-      case numValidationsEnum.positive:
+      case NumValidationsEnum.positive:
         _list.add(ValueFailure.mustBePositive(failedValue: value));
         break;
       //
-      case numValidationsEnum.negative:
+      case NumValidationsEnum.negative:
         _list.add(ValueFailure.mustBeNegative(failedValue: value));
         break;
       //
-      case numValidationsEnum.minValue:
+      case NumValidationsEnum.minValue:
         _list.add(ValueFailure.bellowMinValue(
           failedValue: value,
           min: options,
         ));
         break;
       //
-      case numValidationsEnum.maxValue:
+      case NumValidationsEnum.maxValue:
         _list.add(ValueFailure.overMaxValue(
           failedValue: value,
           max: options,
         ));
         break;
       //
-      case numValidationsEnum.regex:
+      case NumValidationsEnum.regex:
         _list.add(ValueFailure.invalidRegex(
           failedValue: value,
           regex: options.toString(),
@@ -122,7 +122,7 @@ class Failures<T> {
         ));
         break;
       //
-      case numValidationsEnum.otherValitadion:
+      case NumValidationsEnum.otherValitadion:
         _list.add(ValueFailure.notPassTheValidation(
           failedValue: value,
           type: T,

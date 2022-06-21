@@ -1,65 +1,27 @@
 import 'package:vvo/src/failures/failures.dart';
-import 'package:vvo/src/validation/i_validation.dart';
+
 import 'string_validator.dart';
 import 'num_validator.dart';
 import 'validations_enum.dart';
 
 
-class Validation<T> implements IValidation{
-  //final Type _type; Type this._type
+abstract class Validation<T> {
+  
+  final _validations = <dynamic, dynamic>{};
 
-  final _stringValidations = <StringValidationsEnum, dynamic>{};
-  final _numValidations = <NumValidationsEnum, dynamic>{};
-
-  @override
-  bool stringAddValidation({required StringValidationsEnum validation, required dynamic options}) {
-
-    var validOption = false;
-    
-    if (validation == StringValidationsEnum.notEmpty && options is bool) validOption = true;
-    if (validation == StringValidationsEnum.singleLine && options is bool) validOption = true;
-    if (validation == StringValidationsEnum.dateTime && options is bool) validOption = true;
-     if (validation == StringValidationsEnum.maxLength && options is int && options >= 0) validOption = true;
-     if (validation == StringValidationsEnum.minLength && options is int && options >= 0) validOption = true;
+  void addValidation(dynamic validation,
+                     dynamic options,)
+                     => _validations.putIfAbsent(validation, () => options);
 
 
-      if (validation == StringValidationsEnum.regex && options is RegExp) validOption = true;
-      if (validation == StringValidationsEnum.otherValitadion && options is Function(T value)) validOption = true;
- 
-         if (validOption) _stringValidations.putIfAbsent(validation, () => options);
-
-     return validOption;
-  }
-
-
-
-
-
-  @override
-  bool numAddValidation({required NumValidationsEnum validation, required dynamic options}) {
-
-    var validOption = false;
-    
-    
-      if (validation == NumValidationsEnum.regex  && options is RegExp) validOption = true;
-      if (validation == NumValidationsEnum.otherValitadion  && options is Function(T value)) validOption = true;
- 
-     if (validation == NumValidationsEnum.maxValue || validation == NumValidationsEnum.minValue || validation == NumValidationsEnum.positive || validation == NumValidationsEnum.negative && options is num) validOption = true;
-
-    if (validOption) _numValidations.putIfAbsent(validation, () => options);
-
-     return validOption;
-  }
-
-  @override
-  Failures<num> numValidade({required num value}) {
+  Failures<T> numValidate({required num value}) {
     //
     final validator = NumValidator();
 
     Failures<T> failures = Failures();
     //
     //
-    _numValidations.forEach((
+    _validations.forEach((
       validationKind,
       validationArgument,
     ) {
@@ -123,11 +85,11 @@ class Validation<T> implements IValidation{
         case NumValidationsEnum.otherValitadion:
           if (!validator.otherValidation(
             value: value,
-            fun: validationArgument['function'],
+            fun: validationArgument['fun'],
           )) {
             failures.add(
                 validation: validationKind,
-                options: validationArgument,
+                options: validationArgument['message'],
                 value: value as T);
           }
           break;
@@ -136,7 +98,7 @@ class Validation<T> implements IValidation{
     return failures;
   }
 
-  Failures<T> stringValidade({required T value}) {
+  Failures<T> stringValidate({required T value}) {
     //
     StringValidator validator = StringValidator();
     //
@@ -186,7 +148,7 @@ class Validation<T> implements IValidation{
         //
         case StringValidationsEnum.otherValitadion:
           if (!validator.otherValidation(
-              value: value as String, fun: validationArgument['function'])) {
+              value: value as String, fun: validationArgument['fun'])) {
             failures.add(
                 validation: validationKind,
                 options: validationArgument,

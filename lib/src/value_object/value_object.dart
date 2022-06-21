@@ -1,6 +1,7 @@
 import 'package:meta/meta.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+//import 'package:vvo/src/value_object/i_value_object.dart';
 //
 import '../validation/i_validatable.dart';
 import '../failures/value_error.dart';
@@ -13,7 +14,7 @@ import 'package:vvo/src/failures/failures.dart';
 // #  Base Class for Validated Value Objects
 // #############################################################################
 @immutable
-abstract class ValueObject<T> extends Equatable implements IValidatable {
+abstract class ValueObject<T> extends Equatable implements IValidatable { // implements IValueObject {
   //
   // ===========================================================================
   final Either<Failures<T>, T> _value;
@@ -40,6 +41,7 @@ abstract class ValueObject<T> extends Equatable implements IValidatable {
 
   //
   // ===========================================================================
+  //@override
   T getOrElse(T defaultValue) => _value.getOrElse(() => defaultValue);
   //
   // ===========================================================================

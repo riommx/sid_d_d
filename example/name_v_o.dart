@@ -5,43 +5,28 @@ import 'package:vvo/ddd.dart';
 // #  Nullsafety
 // #  Exemple of how to create a String Validated Value Object
 // #############################################################################
-class VoNameExemple extends ValueObject<String> {
+class NameVO extends ValueObject<String> {
   //
   // ===========================================================================
-  VoNameExemple._(
+  NameVO._(
     Either<Failures<String>, String> value,
   ) : super(value);
   //
   // ===========================================================================
-  factory VoNameExemple({required String value}) {
+  factory NameVO({required String value}) {
     //
-    Validations<String> validations = Validations();
+    final validation = StringValidation();
     //
-    validations.add(
-      validation: stringValidationsEnum.maxLength,
-      options: 4,
-    );
-    validations.add(
-      validation: stringValidationsEnum.singleLine,
-      options: null,
-    );
-    validations.add(
-      validation: stringValidationsEnum.regex,
-      options: RegExp(r'^[a-zA-Z]+$'),
-    );
-    validations.add(
-      validation: stringValidationsEnum.otherValitadion,
-      options: {
-        'function': (v) => v == 'Sid',
-        'message': 'Nome precisa ser Sid',
-      },
-    );
+    validation.maxLength(max: 4);
+    validation.singleLine();
+    validation.regex(reg: RegExp(r'^[a-zA-Z]+$'));
+    validation.otherValidation(fun: (v) => v == 'Sid', message: 'Nome precisa ser Sid',);
     //
-    var failures = validations.validate(value: value);
+    var failures = validation.validate(value: value);
     //
     return (failures.list.isEmpty)
-        ? VoNameExemple._(right(value))
-        : VoNameExemple._(left(failures));
+        ? NameVO._(right(value))
+        : NameVO._(left(failures));
   }
 }
 // ******************************************************************

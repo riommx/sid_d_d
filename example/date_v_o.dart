@@ -5,28 +5,25 @@ import 'package:vvo/ddd.dart';
 // #  Nullsafety
 // #  Exemple of how to create a String Validated Value Object
 // #############################################################################
-class VoDateExemple extends ValueObject<String> {
+class DateVO extends ValueObject<String> {
   //
   // ===========================================================================
-  VoDateExemple._(
+  DateVO._(
     Either<Failures<String>, String> value,
   ) : super(value);
   //
   // ===========================================================================
-  factory VoDateExemple({required String value}) {
+  factory DateVO({required String value}) {
     //
-    Validations<String> validations = Validations();
+    final validation = StringValidation();
     //
-    validations.add(
-      validation: stringValidationsEnum.dateTime,
-      options: true,
-    );
+    validation.dateTime();
     //
-    var failures = validations.validate(value: value);
+    var failures = validation.validate(value: value);
     //
     return (failures.list.isEmpty)
-        ? VoDateExemple._(right(value))
-        : VoDateExemple._(left(failures));
+        ? DateVO._(right(value))
+        : DateVO._(left(failures));
   }
 }
 // ******************************************************************
