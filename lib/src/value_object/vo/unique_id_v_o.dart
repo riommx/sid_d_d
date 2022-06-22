@@ -1,36 +1,19 @@
 import 'package:dartz/dartz.dart';
 import 'package:uuid/uuid.dart';
 //
-import '../../failures/failures.dart';
 import '../value_object.dart';
 
 // #############################################################################
-// #  Ver: 1.0 - last: 19/06/22
+// #  Ver: 1.0 - last: 22/06/22
 // #  Nullsafety
-// #
+// #  TODO: Comment class
 // #############################################################################
 class UniqueIdVO extends ValueObject<String> {
   //
   // =========================================
-  UniqueIdVO._(
-    Either<Failures<String>, String> value,
-  ) : super(value);
-
-  //
-  // =========================================
-  factory UniqueIdVO() {
-    return UniqueIdVO._(
-      right(Uuid().v1()),
-    );
-  }
-
-  //
-  // =========================================
-  factory UniqueIdVO.fromUniqueString({required String uniqueId}) {
-    return UniqueIdVO._(
-      right(uniqueId),
-    );
-  }
+  UniqueIdVO({
+    String uniqueId = '',
+  }) : super(uniqueId.isEmpty ? right(Uuid().v1()) : right(uniqueId));
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _
