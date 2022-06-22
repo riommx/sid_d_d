@@ -1,5 +1,5 @@
-name: vvo
-description: A starting point for Dart libraries or applications.
+name: sid_d_d
+description: A librarie for implement Domain Driven Design in Dart.
 version: 1.0.0
 # homepage: https://www.example.com
 environment:
@@ -17,5 +17,4 @@ dependencies:
   freezed: ^1.1.1
   freezed_annotation: ^1.1.0
   kt_dart: ^0.10.0
-  sum_types: ^0.3.1
   uuid: ^3.0.5
