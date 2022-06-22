@@ -1,11 +1,10 @@
 import 'package:meta/meta.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-//import 'package:vvo/src/value_object/i_value_object.dart';
 //
 import '../validation/i_validatable.dart';
 import '../failures/value_error.dart';
-import 'package:vvo/src/failures/failures.dart';
+import 'package:sid_d_d/src/failures/failures.dart';
 
 //
 // #############################################################################
@@ -14,49 +13,42 @@ import 'package:vvo/src/failures/failures.dart';
 // #  Base Class for Validated Value Objects
 // #############################################################################
 @immutable
-abstract class ValueObject<T> extends Equatable implements IValidatable { // implements IValueObject {
-  //
-  // ===========================================================================
+abstract class ValueObject<T> extends Equatable implements IValidatable {
+  // ====================================
   final Either<Failures<T>, T> _value;
-  //
-  // ===========================================================================
+
+  // ====================================
   const ValueObject(this._value);
-  //
-  // ===========================================================================
+
+  // ====================================
   /// Throws [UnexpectedValueError] containing the [ValueFailures]
-  //
   T get getOrCrash => _value.fold(
         (failures) => throw ValueError(failures),
         id, // id = identity - same as writing (right) => right
       );
-  //
-  // ===========================================================================
-  //
-  Either<Failures<T>, Unit> get failuresOrUnit {
-    return _value.fold(
-      (failures) => left(failures),
-      (_) => right(unit),
-    );
-  }
 
-  //
-  // ===========================================================================
-  //@override
-  T getOrElse(T defaultValue) => _value.getOrElse(() => defaultValue);
-  //
-  // ===========================================================================
+  // ====================================
+  Either<Failures<T>, Unit> get failuresOrUnit => _value.fold(
+        (failures) => left(failures),
+        (_) => right(unit),
+      );
 
-  //
+  // ===================================
+  T getOrElse(T defaultValue) => _value.fold(
+        (_) => defaultValue,
+        id, // id = identity - same as writing (right) => right
+      );
+
   // ===========================================================================
   // FOR IValidatable
   @override
   bool isValid() => _value.isRight();
-  //
+
   // ===========================================================================
   // FOR Equatable
   @override
   bool get stringify => true;
-  //
+
   // ===========================================================================
   // FOR Equatable
   @override

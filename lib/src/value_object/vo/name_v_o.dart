@@ -1,24 +1,32 @@
-import 'package:sid_d_d/src/failures/failures.dart';
-
-import 'value_failure.dart';
+import 'package:sid_d_d/imports.dart';
 
 // #############################################################################
 // #  Ver: 1.0 - last: 12/01/22
 // #  Nullsafety
-// #  Exeption for Value
+// #  Exemple of how to create a String Validated Value Object
 // #############################################################################
-//
-class ValueError<T> extends Error {
-  final Failures<T> failures;
-
-  ValueError(this.failures);
-
-  @override
-  String toString() {
-    const explanation =
-        'Encountered an unexpected ValueFailure at an unrecoverable point.';
-    return Error.safeToString(
-        '$explanation - Terminating. Failure was: ${failures.list}');
+class NameVO extends ValueObject<String> {
+  //
+  // ===========================================================================
+  NameVO._(
+    Either<Failures<String>, String> value,
+  ) : super(value);
+  //
+  // ===========================================================================
+  factory NameVO({required String value}) {
+    //
+    final validation = StringValidation();
+    //
+    validation.singleLine();
+    validation.minLength(min: 2);
+    validation.maxLength(max: 80);
+    validation.regex(reg: RegExp(r'^[a-zA-Z]+$'));
+    //
+    var failures = validation.validate(value: value);
+    //
+    return (failures.list.isEmpty)
+        ? NameVO._(right(value))
+        : NameVO._(left(failures));
   }
 }
 // ******************************************************************
@@ -35,5 +43,5 @@ class ValueError<T> extends Error {
 // *  ┈┈┃┊┊┊~~~   ┈┈┈┈        -< Rio de Janeiro - Brazil >-
 // *  ━━╯┊┊┊╲△△△┓┈┈
 // *  ┊┊┊┊╭━━━━━━╯┈┈   --->  May the source be with you!  <---
-// *  
+// *
 // ******************************************************************

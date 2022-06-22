@@ -1,4 +1,4 @@
-import 'package:vvo/ddd.dart';
+import 'package:sid_d_d/imports.dart';
 
 // #############################################################################
 // #  Ver: 1.0 - last: 12/01/22
@@ -20,7 +20,10 @@ class NameSidVO extends ValueObject<String> {
     validation.maxLength(max: 4);
     validation.singleLine();
     validation.regex(reg: RegExp(r'^[a-zA-Z]+$'));
-    validation.otherValidation(fun: (v) => v == 'Sid', message: 'Nome precisa ser Sid',);
+    validation.otherValidation(
+      fun: (v) => v == 'Sid',
+      message: 'Nome precisa ser Sid',
+    );
     //
     var failures = validation.validate(value: value);
     //

@@ -1,5 +1,4 @@
-
-import 'package:vvo/ddd.dart';
+import 'package:sid_d_d/imports.dart';
 
 void main() {
   final name = NameSidVO(value: 'Sid');
@@ -13,8 +12,7 @@ void main() {
   print('failuresOrUnit');
   print(value.fold((l) => l.list, (r) => r));
 
-  final date =
-      DateVO(value: 'not a date'); // DateTime.now().toString());
+  final date = DateVO(value: 'not a date'); // DateTime.now().toString());
   print('isValid: ${date.isValid()}');
   print(date.getOrElse('ERRO'));
   if (date.isValid()) {

@@ -1,4 +1,4 @@
-import 'package:vvo/src/validation/validations_enum.dart';
+import 'package:sid_d_d/src/validation/validations_enum.dart';
 import 'value_failure.dart';
 
 // #############################################################################

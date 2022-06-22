@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
-import 'package:vvo/src/failures/failures.dart';
-import 'package:vvo/src/validation/validations_enum.dart';
+import 'package:sid_d_d/src/failures/failures.dart';
+import 'package:sid_d_d/src/validation/validations_enum.dart';
 
 // #############################################################################
 // #  Ver: 0.1

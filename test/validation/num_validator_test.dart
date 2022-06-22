@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:vvo/src/validation/num_validator.dart';
+import 'package:sid_d_d/src/validation/num_validator.dart';
 
 // #############################################################################
 // #  Ver: 0.1
@@ -28,7 +28,6 @@ void main() {
       expect(validator.negative(value: -1), true);
     });
 
-  
     test('Min Value Test', () {
       expect(validator.minValue(value: 1, min: 2), false);
       expect(validator.minValue(value: 2, min: 2), true);
@@ -41,19 +40,14 @@ void main() {
       expect(validator.maxValue(value: 3, max: 2), false);
     });
 
-
     test('Regular Expression String Test', () {
-      expect(validator.regex(value: 9, reg: RegExp(r'^[0-8]+$')),
-          false);
-      expect(validator.regex(value: 8, reg: RegExp(r'^[0-8]+$')),
-          true);
+      expect(validator.regex(value: 9, reg: RegExp(r'^[0-8]+$')), false);
+      expect(validator.regex(value: 8, reg: RegExp(r'^[0-8]+$')), true);
     });
 
     test('Other Validatiion String Test', () {
-      expect(validator.otherValidation(value: 5, fun: (v) => v == 7),
-          false);
-      expect(validator.otherValidation(value: 7, fun: (v) => v == 7),
-          true);
+      expect(validator.otherValidation(value: 5, fun: (v) => v == 7), false);
+      expect(validator.otherValidation(value: 7, fun: (v) => v == 7), true);
     });
   });
 }

@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:vvo/src/validation/string_validator.dart';
+import 'package:sid_d_d/src/validation/string_validator.dart';
 
 // #############################################################################
 // #  Ver: 0.1
