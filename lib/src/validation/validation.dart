@@ -1,27 +1,20 @@
-import 'package:vvo/src/failures/failures.dart';
+import 'package:sid_d_d/src/failures/failures.dart';
 
-import 'string_validator.dart';
-import 'num_validator.dart';
 import 'validations_enum.dart';
-
+import 'num_validator.dart';
+import 'string_validator.dart';
 
 abstract class Validation<T> {
-  
-  final _validations = <dynamic, dynamic>{};
-
-  void addValidation(dynamic validation,
-                     dynamic options,)
-                     => _validations.putIfAbsent(validation, () => options);
-
-
-  Failures<T> numValidate({required num value}) {
+  Failures<T> numValidate(
+      {required num value,
+      required Map<NumValidationsEnum, dynamic> validations}) {
     //
     final validator = NumValidator();
 
     Failures<T> failures = Failures();
     //
     //
-    _validations.forEach((
+    validations.forEach((
       validationKind,
       validationArgument,
     ) {
@@ -98,13 +91,15 @@ abstract class Validation<T> {
     return failures;
   }
 
-  Failures<T> stringValidate({required T value}) {
+  Failures<T> stringValidate(
+      {required T value,
+      required Map<StringValidationsEnum, dynamic> validations}) {
     //
     StringValidator validator = StringValidator();
     //
     Failures<T> failures = Failures();
     //
-    _validations.forEach((validationKind, validationArgument) {
+    validations.forEach((validationKind, validationArgument) {
       //
       switch (validationKind) {
         //

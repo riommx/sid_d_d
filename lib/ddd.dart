@@ -4,6 +4,6 @@
 library ddd;
 
 export 'package:dartz/dartz.dart';
-export 'src/ddd_base.dart';
+export 'src/sid_d_d_base.dart';
 
 // TODO: Export any libraries intended for clients of this package.

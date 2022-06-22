@@ -1,7 +1,5 @@
 import 'package:sid_d_d/src/failures/failures.dart';
 
-import 'value_failure.dart';
-
 // #############################################################################
 // #  Ver: 1.0 - last: 12/01/22
 // #  Nullsafety

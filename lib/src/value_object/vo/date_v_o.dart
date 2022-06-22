@@ -8,23 +8,9 @@ import 'package:sid_d_d/imports.dart';
 class DateVO extends ValueObject<String> {
   //
   // ===========================================================================
-  DateVO._(
-    Either<Failures<String>, String> value,
-  ) : super(value);
+  static final validation = StringValidation()..dateTime();
   //
-  // ===========================================================================
-  factory DateVO({required String value}) {
-    //
-    final validation = StringValidation();
-    //
-    validation.dateTime();
-    //
-    var failures = validation.validate(value: value);
-    //
-    return (failures.list.isEmpty)
-        ? DateVO._(right(value))
-        : DateVO._(left(failures));
-  }
+  DateVO(String value) : super(validation.validate(value));
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _

@@ -1,12 +1,12 @@
 import 'package:test/test.dart';
-import 'package:vvo/src/value_object/vo/name_sid_v_o.dart';
+import 'package:sid_d_d/src/value_object/vo/name_sid_v_o.dart';
 
 void main() {
   group('A group of tests', () {
-    final sid1 = NameSidVO(value: 'Sid');
-    final sid2 = NameSidVO(value: 'Sid');
-    final sidex1 = NameSidVO(value: 'Sidex');
-    final sod1 = NameSidVO(value: 'Sod');
+    final sid1 = NameSidVO('Sid');
+    final sid2 = NameSidVO('Sid');
+    final sidex1 = NameSidVO('Sidex');
+    //final sod1 = NameSidVO('Sod');
 
     setUp(() {
       // Additional setup goes here.

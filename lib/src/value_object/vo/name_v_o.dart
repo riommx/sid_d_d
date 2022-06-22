@@ -8,26 +8,17 @@ import 'package:sid_d_d/imports.dart';
 class NameVO extends ValueObject<String> {
   //
   // ===========================================================================
-  NameVO._(
-    Either<Failures<String>, String> value,
-  ) : super(value);
+  static final validation = StringValidation()
+    ..notEmpty()
+    ..singleLine()
+    ..minLength(min: 4)
+    ..maxLength(max: 80)
+    ..regex(reg: RegExp(r'^[a-zA-Z]+$'))
+    ..otherValidation(
+        fun: (v) => v != 'Adolf Hitler',
+        message: 'Name can\'t be Adolf Hitler');
   //
-  // ===========================================================================
-  factory NameVO({required String value}) {
-    //
-    final validation = StringValidation();
-    //
-    validation.singleLine();
-    validation.minLength(min: 2);
-    validation.maxLength(max: 80);
-    validation.regex(reg: RegExp(r'^[a-zA-Z]+$'));
-    //
-    var failures = validation.validate(value: value);
-    //
-    return (failures.list.isEmpty)
-        ? NameVO._(right(value))
-        : NameVO._(left(failures));
-  }
+  NameVO(String value) : super(validation.validate(value));
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _

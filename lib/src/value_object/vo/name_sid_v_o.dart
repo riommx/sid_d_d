@@ -8,29 +8,14 @@ import 'package:sid_d_d/imports.dart';
 class NameSidVO extends ValueObject<String> {
   //
   // ===========================================================================
-  NameSidVO._(
-    Either<Failures<String>, String> value,
-  ) : super(value);
+  static final validation = StringValidation()
+    ..maxLength(max: 4)
+    ..singleLine()
+    ..notEmpty()
+    ..regex(reg: RegExp(r'^[a-zA-Z]+$'))
+    ..otherValidation(fun: (v) => v == 'Sid', message: 'Name must be Sid');
   //
-  // ===========================================================================
-  factory NameSidVO({required String value}) {
-    //
-    final validation = StringValidation();
-    //
-    validation.maxLength(max: 4);
-    validation.singleLine();
-    validation.regex(reg: RegExp(r'^[a-zA-Z]+$'));
-    validation.otherValidation(
-      fun: (v) => v == 'Sid',
-      message: 'Nome precisa ser Sid',
-    );
-    //
-    var failures = validation.validate(value: value);
-    //
-    return (failures.list.isEmpty)
-        ? NameSidVO._(right(value))
-        : NameSidVO._(left(failures));
-  }
+  NameSidVO(String value) : super(validation.validate(value));
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _
