@@ -1,19 +1,5 @@
 import 'package:sid_d_d/imports.dart';
 
-class Person extends Entity {
-  final NameVO name;
-  final DateVO birthDate;
-
-  Person._(this.name, this.birthDate);
-
-  factory Person({required NameVO name, required DateVO birthDate}) {
-    return Person._(name, birthDate);
-  }
-
-  @override
-  bool isValid() => name.isValid() && birthDate.isValid();
-}
-
 void main() {
   final name = NameSidVO('Sid');
   print('isValid: ${name.isValid()}');
@@ -47,6 +33,11 @@ void main() {
   );
 
   print(person.isValid());
-  print(person.id.getOrCrash);
+  print(person.uid.getOrCrash);
   print(person.name.getOrElse('ERRO'));
+  print(person.name.runtimeType);
+
+  (String v) {};
 }
+
+NameSidVO funcao(String v) => NameSidVO(v);
