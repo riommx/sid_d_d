@@ -39,7 +39,7 @@ abstract class Entity implements IValidatable, IDTO {
         key,
         value,
       ) =>
-          valid = value.isValid(),
+          valid = valid == true ? value.isValid() : false,
     );
     return valid;
   }

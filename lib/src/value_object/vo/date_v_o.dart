@@ -1,4 +1,5 @@
-import 'package:sid_d_d/imports.dart';
+import 'package:sid_d_d/library.dart';
+import 'package:sid_d_d/src/validation/validation.dart';
 
 // #############################################################################
 // #  Ver: 1.0 - last: 12/01/22
@@ -6,11 +7,9 @@ import 'package:sid_d_d/imports.dart';
 // #  Exemple of how to create a String Validated Value Object
 // #############################################################################
 class DateVO extends ValueObject<String> {
-  //
   // ===========================================================================
-  static final validation = StringValidation()..dateTime();
   //
-  DateVO(String value) : super(validation.validate(value));
+  DateVO(String value) : super(Validation.date(value));
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _

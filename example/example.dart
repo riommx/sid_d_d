@@ -1,7 +1,7 @@
-import 'package:sid_d_d/imports.dart';
+import 'package:sid_d_d/library.dart';
 
 void main() {
-  final name = NameSidVO('Sid');
+  /*  final name = NameSidVO('Sid');
   print('isValid: ${name.isValid()}');
   print(name.getOrElse('ERRO'));
   if (name.isValid()) {
@@ -22,14 +22,15 @@ void main() {
   var datev = date.failuresOrUnit;
   print('failuresOrUnit');
   print(datev.fold((l) => l.list, (r) => r));
-
-  var personName = NameVO('Adolf');
+ */
+  var personName = NameVO('Adolf Hitler');
   var personName2 = NameVO('Adolf');
-  print('igualdade');
+/*   print('igualdade');
   print(personName == personName2);
+ */
   final person = Person(
     name: personName,
-    birthDate: date,
+    birthDate: DateVO(DateTime.now().toString()),
   );
 
   print(person.isValid());
@@ -37,7 +38,10 @@ void main() {
   print(person.name.getOrElse('ERRO'));
   print(person.name.runtimeType);
 
-  (String v) {};
-}
+  var nome = Validation.name('Adolf Hitler');
+  print(nome.getOrElse(() => 'S!D'));
+  print(nome.runtimeType);
+  var erros = nome.fold((l) => l, (r) => r);
 
-NameSidVO funcao(String v) => NameSidVO(v);
+  print(erros);
+}

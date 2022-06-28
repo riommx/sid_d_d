@@ -1,4 +1,4 @@
-import 'package:sid_d_d/imports.dart';
+import 'package:sid_d_d/library.dart';
 
 // #############################################################################
 // #  Ver: 1.0 - last: 12/01/22
@@ -8,14 +8,7 @@ import 'package:sid_d_d/imports.dart';
 class NameSidVO extends ValueObject<String> {
   //
   // ===========================================================================
-  static final validation = StringValidation()
-    ..maxLength(max: 4)
-    ..singleLine()
-    ..notEmpty()
-    ..regex(reg: RegExp(r'^[a-zA-Z]+$'))
-    ..otherValidation(fun: (v) => v == 'Sid', message: 'Name must be Sid');
-  //
-  NameSidVO(String value) : super(validation.validate(value));
+  NameSidVO(String value) : super(Validation.nameSid(value));
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _

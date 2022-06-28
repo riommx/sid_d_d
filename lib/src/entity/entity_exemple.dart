@@ -1,4 +1,4 @@
-import 'package:sid_d_d/imports.dart';
+import 'package:sid_d_d/library.dart';
 
 class Person extends Entity {
   final NameVO name;
