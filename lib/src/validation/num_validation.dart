@@ -1,64 +1,74 @@
-import 'package:sid_d_d/src/failures/failures.dart';
+import 'package:dartz/dartz.dart';
+//
+import '../failures/failures.dart';
 import 'num_validator.dart';
 import 'validations_enum.dart';
 
 class NumValidation {
-  final _validations = <NumValidationsEnum, dynamic>{};
+  ///
+  final _validations = <NumValidationsEnum, Map<String, dynamic>>{};
 
   void positive() => _validations.putIfAbsent(
         NumValidationsEnum.positive,
-        () => true,
+        () => {},
       );
 
   void negtive() => _validations.putIfAbsent(
         NumValidationsEnum.negative,
-        () => true,
+        () => {},
       );
 
-  void minValue({required int min}) => _validations.putIfAbsent(
+  void minValue({required num min}) => _validations.putIfAbsent(
         NumValidationsEnum.minValue,
-        () => min,
+        () => {'min': min},
       );
 
-  void maxValue({required int max}) => _validations.putIfAbsent(
+  void maxValue({required num max}) => _validations.putIfAbsent(
         NumValidationsEnum.maxValue,
-        () => max,
+        () => {'max': max},
       );
 
-  void regex({required RegExp reg}) => _validations.putIfAbsent(
+  void regex({
+    required RegExp reg,
+    required Type type,
+  }) =>
+      _validations.putIfAbsent(
         NumValidationsEnum.regex,
-        () => reg,
+        () => {
+          'reg': reg,
+          'type': type,
+        },
       );
 
   void otherValidation({
     required Function fun,
     required String messange,
+    required Type type,
   }) =>
       _validations.putIfAbsent(
         NumValidationsEnum.otherValitadion,
         () => {
           'fun': fun,
           'message': messange,
+          'type': type,
         },
-      );
-
-  Failures<num> validate(num value) => numValidate(
-        value: value,
-        validations: _validations,
       );
 
   // ----------------------------------------
 
-  Failures<num> numValidate(
-      {required num value,
-      required Map<NumValidationsEnum, dynamic> validations}) {
+  Either<Failures, num> validate(num value) {
+    var failures = numValidate(value);
+    return failures.list.isEmpty ? right(value) : left(failures);
+  }
+
+  Failures numValidate(num value) {
     //
     final validator = NumValidator();
 
-    Failures<num> failures = Failures();
+    var failures = Failures();
     //
     //
-    validations.forEach((
+    _validations.forEach((
       validationKind,
       validationArgument,
     ) {
@@ -68,54 +78,59 @@ class NumValidation {
         case NumValidationsEnum.positive:
           if (!validator.positive(value: value)) {
             failures.add(
-                validation: validationKind,
-                options: validationArgument,
-                value: value);
+              validation: validationKind,
+              value: value.toString(),
+              options: {},
+            );
           }
           break;
         //
         case NumValidationsEnum.negative:
           if (!validator.negative(value: value)) {
             failures.add(
-                validation: validationKind,
-                options: validationArgument,
-                value: value);
+              validation: validationKind,
+              value: value.toString(),
+              options: {},
+            );
           }
           break;
         //
         case NumValidationsEnum.minValue:
           if (!validator.minValue(
             value: value,
-            min: validationArgument,
+            min: validationArgument['min'],
           )) {
             failures.add(
-                validation: validationKind,
-                options: validationArgument,
-                value: value);
+              validation: validationKind,
+              value: value.toString(),
+              options: validationArgument,
+            );
           }
           break;
         //
         case NumValidationsEnum.maxValue:
           if (!validator.maxValue(
             value: value,
-            max: validationArgument,
+            max: validationArgument['max'],
           )) {
             failures.add(
-                validation: validationKind,
-                options: validationArgument,
-                value: value);
+              validation: validationKind,
+              value: value.toString(),
+              options: validationArgument,
+            );
           }
           break;
         //
         case NumValidationsEnum.regex:
           if (!validator.regex(
             value: value,
-            reg: validationArgument,
+            reg: validationArgument['reg'],
           )) {
             failures.add(
-                validation: validationKind,
-                options: validationArgument,
-                value: value);
+              validation: validationKind,
+              value: value.toString(),
+              options: validationArgument,
+            );
           }
           break;
         //
@@ -125,9 +140,10 @@ class NumValidation {
             fun: validationArgument['fun'],
           )) {
             failures.add(
-                validation: validationKind,
-                options: validationArgument['message'],
-                value: value);
+              validation: validationKind,
+              value: value.toString(),
+              options: validationArgument,
+            );
           }
           break;
       }

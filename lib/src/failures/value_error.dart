@@ -1,4 +1,4 @@
-import 'package:sid_d_d/src/failures/failures.dart';
+import 'failures.dart';
 
 // #############################################################################
 // #  Ver: 1.0 - last: 12/01/22
@@ -6,8 +6,8 @@ import 'package:sid_d_d/src/failures/failures.dart';
 // #  Exeption for Value
 // #############################################################################
 //
-class ValueError<T> extends Error {
-  final Failures<T> failures;
+class ValueError extends Error {
+  final Failures failures;
 
   ValueError(this.failures);
 

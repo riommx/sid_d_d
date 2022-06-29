@@ -16,15 +16,15 @@ void main() {
     });
 
     test('Recem criado a lista deve estar vazia', () {
-      Failures<String> failures = Failures();
+      Failures failures = Failures();
       expect(failures.list.length, 0);
     });
 
     test('', () {
-      Failures<String> failures = Failures();
+      Failures failures = Failures();
       failures.add(
         validation: StringValidationsEnum.dateTime,
-        options: true,
+        options: {},
         value: 'not a date',
       );
       expect(failures.list.length, 1);

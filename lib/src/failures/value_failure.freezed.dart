@@ -18,80 +18,88 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ValueFailureTearOff {
   const _$ValueFailureTearOff();
 
-  InvalidRegex<T> invalidRegex<T>(
-      {required T failedValue, required String regex, required Type type}) {
-    return InvalidRegex<T>(
+  InvalidRegex invalidRegex(
+      {required String failedValue,
+      required String regex,
+      required Type type}) {
+    return InvalidRegex(
       failedValue: failedValue,
       regex: regex,
       type: type,
     );
   }
 
-  NotPassTheValidation<T> notPassTheValidation<T>(
-      {required T failedValue, required Type type, required String message}) {
-    return NotPassTheValidation<T>(
+  NotPassTheValidation notPassTheValidation(
+      {required String failedValue,
+      required String message,
+      required Type type}) {
+    return NotPassTheValidation(
       failedValue: failedValue,
-      type: type,
       message: message,
+      type: type,
     );
   }
 
-  NotSingleLine<T> notSingleLine<T>({required T failedValue}) {
-    return NotSingleLine<T>(
+  NotSingleLine notSingleLine({required String failedValue}) {
+    return NotSingleLine(
       failedValue: failedValue,
     );
   }
 
-  InvalidDateTime<T> invalidDateTime<T>({required T failedValue}) {
-    return InvalidDateTime<T>(
+  InvalidDateTime invalidDateTime({required String failedValue}) {
+    return InvalidDateTime(
       failedValue: failedValue,
     );
   }
 
-  Empty<T> empty<T>({required T failedValue}) {
-    return Empty<T>(
-      failedValue: failedValue,
-    );
+  Empty empty() {
+    return const Empty();
   }
 
-  ShortLength<T> shortLength<T>(
-      {required T failedValue, required int minLength}) {
-    return ShortLength<T>(
+  ShortLength shortLength(
+      {required String failedValue,
+      required int length,
+      required int minLength}) {
+    return ShortLength(
       failedValue: failedValue,
+      length: length,
       minLength: minLength,
     );
   }
 
-  ExceedingLength<T> exceedingLength<T>(
-      {required T failedValue, required int maxLength}) {
-    return ExceedingLength<T>(
+  ExceedingLength exceedingLength(
+      {required String failedValue,
+      required int length,
+      required int maxLength}) {
+    return ExceedingLength(
       failedValue: failedValue,
+      length: length,
       maxLength: maxLength,
     );
   }
 
-  MustBePositive<T> mustBePositive<T>({required T failedValue}) {
-    return MustBePositive<T>(
+  MustBePositive mustBePositive({required String failedValue}) {
+    return MustBePositive(
       failedValue: failedValue,
     );
   }
 
-  MustBeNegative<T> mustBeNegative<T>({required T failedValue}) {
-    return MustBeNegative<T>(
+  MustBeNegative mustBeNegative({required String failedValue}) {
+    return MustBeNegative(
       failedValue: failedValue,
     );
   }
 
-  OverMaxValue<T> overMaxValue<T>({required T failedValue, required num max}) {
-    return OverMaxValue<T>(
+  OverMaxValue overMaxValue({required String failedValue, required num max}) {
+    return OverMaxValue(
       failedValue: failedValue,
       max: max,
     );
   }
 
-  BellowMinValue<T> bellowMinValue<T>(
-      {required T failedValue, required num min}) {
-    return BellowMinValue<T>(
+  BellowMinValue bellowMinValue(
+      {required String failedValue, required num min}) {
+    return BellowMinValue(
       failedValue: failedValue,
       min: min,
     );
@@ -102,162 +110,144 @@ class _$ValueFailureTearOff {
 const $ValueFailure = _$ValueFailureTearOff();
 
 /// @nodoc
-mixin _$ValueFailure<T> {
-  T get failedValue => throw _privateConstructorUsedError;
-
+mixin _$ValueFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue, String regex, Type type)
+    required TResult Function(String failedValue, String regex, Type type)
         invalidRegex,
-    required TResult Function(T failedValue, Type type, String message)
+    required TResult Function(String failedValue, String message, Type type)
         notPassTheValidation,
-    required TResult Function(T failedValue) notSingleLine,
-    required TResult Function(T failedValue) invalidDateTime,
-    required TResult Function(T failedValue) empty,
-    required TResult Function(T failedValue, int minLength) shortLength,
-    required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) mustBePositive,
-    required TResult Function(T failedValue) mustBeNegative,
-    required TResult Function(T failedValue, num max) overMaxValue,
-    required TResult Function(T failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue) notSingleLine,
+    required TResult Function(String failedValue) invalidDateTime,
+    required TResult Function() empty,
+    required TResult Function(String failedValue, int length, int minLength)
+        shortLength,
+    required TResult Function(String failedValue, int length, int maxLength)
+        exceedingLength,
+    required TResult Function(String failedValue) mustBePositive,
+    required TResult Function(String failedValue) mustBeNegative,
+    required TResult Function(String failedValue, num max) overMaxValue,
+    required TResult Function(String failedValue, num min) bellowMinValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvalidRegex<T> value) invalidRegex,
-    required TResult Function(NotPassTheValidation<T> value)
-        notPassTheValidation,
-    required TResult Function(NotSingleLine<T> value) notSingleLine,
-    required TResult Function(InvalidDateTime<T> value) invalidDateTime,
-    required TResult Function(Empty<T> value) empty,
-    required TResult Function(ShortLength<T> value) shortLength,
-    required TResult Function(ExceedingLength<T> value) exceedingLength,
-    required TResult Function(MustBePositive<T> value) mustBePositive,
-    required TResult Function(MustBeNegative<T> value) mustBeNegative,
-    required TResult Function(OverMaxValue<T> value) overMaxValue,
-    required TResult Function(BellowMinValue<T> value) bellowMinValue,
+    required TResult Function(InvalidRegex value) invalidRegex,
+    required TResult Function(NotPassTheValidation value) notPassTheValidation,
+    required TResult Function(NotSingleLine value) notSingleLine,
+    required TResult Function(InvalidDateTime value) invalidDateTime,
+    required TResult Function(Empty value) empty,
+    required TResult Function(ShortLength value) shortLength,
+    required TResult Function(ExceedingLength value) exceedingLength,
+    required TResult Function(MustBePositive value) mustBePositive,
+    required TResult Function(MustBeNegative value) mustBeNegative,
+    required TResult Function(OverMaxValue value) overMaxValue,
+    required TResult Function(BellowMinValue value) bellowMinValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ValueFailureCopyWith<T, ValueFailure<T>> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ValueFailureCopyWith<T, $Res> {
+abstract class $ValueFailureCopyWith<$Res> {
   factory $ValueFailureCopyWith(
-          ValueFailure<T> value, $Res Function(ValueFailure<T>) then) =
-      _$ValueFailureCopyWithImpl<T, $Res>;
-  $Res call({T failedValue});
+          ValueFailure value, $Res Function(ValueFailure) then) =
+      _$ValueFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ValueFailureCopyWithImpl<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+class _$ValueFailureCopyWithImpl<$Res> implements $ValueFailureCopyWith<$Res> {
   _$ValueFailureCopyWithImpl(this._value, this._then);
 
-  final ValueFailure<T> _value;
+  final ValueFailure _value;
   // ignore: unused_field
-  final $Res Function(ValueFailure<T>) _then;
-
-  @override
-  $Res call({
-    Object? failedValue = freezed,
-  }) {
-    return _then(_value.copyWith(
-      failedValue: failedValue == freezed
-          ? _value.failedValue
-          : failedValue // ignore: cast_nullable_to_non_nullable
-              as T,
-    ));
-  }
+  final $Res Function(ValueFailure) _then;
 }
 
 /// @nodoc
-abstract class $InvalidRegexCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+abstract class $InvalidRegexCopyWith<$Res> {
   factory $InvalidRegexCopyWith(
-          InvalidRegex<T> value, $Res Function(InvalidRegex<T>) then) =
-      _$InvalidRegexCopyWithImpl<T, $Res>;
-  @override
-  $Res call({T failedValue, String regex, Type type});
+          InvalidRegex value, $Res Function(InvalidRegex) then) =
+      _$InvalidRegexCopyWithImpl<$Res>;
+  $Res call({String failedValue, String regex, Type type});
 }
 
 /// @nodoc
-class _$InvalidRegexCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
-    implements $InvalidRegexCopyWith<T, $Res> {
+class _$InvalidRegexCopyWithImpl<$Res> extends _$ValueFailureCopyWithImpl<$Res>
+    implements $InvalidRegexCopyWith<$Res> {
   _$InvalidRegexCopyWithImpl(
-      InvalidRegex<T> _value, $Res Function(InvalidRegex<T>) _then)
-      : super(_value, (v) => _then(v as InvalidRegex<T>));
+      InvalidRegex _value, $Res Function(InvalidRegex) _then)
+      : super(_value, (v) => _then(v as InvalidRegex));
 
   @override
-  InvalidRegex<T> get _value => super._value as InvalidRegex<T>;
+  InvalidRegex get _value => super._value as InvalidRegex;
 
   @override
   $Res call({
@@ -265,11 +255,11 @@ class _$InvalidRegexCopyWithImpl<T, $Res>
     Object? regex = freezed,
     Object? type = freezed,
   }) {
-    return _then(InvalidRegex<T>(
+    return _then(InvalidRegex(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
-              as T,
+              as String,
       regex: regex == freezed
           ? _value.regex
           : regex // ignore: cast_nullable_to_non_nullable
@@ -284,12 +274,12 @@ class _$InvalidRegexCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$InvalidRegex<T> implements InvalidRegex<T> {
+class _$InvalidRegex implements InvalidRegex {
   const _$InvalidRegex(
       {required this.failedValue, required this.regex, required this.type});
 
   @override
-  final T failedValue;
+  final String failedValue;
   @override
   final String regex;
   @override
@@ -297,14 +287,14 @@ class _$InvalidRegex<T> implements InvalidRegex<T> {
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.invalidRegex(failedValue: $failedValue, regex: $regex, type: $type)';
+    return 'ValueFailure.invalidRegex(failedValue: $failedValue, regex: $regex, type: $type)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is InvalidRegex<T> &&
+            other is InvalidRegex &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue) &&
             const DeepCollectionEquality().equals(other.regex, regex) &&
@@ -320,25 +310,27 @@ class _$InvalidRegex<T> implements InvalidRegex<T> {
 
   @JsonKey(ignore: true)
   @override
-  $InvalidRegexCopyWith<T, InvalidRegex<T>> get copyWith =>
-      _$InvalidRegexCopyWithImpl<T, InvalidRegex<T>>(this, _$identity);
+  $InvalidRegexCopyWith<InvalidRegex> get copyWith =>
+      _$InvalidRegexCopyWithImpl<InvalidRegex>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue, String regex, Type type)
+    required TResult Function(String failedValue, String regex, Type type)
         invalidRegex,
-    required TResult Function(T failedValue, Type type, String message)
+    required TResult Function(String failedValue, String message, Type type)
         notPassTheValidation,
-    required TResult Function(T failedValue) notSingleLine,
-    required TResult Function(T failedValue) invalidDateTime,
-    required TResult Function(T failedValue) empty,
-    required TResult Function(T failedValue, int minLength) shortLength,
-    required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) mustBePositive,
-    required TResult Function(T failedValue) mustBeNegative,
-    required TResult Function(T failedValue, num max) overMaxValue,
-    required TResult Function(T failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue) notSingleLine,
+    required TResult Function(String failedValue) invalidDateTime,
+    required TResult Function() empty,
+    required TResult Function(String failedValue, int length, int minLength)
+        shortLength,
+    required TResult Function(String failedValue, int length, int maxLength)
+        exceedingLength,
+    required TResult Function(String failedValue) mustBePositive,
+    required TResult Function(String failedValue) mustBeNegative,
+    required TResult Function(String failedValue, num max) overMaxValue,
+    required TResult Function(String failedValue, num min) bellowMinValue,
   }) {
     return invalidRegex(failedValue, regex, type);
   }
@@ -346,18 +338,20 @@ class _$InvalidRegex<T> implements InvalidRegex<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
   }) {
     return invalidRegex?.call(failedValue, regex, type);
   }
@@ -365,18 +359,20 @@ class _$InvalidRegex<T> implements InvalidRegex<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (invalidRegex != null) {
@@ -388,18 +384,17 @@ class _$InvalidRegex<T> implements InvalidRegex<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvalidRegex<T> value) invalidRegex,
-    required TResult Function(NotPassTheValidation<T> value)
-        notPassTheValidation,
-    required TResult Function(NotSingleLine<T> value) notSingleLine,
-    required TResult Function(InvalidDateTime<T> value) invalidDateTime,
-    required TResult Function(Empty<T> value) empty,
-    required TResult Function(ShortLength<T> value) shortLength,
-    required TResult Function(ExceedingLength<T> value) exceedingLength,
-    required TResult Function(MustBePositive<T> value) mustBePositive,
-    required TResult Function(MustBeNegative<T> value) mustBeNegative,
-    required TResult Function(OverMaxValue<T> value) overMaxValue,
-    required TResult Function(BellowMinValue<T> value) bellowMinValue,
+    required TResult Function(InvalidRegex value) invalidRegex,
+    required TResult Function(NotPassTheValidation value) notPassTheValidation,
+    required TResult Function(NotSingleLine value) notSingleLine,
+    required TResult Function(InvalidDateTime value) invalidDateTime,
+    required TResult Function(Empty value) empty,
+    required TResult Function(ShortLength value) shortLength,
+    required TResult Function(ExceedingLength value) exceedingLength,
+    required TResult Function(MustBePositive value) mustBePositive,
+    required TResult Function(MustBeNegative value) mustBeNegative,
+    required TResult Function(OverMaxValue value) overMaxValue,
+    required TResult Function(BellowMinValue value) bellowMinValue,
   }) {
     return invalidRegex(this);
   }
@@ -407,17 +402,17 @@ class _$InvalidRegex<T> implements InvalidRegex<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
   }) {
     return invalidRegex?.call(this);
   }
@@ -425,17 +420,17 @@ class _$InvalidRegex<T> implements InvalidRegex<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (invalidRegex != null) {
@@ -445,166 +440,168 @@ class _$InvalidRegex<T> implements InvalidRegex<T> {
   }
 }
 
-abstract class InvalidRegex<T> implements ValueFailure<T> {
+abstract class InvalidRegex implements ValueFailure {
   const factory InvalidRegex(
-      {required T failedValue,
+      {required String failedValue,
       required String regex,
-      required Type type}) = _$InvalidRegex<T>;
+      required Type type}) = _$InvalidRegex;
 
-  @override
-  T get failedValue;
+  String get failedValue;
   String get regex;
   Type get type;
-  @override
   @JsonKey(ignore: true)
-  $InvalidRegexCopyWith<T, InvalidRegex<T>> get copyWith =>
+  $InvalidRegexCopyWith<InvalidRegex> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NotPassTheValidationCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
-  factory $NotPassTheValidationCopyWith(NotPassTheValidation<T> value,
-          $Res Function(NotPassTheValidation<T>) then) =
-      _$NotPassTheValidationCopyWithImpl<T, $Res>;
-  @override
-  $Res call({T failedValue, Type type, String message});
+abstract class $NotPassTheValidationCopyWith<$Res> {
+  factory $NotPassTheValidationCopyWith(NotPassTheValidation value,
+          $Res Function(NotPassTheValidation) then) =
+      _$NotPassTheValidationCopyWithImpl<$Res>;
+  $Res call({String failedValue, String message, Type type});
 }
 
 /// @nodoc
-class _$NotPassTheValidationCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
-    implements $NotPassTheValidationCopyWith<T, $Res> {
-  _$NotPassTheValidationCopyWithImpl(NotPassTheValidation<T> _value,
-      $Res Function(NotPassTheValidation<T>) _then)
-      : super(_value, (v) => _then(v as NotPassTheValidation<T>));
+class _$NotPassTheValidationCopyWithImpl<$Res>
+    extends _$ValueFailureCopyWithImpl<$Res>
+    implements $NotPassTheValidationCopyWith<$Res> {
+  _$NotPassTheValidationCopyWithImpl(
+      NotPassTheValidation _value, $Res Function(NotPassTheValidation) _then)
+      : super(_value, (v) => _then(v as NotPassTheValidation));
 
   @override
-  NotPassTheValidation<T> get _value => super._value as NotPassTheValidation<T>;
+  NotPassTheValidation get _value => super._value as NotPassTheValidation;
 
   @override
   $Res call({
     Object? failedValue = freezed,
-    Object? type = freezed,
     Object? message = freezed,
+    Object? type = freezed,
   }) {
-    return _then(NotPassTheValidation<T>(
+    return _then(NotPassTheValidation(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
-              as T,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as Type,
+              as String,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as Type,
     ));
   }
 }
 
 /// @nodoc
 
-class _$NotPassTheValidation<T> implements NotPassTheValidation<T> {
+class _$NotPassTheValidation implements NotPassTheValidation {
   const _$NotPassTheValidation(
-      {required this.failedValue, required this.type, required this.message});
+      {required this.failedValue, required this.message, required this.type});
 
   @override
-  final T failedValue;
-  @override
-  final Type type;
+  final String failedValue;
   @override
   final String message;
+  @override
+  final Type type;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.notPassTheValidation(failedValue: $failedValue, type: $type, message: $message)';
+    return 'ValueFailure.notPassTheValidation(failedValue: $failedValue, message: $message, type: $type)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is NotPassTheValidation<T> &&
+            other is NotPassTheValidation &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.message, message));
+            const DeepCollectionEquality().equals(other.message, message) &&
+            const DeepCollectionEquality().equals(other.type, type));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(failedValue),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(message));
+      const DeepCollectionEquality().hash(message),
+      const DeepCollectionEquality().hash(type));
 
   @JsonKey(ignore: true)
   @override
-  $NotPassTheValidationCopyWith<T, NotPassTheValidation<T>> get copyWith =>
-      _$NotPassTheValidationCopyWithImpl<T, NotPassTheValidation<T>>(
+  $NotPassTheValidationCopyWith<NotPassTheValidation> get copyWith =>
+      _$NotPassTheValidationCopyWithImpl<NotPassTheValidation>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue, String regex, Type type)
+    required TResult Function(String failedValue, String regex, Type type)
         invalidRegex,
-    required TResult Function(T failedValue, Type type, String message)
+    required TResult Function(String failedValue, String message, Type type)
         notPassTheValidation,
-    required TResult Function(T failedValue) notSingleLine,
-    required TResult Function(T failedValue) invalidDateTime,
-    required TResult Function(T failedValue) empty,
-    required TResult Function(T failedValue, int minLength) shortLength,
-    required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) mustBePositive,
-    required TResult Function(T failedValue) mustBeNegative,
-    required TResult Function(T failedValue, num max) overMaxValue,
-    required TResult Function(T failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue) notSingleLine,
+    required TResult Function(String failedValue) invalidDateTime,
+    required TResult Function() empty,
+    required TResult Function(String failedValue, int length, int minLength)
+        shortLength,
+    required TResult Function(String failedValue, int length, int maxLength)
+        exceedingLength,
+    required TResult Function(String failedValue) mustBePositive,
+    required TResult Function(String failedValue) mustBeNegative,
+    required TResult Function(String failedValue, num max) overMaxValue,
+    required TResult Function(String failedValue, num min) bellowMinValue,
   }) {
-    return notPassTheValidation(failedValue, type, message);
+    return notPassTheValidation(failedValue, message, type);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
   }) {
-    return notPassTheValidation?.call(failedValue, type, message);
+    return notPassTheValidation?.call(failedValue, message, type);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (notPassTheValidation != null) {
-      return notPassTheValidation(failedValue, type, message);
+      return notPassTheValidation(failedValue, message, type);
     }
     return orElse();
   }
@@ -612,18 +609,17 @@ class _$NotPassTheValidation<T> implements NotPassTheValidation<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvalidRegex<T> value) invalidRegex,
-    required TResult Function(NotPassTheValidation<T> value)
-        notPassTheValidation,
-    required TResult Function(NotSingleLine<T> value) notSingleLine,
-    required TResult Function(InvalidDateTime<T> value) invalidDateTime,
-    required TResult Function(Empty<T> value) empty,
-    required TResult Function(ShortLength<T> value) shortLength,
-    required TResult Function(ExceedingLength<T> value) exceedingLength,
-    required TResult Function(MustBePositive<T> value) mustBePositive,
-    required TResult Function(MustBeNegative<T> value) mustBeNegative,
-    required TResult Function(OverMaxValue<T> value) overMaxValue,
-    required TResult Function(BellowMinValue<T> value) bellowMinValue,
+    required TResult Function(InvalidRegex value) invalidRegex,
+    required TResult Function(NotPassTheValidation value) notPassTheValidation,
+    required TResult Function(NotSingleLine value) notSingleLine,
+    required TResult Function(InvalidDateTime value) invalidDateTime,
+    required TResult Function(Empty value) empty,
+    required TResult Function(ShortLength value) shortLength,
+    required TResult Function(ExceedingLength value) exceedingLength,
+    required TResult Function(MustBePositive value) mustBePositive,
+    required TResult Function(MustBeNegative value) mustBeNegative,
+    required TResult Function(OverMaxValue value) overMaxValue,
+    required TResult Function(BellowMinValue value) bellowMinValue,
   }) {
     return notPassTheValidation(this);
   }
@@ -631,17 +627,17 @@ class _$NotPassTheValidation<T> implements NotPassTheValidation<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
   }) {
     return notPassTheValidation?.call(this);
   }
@@ -649,17 +645,17 @@ class _$NotPassTheValidation<T> implements NotPassTheValidation<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (notPassTheValidation != null) {
@@ -669,74 +665,69 @@ class _$NotPassTheValidation<T> implements NotPassTheValidation<T> {
   }
 }
 
-abstract class NotPassTheValidation<T> implements ValueFailure<T> {
+abstract class NotPassTheValidation implements ValueFailure {
   const factory NotPassTheValidation(
-      {required T failedValue,
-      required Type type,
-      required String message}) = _$NotPassTheValidation<T>;
+      {required String failedValue,
+      required String message,
+      required Type type}) = _$NotPassTheValidation;
 
-  @override
-  T get failedValue;
-  Type get type;
+  String get failedValue;
   String get message;
-  @override
+  Type get type;
   @JsonKey(ignore: true)
-  $NotPassTheValidationCopyWith<T, NotPassTheValidation<T>> get copyWith =>
+  $NotPassTheValidationCopyWith<NotPassTheValidation> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NotSingleLineCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+abstract class $NotSingleLineCopyWith<$Res> {
   factory $NotSingleLineCopyWith(
-          NotSingleLine<T> value, $Res Function(NotSingleLine<T>) then) =
-      _$NotSingleLineCopyWithImpl<T, $Res>;
-  @override
-  $Res call({T failedValue});
+          NotSingleLine value, $Res Function(NotSingleLine) then) =
+      _$NotSingleLineCopyWithImpl<$Res>;
+  $Res call({String failedValue});
 }
 
 /// @nodoc
-class _$NotSingleLineCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
-    implements $NotSingleLineCopyWith<T, $Res> {
+class _$NotSingleLineCopyWithImpl<$Res> extends _$ValueFailureCopyWithImpl<$Res>
+    implements $NotSingleLineCopyWith<$Res> {
   _$NotSingleLineCopyWithImpl(
-      NotSingleLine<T> _value, $Res Function(NotSingleLine<T>) _then)
-      : super(_value, (v) => _then(v as NotSingleLine<T>));
+      NotSingleLine _value, $Res Function(NotSingleLine) _then)
+      : super(_value, (v) => _then(v as NotSingleLine));
 
   @override
-  NotSingleLine<T> get _value => super._value as NotSingleLine<T>;
+  NotSingleLine get _value => super._value as NotSingleLine;
 
   @override
   $Res call({
     Object? failedValue = freezed,
   }) {
-    return _then(NotSingleLine<T>(
+    return _then(NotSingleLine(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
-              as T,
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$NotSingleLine<T> implements NotSingleLine<T> {
+class _$NotSingleLine implements NotSingleLine {
   const _$NotSingleLine({required this.failedValue});
 
   @override
-  final T failedValue;
+  final String failedValue;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.notSingleLine(failedValue: $failedValue)';
+    return 'ValueFailure.notSingleLine(failedValue: $failedValue)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is NotSingleLine<T> &&
+            other is NotSingleLine &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue));
   }
@@ -747,25 +738,27 @@ class _$NotSingleLine<T> implements NotSingleLine<T> {
 
   @JsonKey(ignore: true)
   @override
-  $NotSingleLineCopyWith<T, NotSingleLine<T>> get copyWith =>
-      _$NotSingleLineCopyWithImpl<T, NotSingleLine<T>>(this, _$identity);
+  $NotSingleLineCopyWith<NotSingleLine> get copyWith =>
+      _$NotSingleLineCopyWithImpl<NotSingleLine>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue, String regex, Type type)
+    required TResult Function(String failedValue, String regex, Type type)
         invalidRegex,
-    required TResult Function(T failedValue, Type type, String message)
+    required TResult Function(String failedValue, String message, Type type)
         notPassTheValidation,
-    required TResult Function(T failedValue) notSingleLine,
-    required TResult Function(T failedValue) invalidDateTime,
-    required TResult Function(T failedValue) empty,
-    required TResult Function(T failedValue, int minLength) shortLength,
-    required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) mustBePositive,
-    required TResult Function(T failedValue) mustBeNegative,
-    required TResult Function(T failedValue, num max) overMaxValue,
-    required TResult Function(T failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue) notSingleLine,
+    required TResult Function(String failedValue) invalidDateTime,
+    required TResult Function() empty,
+    required TResult Function(String failedValue, int length, int minLength)
+        shortLength,
+    required TResult Function(String failedValue, int length, int maxLength)
+        exceedingLength,
+    required TResult Function(String failedValue) mustBePositive,
+    required TResult Function(String failedValue) mustBeNegative,
+    required TResult Function(String failedValue, num max) overMaxValue,
+    required TResult Function(String failedValue, num min) bellowMinValue,
   }) {
     return notSingleLine(failedValue);
   }
@@ -773,18 +766,20 @@ class _$NotSingleLine<T> implements NotSingleLine<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
   }) {
     return notSingleLine?.call(failedValue);
   }
@@ -792,18 +787,20 @@ class _$NotSingleLine<T> implements NotSingleLine<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (notSingleLine != null) {
@@ -815,18 +812,17 @@ class _$NotSingleLine<T> implements NotSingleLine<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvalidRegex<T> value) invalidRegex,
-    required TResult Function(NotPassTheValidation<T> value)
-        notPassTheValidation,
-    required TResult Function(NotSingleLine<T> value) notSingleLine,
-    required TResult Function(InvalidDateTime<T> value) invalidDateTime,
-    required TResult Function(Empty<T> value) empty,
-    required TResult Function(ShortLength<T> value) shortLength,
-    required TResult Function(ExceedingLength<T> value) exceedingLength,
-    required TResult Function(MustBePositive<T> value) mustBePositive,
-    required TResult Function(MustBeNegative<T> value) mustBeNegative,
-    required TResult Function(OverMaxValue<T> value) overMaxValue,
-    required TResult Function(BellowMinValue<T> value) bellowMinValue,
+    required TResult Function(InvalidRegex value) invalidRegex,
+    required TResult Function(NotPassTheValidation value) notPassTheValidation,
+    required TResult Function(NotSingleLine value) notSingleLine,
+    required TResult Function(InvalidDateTime value) invalidDateTime,
+    required TResult Function(Empty value) empty,
+    required TResult Function(ShortLength value) shortLength,
+    required TResult Function(ExceedingLength value) exceedingLength,
+    required TResult Function(MustBePositive value) mustBePositive,
+    required TResult Function(MustBeNegative value) mustBeNegative,
+    required TResult Function(OverMaxValue value) overMaxValue,
+    required TResult Function(BellowMinValue value) bellowMinValue,
   }) {
     return notSingleLine(this);
   }
@@ -834,17 +830,17 @@ class _$NotSingleLine<T> implements NotSingleLine<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
   }) {
     return notSingleLine?.call(this);
   }
@@ -852,17 +848,17 @@ class _$NotSingleLine<T> implements NotSingleLine<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (notSingleLine != null) {
@@ -872,69 +868,65 @@ class _$NotSingleLine<T> implements NotSingleLine<T> {
   }
 }
 
-abstract class NotSingleLine<T> implements ValueFailure<T> {
-  const factory NotSingleLine({required T failedValue}) = _$NotSingleLine<T>;
+abstract class NotSingleLine implements ValueFailure {
+  const factory NotSingleLine({required String failedValue}) = _$NotSingleLine;
 
-  @override
-  T get failedValue;
-  @override
+  String get failedValue;
   @JsonKey(ignore: true)
-  $NotSingleLineCopyWith<T, NotSingleLine<T>> get copyWith =>
+  $NotSingleLineCopyWith<NotSingleLine> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InvalidDateTimeCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+abstract class $InvalidDateTimeCopyWith<$Res> {
   factory $InvalidDateTimeCopyWith(
-          InvalidDateTime<T> value, $Res Function(InvalidDateTime<T>) then) =
-      _$InvalidDateTimeCopyWithImpl<T, $Res>;
-  @override
-  $Res call({T failedValue});
+          InvalidDateTime value, $Res Function(InvalidDateTime) then) =
+      _$InvalidDateTimeCopyWithImpl<$Res>;
+  $Res call({String failedValue});
 }
 
 /// @nodoc
-class _$InvalidDateTimeCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
-    implements $InvalidDateTimeCopyWith<T, $Res> {
+class _$InvalidDateTimeCopyWithImpl<$Res>
+    extends _$ValueFailureCopyWithImpl<$Res>
+    implements $InvalidDateTimeCopyWith<$Res> {
   _$InvalidDateTimeCopyWithImpl(
-      InvalidDateTime<T> _value, $Res Function(InvalidDateTime<T>) _then)
-      : super(_value, (v) => _then(v as InvalidDateTime<T>));
+      InvalidDateTime _value, $Res Function(InvalidDateTime) _then)
+      : super(_value, (v) => _then(v as InvalidDateTime));
 
   @override
-  InvalidDateTime<T> get _value => super._value as InvalidDateTime<T>;
+  InvalidDateTime get _value => super._value as InvalidDateTime;
 
   @override
   $Res call({
     Object? failedValue = freezed,
   }) {
-    return _then(InvalidDateTime<T>(
+    return _then(InvalidDateTime(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
-              as T,
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$InvalidDateTime<T> implements InvalidDateTime<T> {
+class _$InvalidDateTime implements InvalidDateTime {
   const _$InvalidDateTime({required this.failedValue});
 
   @override
-  final T failedValue;
+  final String failedValue;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.invalidDateTime(failedValue: $failedValue)';
+    return 'ValueFailure.invalidDateTime(failedValue: $failedValue)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is InvalidDateTime<T> &&
+            other is InvalidDateTime &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue));
   }
@@ -945,25 +937,27 @@ class _$InvalidDateTime<T> implements InvalidDateTime<T> {
 
   @JsonKey(ignore: true)
   @override
-  $InvalidDateTimeCopyWith<T, InvalidDateTime<T>> get copyWith =>
-      _$InvalidDateTimeCopyWithImpl<T, InvalidDateTime<T>>(this, _$identity);
+  $InvalidDateTimeCopyWith<InvalidDateTime> get copyWith =>
+      _$InvalidDateTimeCopyWithImpl<InvalidDateTime>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue, String regex, Type type)
+    required TResult Function(String failedValue, String regex, Type type)
         invalidRegex,
-    required TResult Function(T failedValue, Type type, String message)
+    required TResult Function(String failedValue, String message, Type type)
         notPassTheValidation,
-    required TResult Function(T failedValue) notSingleLine,
-    required TResult Function(T failedValue) invalidDateTime,
-    required TResult Function(T failedValue) empty,
-    required TResult Function(T failedValue, int minLength) shortLength,
-    required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) mustBePositive,
-    required TResult Function(T failedValue) mustBeNegative,
-    required TResult Function(T failedValue, num max) overMaxValue,
-    required TResult Function(T failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue) notSingleLine,
+    required TResult Function(String failedValue) invalidDateTime,
+    required TResult Function() empty,
+    required TResult Function(String failedValue, int length, int minLength)
+        shortLength,
+    required TResult Function(String failedValue, int length, int maxLength)
+        exceedingLength,
+    required TResult Function(String failedValue) mustBePositive,
+    required TResult Function(String failedValue) mustBeNegative,
+    required TResult Function(String failedValue, num max) overMaxValue,
+    required TResult Function(String failedValue, num min) bellowMinValue,
   }) {
     return invalidDateTime(failedValue);
   }
@@ -971,18 +965,20 @@ class _$InvalidDateTime<T> implements InvalidDateTime<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
   }) {
     return invalidDateTime?.call(failedValue);
   }
@@ -990,18 +986,20 @@ class _$InvalidDateTime<T> implements InvalidDateTime<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (invalidDateTime != null) {
@@ -1013,18 +1011,17 @@ class _$InvalidDateTime<T> implements InvalidDateTime<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvalidRegex<T> value) invalidRegex,
-    required TResult Function(NotPassTheValidation<T> value)
-        notPassTheValidation,
-    required TResult Function(NotSingleLine<T> value) notSingleLine,
-    required TResult Function(InvalidDateTime<T> value) invalidDateTime,
-    required TResult Function(Empty<T> value) empty,
-    required TResult Function(ShortLength<T> value) shortLength,
-    required TResult Function(ExceedingLength<T> value) exceedingLength,
-    required TResult Function(MustBePositive<T> value) mustBePositive,
-    required TResult Function(MustBeNegative<T> value) mustBeNegative,
-    required TResult Function(OverMaxValue<T> value) overMaxValue,
-    required TResult Function(BellowMinValue<T> value) bellowMinValue,
+    required TResult Function(InvalidRegex value) invalidRegex,
+    required TResult Function(NotPassTheValidation value) notPassTheValidation,
+    required TResult Function(NotSingleLine value) notSingleLine,
+    required TResult Function(InvalidDateTime value) invalidDateTime,
+    required TResult Function(Empty value) empty,
+    required TResult Function(ShortLength value) shortLength,
+    required TResult Function(ExceedingLength value) exceedingLength,
+    required TResult Function(MustBePositive value) mustBePositive,
+    required TResult Function(MustBeNegative value) mustBeNegative,
+    required TResult Function(OverMaxValue value) overMaxValue,
+    required TResult Function(BellowMinValue value) bellowMinValue,
   }) {
     return invalidDateTime(this);
   }
@@ -1032,17 +1029,17 @@ class _$InvalidDateTime<T> implements InvalidDateTime<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
   }) {
     return invalidDateTime?.call(this);
   }
@@ -1050,17 +1047,17 @@ class _$InvalidDateTime<T> implements InvalidDateTime<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (invalidDateTime != null) {
@@ -1070,138 +1067,115 @@ class _$InvalidDateTime<T> implements InvalidDateTime<T> {
   }
 }
 
-abstract class InvalidDateTime<T> implements ValueFailure<T> {
-  const factory InvalidDateTime({required T failedValue}) =
-      _$InvalidDateTime<T>;
+abstract class InvalidDateTime implements ValueFailure {
+  const factory InvalidDateTime({required String failedValue}) =
+      _$InvalidDateTime;
 
-  @override
-  T get failedValue;
-  @override
+  String get failedValue;
   @JsonKey(ignore: true)
-  $InvalidDateTimeCopyWith<T, InvalidDateTime<T>> get copyWith =>
+  $InvalidDateTimeCopyWith<InvalidDateTime> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EmptyCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
-  factory $EmptyCopyWith(Empty<T> value, $Res Function(Empty<T>) then) =
-      _$EmptyCopyWithImpl<T, $Res>;
-  @override
-  $Res call({T failedValue});
+abstract class $EmptyCopyWith<$Res> {
+  factory $EmptyCopyWith(Empty value, $Res Function(Empty) then) =
+      _$EmptyCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EmptyCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
-    implements $EmptyCopyWith<T, $Res> {
-  _$EmptyCopyWithImpl(Empty<T> _value, $Res Function(Empty<T>) _then)
-      : super(_value, (v) => _then(v as Empty<T>));
+class _$EmptyCopyWithImpl<$Res> extends _$ValueFailureCopyWithImpl<$Res>
+    implements $EmptyCopyWith<$Res> {
+  _$EmptyCopyWithImpl(Empty _value, $Res Function(Empty) _then)
+      : super(_value, (v) => _then(v as Empty));
 
   @override
-  Empty<T> get _value => super._value as Empty<T>;
-
-  @override
-  $Res call({
-    Object? failedValue = freezed,
-  }) {
-    return _then(Empty<T>(
-      failedValue: failedValue == freezed
-          ? _value.failedValue
-          : failedValue // ignore: cast_nullable_to_non_nullable
-              as T,
-    ));
-  }
+  Empty get _value => super._value as Empty;
 }
 
 /// @nodoc
 
-class _$Empty<T> implements Empty<T> {
-  const _$Empty({required this.failedValue});
-
-  @override
-  final T failedValue;
+class _$Empty implements Empty {
+  const _$Empty();
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.empty(failedValue: $failedValue)';
+    return 'ValueFailure.empty()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Empty<T> &&
-            const DeepCollectionEquality()
-                .equals(other.failedValue, failedValue));
+        (other.runtimeType == runtimeType && other is Empty);
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(failedValue));
-
-  @JsonKey(ignore: true)
-  @override
-  $EmptyCopyWith<T, Empty<T>> get copyWith =>
-      _$EmptyCopyWithImpl<T, Empty<T>>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue, String regex, Type type)
+    required TResult Function(String failedValue, String regex, Type type)
         invalidRegex,
-    required TResult Function(T failedValue, Type type, String message)
+    required TResult Function(String failedValue, String message, Type type)
         notPassTheValidation,
-    required TResult Function(T failedValue) notSingleLine,
-    required TResult Function(T failedValue) invalidDateTime,
-    required TResult Function(T failedValue) empty,
-    required TResult Function(T failedValue, int minLength) shortLength,
-    required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) mustBePositive,
-    required TResult Function(T failedValue) mustBeNegative,
-    required TResult Function(T failedValue, num max) overMaxValue,
-    required TResult Function(T failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue) notSingleLine,
+    required TResult Function(String failedValue) invalidDateTime,
+    required TResult Function() empty,
+    required TResult Function(String failedValue, int length, int minLength)
+        shortLength,
+    required TResult Function(String failedValue, int length, int maxLength)
+        exceedingLength,
+    required TResult Function(String failedValue) mustBePositive,
+    required TResult Function(String failedValue) mustBeNegative,
+    required TResult Function(String failedValue, num max) overMaxValue,
+    required TResult Function(String failedValue, num min) bellowMinValue,
   }) {
-    return empty(failedValue);
+    return empty();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
   }) {
-    return empty?.call(failedValue);
+    return empty?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (empty != null) {
-      return empty(failedValue);
+      return empty();
     }
     return orElse();
   }
@@ -1209,18 +1183,17 @@ class _$Empty<T> implements Empty<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvalidRegex<T> value) invalidRegex,
-    required TResult Function(NotPassTheValidation<T> value)
-        notPassTheValidation,
-    required TResult Function(NotSingleLine<T> value) notSingleLine,
-    required TResult Function(InvalidDateTime<T> value) invalidDateTime,
-    required TResult Function(Empty<T> value) empty,
-    required TResult Function(ShortLength<T> value) shortLength,
-    required TResult Function(ExceedingLength<T> value) exceedingLength,
-    required TResult Function(MustBePositive<T> value) mustBePositive,
-    required TResult Function(MustBeNegative<T> value) mustBeNegative,
-    required TResult Function(OverMaxValue<T> value) overMaxValue,
-    required TResult Function(BellowMinValue<T> value) bellowMinValue,
+    required TResult Function(InvalidRegex value) invalidRegex,
+    required TResult Function(NotPassTheValidation value) notPassTheValidation,
+    required TResult Function(NotSingleLine value) notSingleLine,
+    required TResult Function(InvalidDateTime value) invalidDateTime,
+    required TResult Function(Empty value) empty,
+    required TResult Function(ShortLength value) shortLength,
+    required TResult Function(ExceedingLength value) exceedingLength,
+    required TResult Function(MustBePositive value) mustBePositive,
+    required TResult Function(MustBeNegative value) mustBeNegative,
+    required TResult Function(OverMaxValue value) overMaxValue,
+    required TResult Function(BellowMinValue value) bellowMinValue,
   }) {
     return empty(this);
   }
@@ -1228,17 +1201,17 @@ class _$Empty<T> implements Empty<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
   }) {
     return empty?.call(this);
   }
@@ -1246,17 +1219,17 @@ class _$Empty<T> implements Empty<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -1266,48 +1239,43 @@ class _$Empty<T> implements Empty<T> {
   }
 }
 
-abstract class Empty<T> implements ValueFailure<T> {
-  const factory Empty({required T failedValue}) = _$Empty<T>;
-
-  @override
-  T get failedValue;
-  @override
-  @JsonKey(ignore: true)
-  $EmptyCopyWith<T, Empty<T>> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class Empty implements ValueFailure {
+  const factory Empty() = _$Empty;
 }
 
 /// @nodoc
-abstract class $ShortLengthCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+abstract class $ShortLengthCopyWith<$Res> {
   factory $ShortLengthCopyWith(
-          ShortLength<T> value, $Res Function(ShortLength<T>) then) =
-      _$ShortLengthCopyWithImpl<T, $Res>;
-  @override
-  $Res call({T failedValue, int minLength});
+          ShortLength value, $Res Function(ShortLength) then) =
+      _$ShortLengthCopyWithImpl<$Res>;
+  $Res call({String failedValue, int length, int minLength});
 }
 
 /// @nodoc
-class _$ShortLengthCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
-    implements $ShortLengthCopyWith<T, $Res> {
+class _$ShortLengthCopyWithImpl<$Res> extends _$ValueFailureCopyWithImpl<$Res>
+    implements $ShortLengthCopyWith<$Res> {
   _$ShortLengthCopyWithImpl(
-      ShortLength<T> _value, $Res Function(ShortLength<T>) _then)
-      : super(_value, (v) => _then(v as ShortLength<T>));
+      ShortLength _value, $Res Function(ShortLength) _then)
+      : super(_value, (v) => _then(v as ShortLength));
 
   @override
-  ShortLength<T> get _value => super._value as ShortLength<T>;
+  ShortLength get _value => super._value as ShortLength;
 
   @override
   $Res call({
     Object? failedValue = freezed,
+    Object? length = freezed,
     Object? minLength = freezed,
   }) {
-    return _then(ShortLength<T>(
+    return _then(ShortLength(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
-              as T,
+              as String,
+      length: length == freezed
+          ? _value.length
+          : length // ignore: cast_nullable_to_non_nullable
+              as int,
       minLength: minLength == freezed
           ? _value.minLength
           : minLength // ignore: cast_nullable_to_non_nullable
@@ -1318,26 +1286,32 @@ class _$ShortLengthCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$ShortLength<T> implements ShortLength<T> {
-  const _$ShortLength({required this.failedValue, required this.minLength});
+class _$ShortLength implements ShortLength {
+  const _$ShortLength(
+      {required this.failedValue,
+      required this.length,
+      required this.minLength});
 
   @override
-  final T failedValue;
-  @override //required int length,
+  final String failedValue;
+  @override
+  final int length;
+  @override
   final int minLength;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.shortLength(failedValue: $failedValue, minLength: $minLength)';
+    return 'ValueFailure.shortLength(failedValue: $failedValue, length: $length, minLength: $minLength)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ShortLength<T> &&
+            other is ShortLength &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.length, length) &&
             const DeepCollectionEquality().equals(other.minLength, minLength));
   }
 
@@ -1345,71 +1319,78 @@ class _$ShortLength<T> implements ShortLength<T> {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(length),
       const DeepCollectionEquality().hash(minLength));
 
   @JsonKey(ignore: true)
   @override
-  $ShortLengthCopyWith<T, ShortLength<T>> get copyWith =>
-      _$ShortLengthCopyWithImpl<T, ShortLength<T>>(this, _$identity);
+  $ShortLengthCopyWith<ShortLength> get copyWith =>
+      _$ShortLengthCopyWithImpl<ShortLength>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue, String regex, Type type)
+    required TResult Function(String failedValue, String regex, Type type)
         invalidRegex,
-    required TResult Function(T failedValue, Type type, String message)
+    required TResult Function(String failedValue, String message, Type type)
         notPassTheValidation,
-    required TResult Function(T failedValue) notSingleLine,
-    required TResult Function(T failedValue) invalidDateTime,
-    required TResult Function(T failedValue) empty,
-    required TResult Function(T failedValue, int minLength) shortLength,
-    required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) mustBePositive,
-    required TResult Function(T failedValue) mustBeNegative,
-    required TResult Function(T failedValue, num max) overMaxValue,
-    required TResult Function(T failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue) notSingleLine,
+    required TResult Function(String failedValue) invalidDateTime,
+    required TResult Function() empty,
+    required TResult Function(String failedValue, int length, int minLength)
+        shortLength,
+    required TResult Function(String failedValue, int length, int maxLength)
+        exceedingLength,
+    required TResult Function(String failedValue) mustBePositive,
+    required TResult Function(String failedValue) mustBeNegative,
+    required TResult Function(String failedValue, num max) overMaxValue,
+    required TResult Function(String failedValue, num min) bellowMinValue,
   }) {
-    return shortLength(failedValue, minLength);
+    return shortLength(failedValue, length, minLength);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
   }) {
-    return shortLength?.call(failedValue, minLength);
+    return shortLength?.call(failedValue, length, minLength);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (shortLength != null) {
-      return shortLength(failedValue, minLength);
+      return shortLength(failedValue, length, minLength);
     }
     return orElse();
   }
@@ -1417,18 +1398,17 @@ class _$ShortLength<T> implements ShortLength<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvalidRegex<T> value) invalidRegex,
-    required TResult Function(NotPassTheValidation<T> value)
-        notPassTheValidation,
-    required TResult Function(NotSingleLine<T> value) notSingleLine,
-    required TResult Function(InvalidDateTime<T> value) invalidDateTime,
-    required TResult Function(Empty<T> value) empty,
-    required TResult Function(ShortLength<T> value) shortLength,
-    required TResult Function(ExceedingLength<T> value) exceedingLength,
-    required TResult Function(MustBePositive<T> value) mustBePositive,
-    required TResult Function(MustBeNegative<T> value) mustBeNegative,
-    required TResult Function(OverMaxValue<T> value) overMaxValue,
-    required TResult Function(BellowMinValue<T> value) bellowMinValue,
+    required TResult Function(InvalidRegex value) invalidRegex,
+    required TResult Function(NotPassTheValidation value) notPassTheValidation,
+    required TResult Function(NotSingleLine value) notSingleLine,
+    required TResult Function(InvalidDateTime value) invalidDateTime,
+    required TResult Function(Empty value) empty,
+    required TResult Function(ShortLength value) shortLength,
+    required TResult Function(ExceedingLength value) exceedingLength,
+    required TResult Function(MustBePositive value) mustBePositive,
+    required TResult Function(MustBeNegative value) mustBeNegative,
+    required TResult Function(OverMaxValue value) overMaxValue,
+    required TResult Function(BellowMinValue value) bellowMinValue,
   }) {
     return shortLength(this);
   }
@@ -1436,17 +1416,17 @@ class _$ShortLength<T> implements ShortLength<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
   }) {
     return shortLength?.call(this);
   }
@@ -1454,17 +1434,17 @@ class _$ShortLength<T> implements ShortLength<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (shortLength != null) {
@@ -1474,50 +1454,54 @@ class _$ShortLength<T> implements ShortLength<T> {
   }
 }
 
-abstract class ShortLength<T> implements ValueFailure<T> {
-  const factory ShortLength({required T failedValue, required int minLength}) =
-      _$ShortLength<T>;
+abstract class ShortLength implements ValueFailure {
+  const factory ShortLength(
+      {required String failedValue,
+      required int length,
+      required int minLength}) = _$ShortLength;
 
-  @override
-  T get failedValue; //required int length,
+  String get failedValue;
+  int get length;
   int get minLength;
-  @override
   @JsonKey(ignore: true)
-  $ShortLengthCopyWith<T, ShortLength<T>> get copyWith =>
+  $ShortLengthCopyWith<ShortLength> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ExceedingLengthCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+abstract class $ExceedingLengthCopyWith<$Res> {
   factory $ExceedingLengthCopyWith(
-          ExceedingLength<T> value, $Res Function(ExceedingLength<T>) then) =
-      _$ExceedingLengthCopyWithImpl<T, $Res>;
-  @override
-  $Res call({T failedValue, int maxLength});
+          ExceedingLength value, $Res Function(ExceedingLength) then) =
+      _$ExceedingLengthCopyWithImpl<$Res>;
+  $Res call({String failedValue, int length, int maxLength});
 }
 
 /// @nodoc
-class _$ExceedingLengthCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
-    implements $ExceedingLengthCopyWith<T, $Res> {
+class _$ExceedingLengthCopyWithImpl<$Res>
+    extends _$ValueFailureCopyWithImpl<$Res>
+    implements $ExceedingLengthCopyWith<$Res> {
   _$ExceedingLengthCopyWithImpl(
-      ExceedingLength<T> _value, $Res Function(ExceedingLength<T>) _then)
-      : super(_value, (v) => _then(v as ExceedingLength<T>));
+      ExceedingLength _value, $Res Function(ExceedingLength) _then)
+      : super(_value, (v) => _then(v as ExceedingLength));
 
   @override
-  ExceedingLength<T> get _value => super._value as ExceedingLength<T>;
+  ExceedingLength get _value => super._value as ExceedingLength;
 
   @override
   $Res call({
     Object? failedValue = freezed,
+    Object? length = freezed,
     Object? maxLength = freezed,
   }) {
-    return _then(ExceedingLength<T>(
+    return _then(ExceedingLength(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
-              as T,
+              as String,
+      length: length == freezed
+          ? _value.length
+          : length // ignore: cast_nullable_to_non_nullable
+              as int,
       maxLength: maxLength == freezed
           ? _value.maxLength
           : maxLength // ignore: cast_nullable_to_non_nullable
@@ -1528,26 +1512,32 @@ class _$ExceedingLengthCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$ExceedingLength<T> implements ExceedingLength<T> {
-  const _$ExceedingLength({required this.failedValue, required this.maxLength});
+class _$ExceedingLength implements ExceedingLength {
+  const _$ExceedingLength(
+      {required this.failedValue,
+      required this.length,
+      required this.maxLength});
 
   @override
-  final T failedValue;
-  @override //required int length,
+  final String failedValue;
+  @override
+  final int length;
+  @override
   final int maxLength;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.exceedingLength(failedValue: $failedValue, maxLength: $maxLength)';
+    return 'ValueFailure.exceedingLength(failedValue: $failedValue, length: $length, maxLength: $maxLength)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ExceedingLength<T> &&
+            other is ExceedingLength &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.length, length) &&
             const DeepCollectionEquality().equals(other.maxLength, maxLength));
   }
 
@@ -1555,71 +1545,78 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(length),
       const DeepCollectionEquality().hash(maxLength));
 
   @JsonKey(ignore: true)
   @override
-  $ExceedingLengthCopyWith<T, ExceedingLength<T>> get copyWith =>
-      _$ExceedingLengthCopyWithImpl<T, ExceedingLength<T>>(this, _$identity);
+  $ExceedingLengthCopyWith<ExceedingLength> get copyWith =>
+      _$ExceedingLengthCopyWithImpl<ExceedingLength>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue, String regex, Type type)
+    required TResult Function(String failedValue, String regex, Type type)
         invalidRegex,
-    required TResult Function(T failedValue, Type type, String message)
+    required TResult Function(String failedValue, String message, Type type)
         notPassTheValidation,
-    required TResult Function(T failedValue) notSingleLine,
-    required TResult Function(T failedValue) invalidDateTime,
-    required TResult Function(T failedValue) empty,
-    required TResult Function(T failedValue, int minLength) shortLength,
-    required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) mustBePositive,
-    required TResult Function(T failedValue) mustBeNegative,
-    required TResult Function(T failedValue, num max) overMaxValue,
-    required TResult Function(T failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue) notSingleLine,
+    required TResult Function(String failedValue) invalidDateTime,
+    required TResult Function() empty,
+    required TResult Function(String failedValue, int length, int minLength)
+        shortLength,
+    required TResult Function(String failedValue, int length, int maxLength)
+        exceedingLength,
+    required TResult Function(String failedValue) mustBePositive,
+    required TResult Function(String failedValue) mustBeNegative,
+    required TResult Function(String failedValue, num max) overMaxValue,
+    required TResult Function(String failedValue, num min) bellowMinValue,
   }) {
-    return exceedingLength(failedValue, maxLength);
+    return exceedingLength(failedValue, length, maxLength);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
   }) {
-    return exceedingLength?.call(failedValue, maxLength);
+    return exceedingLength?.call(failedValue, length, maxLength);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (exceedingLength != null) {
-      return exceedingLength(failedValue, maxLength);
+      return exceedingLength(failedValue, length, maxLength);
     }
     return orElse();
   }
@@ -1627,18 +1624,17 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvalidRegex<T> value) invalidRegex,
-    required TResult Function(NotPassTheValidation<T> value)
-        notPassTheValidation,
-    required TResult Function(NotSingleLine<T> value) notSingleLine,
-    required TResult Function(InvalidDateTime<T> value) invalidDateTime,
-    required TResult Function(Empty<T> value) empty,
-    required TResult Function(ShortLength<T> value) shortLength,
-    required TResult Function(ExceedingLength<T> value) exceedingLength,
-    required TResult Function(MustBePositive<T> value) mustBePositive,
-    required TResult Function(MustBeNegative<T> value) mustBeNegative,
-    required TResult Function(OverMaxValue<T> value) overMaxValue,
-    required TResult Function(BellowMinValue<T> value) bellowMinValue,
+    required TResult Function(InvalidRegex value) invalidRegex,
+    required TResult Function(NotPassTheValidation value) notPassTheValidation,
+    required TResult Function(NotSingleLine value) notSingleLine,
+    required TResult Function(InvalidDateTime value) invalidDateTime,
+    required TResult Function(Empty value) empty,
+    required TResult Function(ShortLength value) shortLength,
+    required TResult Function(ExceedingLength value) exceedingLength,
+    required TResult Function(MustBePositive value) mustBePositive,
+    required TResult Function(MustBeNegative value) mustBeNegative,
+    required TResult Function(OverMaxValue value) overMaxValue,
+    required TResult Function(BellowMinValue value) bellowMinValue,
   }) {
     return exceedingLength(this);
   }
@@ -1646,17 +1642,17 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
   }) {
     return exceedingLength?.call(this);
   }
@@ -1664,17 +1660,17 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (exceedingLength != null) {
@@ -1684,71 +1680,70 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
   }
 }
 
-abstract class ExceedingLength<T> implements ValueFailure<T> {
+abstract class ExceedingLength implements ValueFailure {
   const factory ExceedingLength(
-      {required T failedValue, required int maxLength}) = _$ExceedingLength<T>;
+      {required String failedValue,
+      required int length,
+      required int maxLength}) = _$ExceedingLength;
 
-  @override
-  T get failedValue; //required int length,
+  String get failedValue;
+  int get length;
   int get maxLength;
-  @override
   @JsonKey(ignore: true)
-  $ExceedingLengthCopyWith<T, ExceedingLength<T>> get copyWith =>
+  $ExceedingLengthCopyWith<ExceedingLength> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MustBePositiveCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+abstract class $MustBePositiveCopyWith<$Res> {
   factory $MustBePositiveCopyWith(
-          MustBePositive<T> value, $Res Function(MustBePositive<T>) then) =
-      _$MustBePositiveCopyWithImpl<T, $Res>;
-  @override
-  $Res call({T failedValue});
+          MustBePositive value, $Res Function(MustBePositive) then) =
+      _$MustBePositiveCopyWithImpl<$Res>;
+  $Res call({String failedValue});
 }
 
 /// @nodoc
-class _$MustBePositiveCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
-    implements $MustBePositiveCopyWith<T, $Res> {
+class _$MustBePositiveCopyWithImpl<$Res>
+    extends _$ValueFailureCopyWithImpl<$Res>
+    implements $MustBePositiveCopyWith<$Res> {
   _$MustBePositiveCopyWithImpl(
-      MustBePositive<T> _value, $Res Function(MustBePositive<T>) _then)
-      : super(_value, (v) => _then(v as MustBePositive<T>));
+      MustBePositive _value, $Res Function(MustBePositive) _then)
+      : super(_value, (v) => _then(v as MustBePositive));
 
   @override
-  MustBePositive<T> get _value => super._value as MustBePositive<T>;
+  MustBePositive get _value => super._value as MustBePositive;
 
   @override
   $Res call({
     Object? failedValue = freezed,
   }) {
-    return _then(MustBePositive<T>(
+    return _then(MustBePositive(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
-              as T,
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$MustBePositive<T> implements MustBePositive<T> {
+class _$MustBePositive implements MustBePositive {
   const _$MustBePositive({required this.failedValue});
 
   @override
-  final T failedValue;
+  final String failedValue;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.mustBePositive(failedValue: $failedValue)';
+    return 'ValueFailure.mustBePositive(failedValue: $failedValue)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is MustBePositive<T> &&
+            other is MustBePositive &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue));
   }
@@ -1759,25 +1754,27 @@ class _$MustBePositive<T> implements MustBePositive<T> {
 
   @JsonKey(ignore: true)
   @override
-  $MustBePositiveCopyWith<T, MustBePositive<T>> get copyWith =>
-      _$MustBePositiveCopyWithImpl<T, MustBePositive<T>>(this, _$identity);
+  $MustBePositiveCopyWith<MustBePositive> get copyWith =>
+      _$MustBePositiveCopyWithImpl<MustBePositive>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue, String regex, Type type)
+    required TResult Function(String failedValue, String regex, Type type)
         invalidRegex,
-    required TResult Function(T failedValue, Type type, String message)
+    required TResult Function(String failedValue, String message, Type type)
         notPassTheValidation,
-    required TResult Function(T failedValue) notSingleLine,
-    required TResult Function(T failedValue) invalidDateTime,
-    required TResult Function(T failedValue) empty,
-    required TResult Function(T failedValue, int minLength) shortLength,
-    required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) mustBePositive,
-    required TResult Function(T failedValue) mustBeNegative,
-    required TResult Function(T failedValue, num max) overMaxValue,
-    required TResult Function(T failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue) notSingleLine,
+    required TResult Function(String failedValue) invalidDateTime,
+    required TResult Function() empty,
+    required TResult Function(String failedValue, int length, int minLength)
+        shortLength,
+    required TResult Function(String failedValue, int length, int maxLength)
+        exceedingLength,
+    required TResult Function(String failedValue) mustBePositive,
+    required TResult Function(String failedValue) mustBeNegative,
+    required TResult Function(String failedValue, num max) overMaxValue,
+    required TResult Function(String failedValue, num min) bellowMinValue,
   }) {
     return mustBePositive(failedValue);
   }
@@ -1785,18 +1782,20 @@ class _$MustBePositive<T> implements MustBePositive<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
   }) {
     return mustBePositive?.call(failedValue);
   }
@@ -1804,18 +1803,20 @@ class _$MustBePositive<T> implements MustBePositive<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (mustBePositive != null) {
@@ -1827,18 +1828,17 @@ class _$MustBePositive<T> implements MustBePositive<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvalidRegex<T> value) invalidRegex,
-    required TResult Function(NotPassTheValidation<T> value)
-        notPassTheValidation,
-    required TResult Function(NotSingleLine<T> value) notSingleLine,
-    required TResult Function(InvalidDateTime<T> value) invalidDateTime,
-    required TResult Function(Empty<T> value) empty,
-    required TResult Function(ShortLength<T> value) shortLength,
-    required TResult Function(ExceedingLength<T> value) exceedingLength,
-    required TResult Function(MustBePositive<T> value) mustBePositive,
-    required TResult Function(MustBeNegative<T> value) mustBeNegative,
-    required TResult Function(OverMaxValue<T> value) overMaxValue,
-    required TResult Function(BellowMinValue<T> value) bellowMinValue,
+    required TResult Function(InvalidRegex value) invalidRegex,
+    required TResult Function(NotPassTheValidation value) notPassTheValidation,
+    required TResult Function(NotSingleLine value) notSingleLine,
+    required TResult Function(InvalidDateTime value) invalidDateTime,
+    required TResult Function(Empty value) empty,
+    required TResult Function(ShortLength value) shortLength,
+    required TResult Function(ExceedingLength value) exceedingLength,
+    required TResult Function(MustBePositive value) mustBePositive,
+    required TResult Function(MustBeNegative value) mustBeNegative,
+    required TResult Function(OverMaxValue value) overMaxValue,
+    required TResult Function(BellowMinValue value) bellowMinValue,
   }) {
     return mustBePositive(this);
   }
@@ -1846,17 +1846,17 @@ class _$MustBePositive<T> implements MustBePositive<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
   }) {
     return mustBePositive?.call(this);
   }
@@ -1864,17 +1864,17 @@ class _$MustBePositive<T> implements MustBePositive<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (mustBePositive != null) {
@@ -1884,69 +1884,66 @@ class _$MustBePositive<T> implements MustBePositive<T> {
   }
 }
 
-abstract class MustBePositive<T> implements ValueFailure<T> {
-  const factory MustBePositive({required T failedValue}) = _$MustBePositive<T>;
+abstract class MustBePositive implements ValueFailure {
+  const factory MustBePositive({required String failedValue}) =
+      _$MustBePositive;
 
-  @override
-  T get failedValue;
-  @override
+  String get failedValue;
   @JsonKey(ignore: true)
-  $MustBePositiveCopyWith<T, MustBePositive<T>> get copyWith =>
+  $MustBePositiveCopyWith<MustBePositive> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MustBeNegativeCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+abstract class $MustBeNegativeCopyWith<$Res> {
   factory $MustBeNegativeCopyWith(
-          MustBeNegative<T> value, $Res Function(MustBeNegative<T>) then) =
-      _$MustBeNegativeCopyWithImpl<T, $Res>;
-  @override
-  $Res call({T failedValue});
+          MustBeNegative value, $Res Function(MustBeNegative) then) =
+      _$MustBeNegativeCopyWithImpl<$Res>;
+  $Res call({String failedValue});
 }
 
 /// @nodoc
-class _$MustBeNegativeCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
-    implements $MustBeNegativeCopyWith<T, $Res> {
+class _$MustBeNegativeCopyWithImpl<$Res>
+    extends _$ValueFailureCopyWithImpl<$Res>
+    implements $MustBeNegativeCopyWith<$Res> {
   _$MustBeNegativeCopyWithImpl(
-      MustBeNegative<T> _value, $Res Function(MustBeNegative<T>) _then)
-      : super(_value, (v) => _then(v as MustBeNegative<T>));
+      MustBeNegative _value, $Res Function(MustBeNegative) _then)
+      : super(_value, (v) => _then(v as MustBeNegative));
 
   @override
-  MustBeNegative<T> get _value => super._value as MustBeNegative<T>;
+  MustBeNegative get _value => super._value as MustBeNegative;
 
   @override
   $Res call({
     Object? failedValue = freezed,
   }) {
-    return _then(MustBeNegative<T>(
+    return _then(MustBeNegative(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
-              as T,
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$MustBeNegative<T> implements MustBeNegative<T> {
+class _$MustBeNegative implements MustBeNegative {
   const _$MustBeNegative({required this.failedValue});
 
   @override
-  final T failedValue;
+  final String failedValue;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.mustBeNegative(failedValue: $failedValue)';
+    return 'ValueFailure.mustBeNegative(failedValue: $failedValue)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is MustBeNegative<T> &&
+            other is MustBeNegative &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue));
   }
@@ -1957,25 +1954,27 @@ class _$MustBeNegative<T> implements MustBeNegative<T> {
 
   @JsonKey(ignore: true)
   @override
-  $MustBeNegativeCopyWith<T, MustBeNegative<T>> get copyWith =>
-      _$MustBeNegativeCopyWithImpl<T, MustBeNegative<T>>(this, _$identity);
+  $MustBeNegativeCopyWith<MustBeNegative> get copyWith =>
+      _$MustBeNegativeCopyWithImpl<MustBeNegative>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue, String regex, Type type)
+    required TResult Function(String failedValue, String regex, Type type)
         invalidRegex,
-    required TResult Function(T failedValue, Type type, String message)
+    required TResult Function(String failedValue, String message, Type type)
         notPassTheValidation,
-    required TResult Function(T failedValue) notSingleLine,
-    required TResult Function(T failedValue) invalidDateTime,
-    required TResult Function(T failedValue) empty,
-    required TResult Function(T failedValue, int minLength) shortLength,
-    required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) mustBePositive,
-    required TResult Function(T failedValue) mustBeNegative,
-    required TResult Function(T failedValue, num max) overMaxValue,
-    required TResult Function(T failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue) notSingleLine,
+    required TResult Function(String failedValue) invalidDateTime,
+    required TResult Function() empty,
+    required TResult Function(String failedValue, int length, int minLength)
+        shortLength,
+    required TResult Function(String failedValue, int length, int maxLength)
+        exceedingLength,
+    required TResult Function(String failedValue) mustBePositive,
+    required TResult Function(String failedValue) mustBeNegative,
+    required TResult Function(String failedValue, num max) overMaxValue,
+    required TResult Function(String failedValue, num min) bellowMinValue,
   }) {
     return mustBeNegative(failedValue);
   }
@@ -1983,18 +1982,20 @@ class _$MustBeNegative<T> implements MustBeNegative<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
   }) {
     return mustBeNegative?.call(failedValue);
   }
@@ -2002,18 +2003,20 @@ class _$MustBeNegative<T> implements MustBeNegative<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (mustBeNegative != null) {
@@ -2025,18 +2028,17 @@ class _$MustBeNegative<T> implements MustBeNegative<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvalidRegex<T> value) invalidRegex,
-    required TResult Function(NotPassTheValidation<T> value)
-        notPassTheValidation,
-    required TResult Function(NotSingleLine<T> value) notSingleLine,
-    required TResult Function(InvalidDateTime<T> value) invalidDateTime,
-    required TResult Function(Empty<T> value) empty,
-    required TResult Function(ShortLength<T> value) shortLength,
-    required TResult Function(ExceedingLength<T> value) exceedingLength,
-    required TResult Function(MustBePositive<T> value) mustBePositive,
-    required TResult Function(MustBeNegative<T> value) mustBeNegative,
-    required TResult Function(OverMaxValue<T> value) overMaxValue,
-    required TResult Function(BellowMinValue<T> value) bellowMinValue,
+    required TResult Function(InvalidRegex value) invalidRegex,
+    required TResult Function(NotPassTheValidation value) notPassTheValidation,
+    required TResult Function(NotSingleLine value) notSingleLine,
+    required TResult Function(InvalidDateTime value) invalidDateTime,
+    required TResult Function(Empty value) empty,
+    required TResult Function(ShortLength value) shortLength,
+    required TResult Function(ExceedingLength value) exceedingLength,
+    required TResult Function(MustBePositive value) mustBePositive,
+    required TResult Function(MustBeNegative value) mustBeNegative,
+    required TResult Function(OverMaxValue value) overMaxValue,
+    required TResult Function(BellowMinValue value) bellowMinValue,
   }) {
     return mustBeNegative(this);
   }
@@ -2044,17 +2046,17 @@ class _$MustBeNegative<T> implements MustBeNegative<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
   }) {
     return mustBeNegative?.call(this);
   }
@@ -2062,17 +2064,17 @@ class _$MustBeNegative<T> implements MustBeNegative<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (mustBeNegative != null) {
@@ -2082,48 +2084,44 @@ class _$MustBeNegative<T> implements MustBeNegative<T> {
   }
 }
 
-abstract class MustBeNegative<T> implements ValueFailure<T> {
-  const factory MustBeNegative({required T failedValue}) = _$MustBeNegative<T>;
+abstract class MustBeNegative implements ValueFailure {
+  const factory MustBeNegative({required String failedValue}) =
+      _$MustBeNegative;
 
-  @override
-  T get failedValue;
-  @override
+  String get failedValue;
   @JsonKey(ignore: true)
-  $MustBeNegativeCopyWith<T, MustBeNegative<T>> get copyWith =>
+  $MustBeNegativeCopyWith<MustBeNegative> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OverMaxValueCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+abstract class $OverMaxValueCopyWith<$Res> {
   factory $OverMaxValueCopyWith(
-          OverMaxValue<T> value, $Res Function(OverMaxValue<T>) then) =
-      _$OverMaxValueCopyWithImpl<T, $Res>;
-  @override
-  $Res call({T failedValue, num max});
+          OverMaxValue value, $Res Function(OverMaxValue) then) =
+      _$OverMaxValueCopyWithImpl<$Res>;
+  $Res call({String failedValue, num max});
 }
 
 /// @nodoc
-class _$OverMaxValueCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
-    implements $OverMaxValueCopyWith<T, $Res> {
+class _$OverMaxValueCopyWithImpl<$Res> extends _$ValueFailureCopyWithImpl<$Res>
+    implements $OverMaxValueCopyWith<$Res> {
   _$OverMaxValueCopyWithImpl(
-      OverMaxValue<T> _value, $Res Function(OverMaxValue<T>) _then)
-      : super(_value, (v) => _then(v as OverMaxValue<T>));
+      OverMaxValue _value, $Res Function(OverMaxValue) _then)
+      : super(_value, (v) => _then(v as OverMaxValue));
 
   @override
-  OverMaxValue<T> get _value => super._value as OverMaxValue<T>;
+  OverMaxValue get _value => super._value as OverMaxValue;
 
   @override
   $Res call({
     Object? failedValue = freezed,
     Object? max = freezed,
   }) {
-    return _then(OverMaxValue<T>(
+    return _then(OverMaxValue(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
-              as T,
+              as String,
       max: max == freezed
           ? _value.max
           : max // ignore: cast_nullable_to_non_nullable
@@ -2134,24 +2132,24 @@ class _$OverMaxValueCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$OverMaxValue<T> implements OverMaxValue<T> {
+class _$OverMaxValue implements OverMaxValue {
   const _$OverMaxValue({required this.failedValue, required this.max});
 
   @override
-  final T failedValue;
+  final String failedValue;
   @override
   final num max;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.overMaxValue(failedValue: $failedValue, max: $max)';
+    return 'ValueFailure.overMaxValue(failedValue: $failedValue, max: $max)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is OverMaxValue<T> &&
+            other is OverMaxValue &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue) &&
             const DeepCollectionEquality().equals(other.max, max));
@@ -2165,25 +2163,27 @@ class _$OverMaxValue<T> implements OverMaxValue<T> {
 
   @JsonKey(ignore: true)
   @override
-  $OverMaxValueCopyWith<T, OverMaxValue<T>> get copyWith =>
-      _$OverMaxValueCopyWithImpl<T, OverMaxValue<T>>(this, _$identity);
+  $OverMaxValueCopyWith<OverMaxValue> get copyWith =>
+      _$OverMaxValueCopyWithImpl<OverMaxValue>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue, String regex, Type type)
+    required TResult Function(String failedValue, String regex, Type type)
         invalidRegex,
-    required TResult Function(T failedValue, Type type, String message)
+    required TResult Function(String failedValue, String message, Type type)
         notPassTheValidation,
-    required TResult Function(T failedValue) notSingleLine,
-    required TResult Function(T failedValue) invalidDateTime,
-    required TResult Function(T failedValue) empty,
-    required TResult Function(T failedValue, int minLength) shortLength,
-    required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) mustBePositive,
-    required TResult Function(T failedValue) mustBeNegative,
-    required TResult Function(T failedValue, num max) overMaxValue,
-    required TResult Function(T failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue) notSingleLine,
+    required TResult Function(String failedValue) invalidDateTime,
+    required TResult Function() empty,
+    required TResult Function(String failedValue, int length, int minLength)
+        shortLength,
+    required TResult Function(String failedValue, int length, int maxLength)
+        exceedingLength,
+    required TResult Function(String failedValue) mustBePositive,
+    required TResult Function(String failedValue) mustBeNegative,
+    required TResult Function(String failedValue, num max) overMaxValue,
+    required TResult Function(String failedValue, num min) bellowMinValue,
   }) {
     return overMaxValue(failedValue, max);
   }
@@ -2191,18 +2191,20 @@ class _$OverMaxValue<T> implements OverMaxValue<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
   }) {
     return overMaxValue?.call(failedValue, max);
   }
@@ -2210,18 +2212,20 @@ class _$OverMaxValue<T> implements OverMaxValue<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (overMaxValue != null) {
@@ -2233,18 +2237,17 @@ class _$OverMaxValue<T> implements OverMaxValue<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvalidRegex<T> value) invalidRegex,
-    required TResult Function(NotPassTheValidation<T> value)
-        notPassTheValidation,
-    required TResult Function(NotSingleLine<T> value) notSingleLine,
-    required TResult Function(InvalidDateTime<T> value) invalidDateTime,
-    required TResult Function(Empty<T> value) empty,
-    required TResult Function(ShortLength<T> value) shortLength,
-    required TResult Function(ExceedingLength<T> value) exceedingLength,
-    required TResult Function(MustBePositive<T> value) mustBePositive,
-    required TResult Function(MustBeNegative<T> value) mustBeNegative,
-    required TResult Function(OverMaxValue<T> value) overMaxValue,
-    required TResult Function(BellowMinValue<T> value) bellowMinValue,
+    required TResult Function(InvalidRegex value) invalidRegex,
+    required TResult Function(NotPassTheValidation value) notPassTheValidation,
+    required TResult Function(NotSingleLine value) notSingleLine,
+    required TResult Function(InvalidDateTime value) invalidDateTime,
+    required TResult Function(Empty value) empty,
+    required TResult Function(ShortLength value) shortLength,
+    required TResult Function(ExceedingLength value) exceedingLength,
+    required TResult Function(MustBePositive value) mustBePositive,
+    required TResult Function(MustBeNegative value) mustBeNegative,
+    required TResult Function(OverMaxValue value) overMaxValue,
+    required TResult Function(BellowMinValue value) bellowMinValue,
   }) {
     return overMaxValue(this);
   }
@@ -2252,17 +2255,17 @@ class _$OverMaxValue<T> implements OverMaxValue<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
   }) {
     return overMaxValue?.call(this);
   }
@@ -2270,17 +2273,17 @@ class _$OverMaxValue<T> implements OverMaxValue<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (overMaxValue != null) {
@@ -2290,50 +2293,46 @@ class _$OverMaxValue<T> implements OverMaxValue<T> {
   }
 }
 
-abstract class OverMaxValue<T> implements ValueFailure<T> {
-  const factory OverMaxValue({required T failedValue, required num max}) =
-      _$OverMaxValue<T>;
+abstract class OverMaxValue implements ValueFailure {
+  const factory OverMaxValue({required String failedValue, required num max}) =
+      _$OverMaxValue;
 
-  @override
-  T get failedValue;
+  String get failedValue;
   num get max;
-  @override
   @JsonKey(ignore: true)
-  $OverMaxValueCopyWith<T, OverMaxValue<T>> get copyWith =>
+  $OverMaxValueCopyWith<OverMaxValue> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BellowMinValueCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
+abstract class $BellowMinValueCopyWith<$Res> {
   factory $BellowMinValueCopyWith(
-          BellowMinValue<T> value, $Res Function(BellowMinValue<T>) then) =
-      _$BellowMinValueCopyWithImpl<T, $Res>;
-  @override
-  $Res call({T failedValue, num min});
+          BellowMinValue value, $Res Function(BellowMinValue) then) =
+      _$BellowMinValueCopyWithImpl<$Res>;
+  $Res call({String failedValue, num min});
 }
 
 /// @nodoc
-class _$BellowMinValueCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
-    implements $BellowMinValueCopyWith<T, $Res> {
+class _$BellowMinValueCopyWithImpl<$Res>
+    extends _$ValueFailureCopyWithImpl<$Res>
+    implements $BellowMinValueCopyWith<$Res> {
   _$BellowMinValueCopyWithImpl(
-      BellowMinValue<T> _value, $Res Function(BellowMinValue<T>) _then)
-      : super(_value, (v) => _then(v as BellowMinValue<T>));
+      BellowMinValue _value, $Res Function(BellowMinValue) _then)
+      : super(_value, (v) => _then(v as BellowMinValue));
 
   @override
-  BellowMinValue<T> get _value => super._value as BellowMinValue<T>;
+  BellowMinValue get _value => super._value as BellowMinValue;
 
   @override
   $Res call({
     Object? failedValue = freezed,
     Object? min = freezed,
   }) {
-    return _then(BellowMinValue<T>(
+    return _then(BellowMinValue(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
-              as T,
+              as String,
       min: min == freezed
           ? _value.min
           : min // ignore: cast_nullable_to_non_nullable
@@ -2344,24 +2343,24 @@ class _$BellowMinValueCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$BellowMinValue<T> implements BellowMinValue<T> {
+class _$BellowMinValue implements BellowMinValue {
   const _$BellowMinValue({required this.failedValue, required this.min});
 
   @override
-  final T failedValue;
+  final String failedValue;
   @override
   final num min;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.bellowMinValue(failedValue: $failedValue, min: $min)';
+    return 'ValueFailure.bellowMinValue(failedValue: $failedValue, min: $min)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is BellowMinValue<T> &&
+            other is BellowMinValue &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue) &&
             const DeepCollectionEquality().equals(other.min, min));
@@ -2375,25 +2374,27 @@ class _$BellowMinValue<T> implements BellowMinValue<T> {
 
   @JsonKey(ignore: true)
   @override
-  $BellowMinValueCopyWith<T, BellowMinValue<T>> get copyWith =>
-      _$BellowMinValueCopyWithImpl<T, BellowMinValue<T>>(this, _$identity);
+  $BellowMinValueCopyWith<BellowMinValue> get copyWith =>
+      _$BellowMinValueCopyWithImpl<BellowMinValue>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue, String regex, Type type)
+    required TResult Function(String failedValue, String regex, Type type)
         invalidRegex,
-    required TResult Function(T failedValue, Type type, String message)
+    required TResult Function(String failedValue, String message, Type type)
         notPassTheValidation,
-    required TResult Function(T failedValue) notSingleLine,
-    required TResult Function(T failedValue) invalidDateTime,
-    required TResult Function(T failedValue) empty,
-    required TResult Function(T failedValue, int minLength) shortLength,
-    required TResult Function(T failedValue, int maxLength) exceedingLength,
-    required TResult Function(T failedValue) mustBePositive,
-    required TResult Function(T failedValue) mustBeNegative,
-    required TResult Function(T failedValue, num max) overMaxValue,
-    required TResult Function(T failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue) notSingleLine,
+    required TResult Function(String failedValue) invalidDateTime,
+    required TResult Function() empty,
+    required TResult Function(String failedValue, int length, int minLength)
+        shortLength,
+    required TResult Function(String failedValue, int length, int maxLength)
+        exceedingLength,
+    required TResult Function(String failedValue) mustBePositive,
+    required TResult Function(String failedValue) mustBeNegative,
+    required TResult Function(String failedValue, num max) overMaxValue,
+    required TResult Function(String failedValue, num min) bellowMinValue,
   }) {
     return bellowMinValue(failedValue, min);
   }
@@ -2401,18 +2402,20 @@ class _$BellowMinValue<T> implements BellowMinValue<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
   }) {
     return bellowMinValue?.call(failedValue, min);
   }
@@ -2420,18 +2423,20 @@ class _$BellowMinValue<T> implements BellowMinValue<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue, String regex, Type type)? invalidRegex,
-    TResult Function(T failedValue, Type type, String message)?
+    TResult Function(String failedValue, String regex, Type type)? invalidRegex,
+    TResult Function(String failedValue, String message, Type type)?
         notPassTheValidation,
-    TResult Function(T failedValue)? notSingleLine,
-    TResult Function(T failedValue)? invalidDateTime,
-    TResult Function(T failedValue)? empty,
-    TResult Function(T failedValue, int minLength)? shortLength,
-    TResult Function(T failedValue, int maxLength)? exceedingLength,
-    TResult Function(T failedValue)? mustBePositive,
-    TResult Function(T failedValue)? mustBeNegative,
-    TResult Function(T failedValue, num max)? overMaxValue,
-    TResult Function(T failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue)? notSingleLine,
+    TResult Function(String failedValue)? invalidDateTime,
+    TResult Function()? empty,
+    TResult Function(String failedValue, int length, int minLength)?
+        shortLength,
+    TResult Function(String failedValue, int length, int maxLength)?
+        exceedingLength,
+    TResult Function(String failedValue)? mustBePositive,
+    TResult Function(String failedValue)? mustBeNegative,
+    TResult Function(String failedValue, num max)? overMaxValue,
+    TResult Function(String failedValue, num min)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (bellowMinValue != null) {
@@ -2443,18 +2448,17 @@ class _$BellowMinValue<T> implements BellowMinValue<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InvalidRegex<T> value) invalidRegex,
-    required TResult Function(NotPassTheValidation<T> value)
-        notPassTheValidation,
-    required TResult Function(NotSingleLine<T> value) notSingleLine,
-    required TResult Function(InvalidDateTime<T> value) invalidDateTime,
-    required TResult Function(Empty<T> value) empty,
-    required TResult Function(ShortLength<T> value) shortLength,
-    required TResult Function(ExceedingLength<T> value) exceedingLength,
-    required TResult Function(MustBePositive<T> value) mustBePositive,
-    required TResult Function(MustBeNegative<T> value) mustBeNegative,
-    required TResult Function(OverMaxValue<T> value) overMaxValue,
-    required TResult Function(BellowMinValue<T> value) bellowMinValue,
+    required TResult Function(InvalidRegex value) invalidRegex,
+    required TResult Function(NotPassTheValidation value) notPassTheValidation,
+    required TResult Function(NotSingleLine value) notSingleLine,
+    required TResult Function(InvalidDateTime value) invalidDateTime,
+    required TResult Function(Empty value) empty,
+    required TResult Function(ShortLength value) shortLength,
+    required TResult Function(ExceedingLength value) exceedingLength,
+    required TResult Function(MustBePositive value) mustBePositive,
+    required TResult Function(MustBeNegative value) mustBeNegative,
+    required TResult Function(OverMaxValue value) overMaxValue,
+    required TResult Function(BellowMinValue value) bellowMinValue,
   }) {
     return bellowMinValue(this);
   }
@@ -2462,17 +2466,17 @@ class _$BellowMinValue<T> implements BellowMinValue<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
   }) {
     return bellowMinValue?.call(this);
   }
@@ -2480,17 +2484,17 @@ class _$BellowMinValue<T> implements BellowMinValue<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InvalidRegex<T> value)? invalidRegex,
-    TResult Function(NotPassTheValidation<T> value)? notPassTheValidation,
-    TResult Function(NotSingleLine<T> value)? notSingleLine,
-    TResult Function(InvalidDateTime<T> value)? invalidDateTime,
-    TResult Function(Empty<T> value)? empty,
-    TResult Function(ShortLength<T> value)? shortLength,
-    TResult Function(ExceedingLength<T> value)? exceedingLength,
-    TResult Function(MustBePositive<T> value)? mustBePositive,
-    TResult Function(MustBeNegative<T> value)? mustBeNegative,
-    TResult Function(OverMaxValue<T> value)? overMaxValue,
-    TResult Function(BellowMinValue<T> value)? bellowMinValue,
+    TResult Function(InvalidRegex value)? invalidRegex,
+    TResult Function(NotPassTheValidation value)? notPassTheValidation,
+    TResult Function(NotSingleLine value)? notSingleLine,
+    TResult Function(InvalidDateTime value)? invalidDateTime,
+    TResult Function(Empty value)? empty,
+    TResult Function(ShortLength value)? shortLength,
+    TResult Function(ExceedingLength value)? exceedingLength,
+    TResult Function(MustBePositive value)? mustBePositive,
+    TResult Function(MustBeNegative value)? mustBeNegative,
+    TResult Function(OverMaxValue value)? overMaxValue,
+    TResult Function(BellowMinValue value)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (bellowMinValue != null) {
@@ -2500,15 +2504,13 @@ class _$BellowMinValue<T> implements BellowMinValue<T> {
   }
 }
 
-abstract class BellowMinValue<T> implements ValueFailure<T> {
-  const factory BellowMinValue({required T failedValue, required num min}) =
-      _$BellowMinValue<T>;
+abstract class BellowMinValue implements ValueFailure {
+  const factory BellowMinValue(
+      {required String failedValue, required num min}) = _$BellowMinValue;
 
-  @override
-  T get failedValue;
+  String get failedValue;
   num get min;
-  @override
   @JsonKey(ignore: true)
-  $BellowMinValueCopyWith<T, BellowMinValue<T>> get copyWith =>
+  $BellowMinValueCopyWith<BellowMinValue> get copyWith =>
       throw _privateConstructorUsedError;
 }

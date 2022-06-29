@@ -6,21 +6,21 @@ import 'value_failure.dart';
 // #  Nullsafety
 // #  Failure class holds a list of value failures
 // #############################################################################
-class Failures<T> {
+class Failures {
   //
   // ============================================
-  final List<ValueFailure<T>> _list = [];
+  final List<ValueFailure> _list = [];
 
   //
   // ============================================
-  List<ValueFailure<T>> get list => _list;
+  List<ValueFailure> get list => _list;
 
   //
   // ============================================
   void add({
     required Enum validation,
-    required dynamic options,
-    required T value,
+    required Map<String, dynamic> options,
+    required String value,
   }) {
     if (validation is StringValidationsEnum) {
       addString(
@@ -41,9 +41,9 @@ class Failures<T> {
   //
   // ============================================
   void addString({
-    required Enum validation,
-    required dynamic options,
-    required T value,
+    required StringValidationsEnum validation,
+    required Map<String, dynamic> options,
+    required String value,
   }) {
     switch (validation) {
       //
@@ -59,7 +59,10 @@ class Failures<T> {
         _list.add(
           ValueFailure.exceedingLength(
             failedValue: value,
-            maxLength: options,
+            length: value.length,
+            maxLength: options.containsKey('maxLength')
+                ? options['maxLength']
+                : 'ERROR options.containsKey(\'maxLength\')',
           ),
         );
         break;
@@ -68,16 +71,17 @@ class Failures<T> {
         _list.add(
           ValueFailure.shortLength(
             failedValue: value,
-            minLength: options,
+            length: value.length,
+            minLength: options.containsKey('minLength')
+                ? options['minLength']
+                : 'ERROR options.containsKey(\'minLength\')',
           ),
         );
         break;
       //
       case StringValidationsEnum.notEmpty:
         _list.add(
-          ValueFailure.empty(
-            failedValue: value,
-          ),
+          ValueFailure.empty(),
         );
         break;
       //
@@ -91,8 +95,12 @@ class Failures<T> {
         _list.add(
           ValueFailure.invalidRegex(
             failedValue: value,
-            regex: options.toString(),
-            type: T,
+            regex: options.containsKey('regex')
+                ? options['regex'].toString()
+                : 'ERROR options.containsKey(\'regex\')',
+            type: options.containsKey('type')
+                ? options['type']
+                : 'ERROR options.containsKey(\'type\')',
           ),
         );
         break;
@@ -101,20 +109,25 @@ class Failures<T> {
         _list.add(
           ValueFailure.notPassTheValidation(
             failedValue: value,
-            type: T,
-            message: options['message'],
+            message: options.containsKey('message')
+                ? options['message']
+                : 'ERROR options.containsKey(\'message\')',
+            type: options.containsKey('type')
+                ? options['type']
+                : 'ERROR options.containsKey(\'type\')',
           ),
         );
         break;
     }
   }
+  //: options.containsKey('') ? options[''] : 'ERROR options.containsKey(\'\')',
 
   //
   // ============================================
   void addNum({
-    required Enum validation,
-    required dynamic options,
-    required T value,
+    required NumValidationsEnum validation,
+    required Map<String, dynamic> options,
+    required String value,
   }) {
     switch (validation) {
       //
@@ -138,7 +151,9 @@ class Failures<T> {
         _list.add(
           ValueFailure.bellowMinValue(
             failedValue: value,
-            min: options,
+            min: options.containsKey('min')
+                ? options['min']
+                : 'ERROR options.containsKey(\'min\')',
           ),
         );
         break;
@@ -147,7 +162,9 @@ class Failures<T> {
         _list.add(
           ValueFailure.overMaxValue(
             failedValue: value,
-            max: options,
+            max: options.containsKey('max')
+                ? options['max']
+                : 'ERROR options.containsKey(\'max\')',
           ),
         );
         break;
@@ -156,8 +173,12 @@ class Failures<T> {
         _list.add(
           ValueFailure.invalidRegex(
             failedValue: value,
-            regex: options.toString(),
-            type: T,
+            regex: options.containsKey('regex')
+                ? options['regex'].toString()
+                : 'ERROR options.containsKey(\'regex\')',
+            type: options.containsKey('type')
+                ? options['type']
+                : 'ERROR options.containsKey(\'type\')',
           ),
         );
         break;
@@ -166,8 +187,12 @@ class Failures<T> {
         _list.add(
           ValueFailure.notPassTheValidation(
             failedValue: value,
-            type: T,
-            message: options['message'],
+            message: options.containsKey('message')
+                ? options['message']
+                : 'ERROR options.containsKey(\'message\')',
+            type: options.containsKey('type')
+                ? options['type']
+                : 'ERROR options.containsKey(\'type\')',
           ),
         );
         break;

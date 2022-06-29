@@ -15,7 +15,7 @@ import 'package:sid_d_d/src/failures/failures.dart';
 @immutable
 abstract class ValueObject<T> extends Equatable implements IValidatable {
   // ====================================
-  final Either<Failures<T>, T> _value;
+  final Either<Failures, T> _value;
 
   // ====================================
   const ValueObject(this._value);
@@ -28,7 +28,7 @@ abstract class ValueObject<T> extends Equatable implements IValidatable {
       );
 
   // ====================================
-  Either<Failures<T>, Unit> get failuresOrUnit => _value.fold(
+  Either<Failures, Unit> get failuresOrUnit => _value.fold(
         (failures) => left(failures),
         (_) => right(unit),
       );

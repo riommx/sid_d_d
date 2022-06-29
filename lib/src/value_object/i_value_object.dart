@@ -20,7 +20,7 @@ abstract class IValueObject<T> extends Equatable implements IValidatable {
   //
   // ===========================================================================
   //
-  Either<Failures<T>, Unit> get failuresOrUnit;
+  Either<Failures, Unit> get failuresOrUnit;
   //
   // ===========================================================================
   T getOrElse(T defaultValue);

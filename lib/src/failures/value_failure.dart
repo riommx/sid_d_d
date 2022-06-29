@@ -10,75 +10,73 @@ part 'value_failure.freezed.dart';
 
 //
 @freezed
-abstract class ValueFailure<T> with _$ValueFailure<T> {
+abstract class ValueFailure with _$ValueFailure {
   // VALIDATOR --------------------------
   //
   const factory ValueFailure.invalidRegex({
-    required T failedValue,
+    required String failedValue,
     required String regex,
     required Type type,
-  }) = InvalidRegex<T>;
+  }) = InvalidRegex;
 
   //
   const factory ValueFailure.notPassTheValidation({
-    required T failedValue,
-    required Type type,
+    required String failedValue,
     required String message,
-  }) = NotPassTheValidation<T>;
+    required Type type,
+  }) = NotPassTheValidation;
 
   // VALIDATOR STRING -------------------
   //
   const factory ValueFailure.notSingleLine({
-    required T failedValue,
-  }) = NotSingleLine<T>;
+    required String failedValue,
+  }) = NotSingleLine;
 
   //
   const factory ValueFailure.invalidDateTime({
-    required T failedValue,
-  }) = InvalidDateTime<T>;
+    required String failedValue,
+  }) = InvalidDateTime;
 
   // VALIDATOR STRING & KTLIST -------------------
   //
-  const factory ValueFailure.empty({
-    required T failedValue,
-  }) = Empty<T>;
+  const factory ValueFailure.empty() = Empty;
 
   //
   const factory ValueFailure.shortLength({
-    required T failedValue,
-    //required int length,
+    required String failedValue,
+    required int length,
     required int minLength,
-  }) = ShortLength<T>;
+  }) = ShortLength;
 
   //
   const factory ValueFailure.exceedingLength({
-    required T failedValue,
-    //required int length,
+    required String failedValue,
+    required int length,
     required int maxLength,
-  }) = ExceedingLength<T>;
+  }) = ExceedingLength;
 
   // VALIDATOR NUM =======================
   //
   const factory ValueFailure.mustBePositive({
-    required T failedValue,
-  }) = MustBePositive<T>;
+    required String failedValue,
+  }) = MustBePositive;
 
   //
   const factory ValueFailure.mustBeNegative({
-    required T failedValue,
-  }) = MustBeNegative<T>;
+    required String failedValue,
+  }) = MustBeNegative;
 
   //
   const factory ValueFailure.overMaxValue({
-    required T failedValue,
+    required String failedValue,
     required num max,
-  }) = OverMaxValue<T>;
+  }) = OverMaxValue;
 
   //
   const factory ValueFailure.bellowMinValue({
-    required T failedValue,
+    required String failedValue,
     required num min,
-  }) = BellowMinValue<T>;
+  }) = BellowMinValue;
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _
