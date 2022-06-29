@@ -29,7 +29,7 @@ void main() {
       );
       expect(failures.list.length, 1);
       expect(failures.list[0].toString(),
-          'ValueFailure<String>.invalidDateTime(failedValue: not a date)');
+          'ValueFailure.invalidDateTime(failedValue: not a date)');
     });
   });
 }
