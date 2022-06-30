@@ -5,10 +5,7 @@
 // #############################################################################
 //
 
-import '../value_object/value_object.dart';
-
 abstract class IDTO {
-  Map<String, ValueObject> get members;
   Map<String, dynamic> toMap();
 }
 

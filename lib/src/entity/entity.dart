@@ -1,22 +1,36 @@
-import 'package:meta/meta.dart';
 import 'i_d_t_o.dart';
 import '../validation/i_validatable.dart';
-import '../value_object/value_object.dart';
 import '../value_object/vo/unique_id_v_o.dart';
 
-@immutable
 abstract class Entity implements IValidatable, IDTO {
-  final UniqueIdVO uid;
+  late final UniqueIdVO uid;
+  final Map<String, dynamic> props = {};
 
-  Entity(this.uid);
+  Entity({
+    required String uid,
+    required Map<String, dynamic> props,
+  }) {
+    this.uid = UniqueIdVO(uniqueId: uid);
+    this.props.putIfAbsent(
+          'uid',
+          () => this.uid,
+        );
+    props.forEach((
+      key,
+      value,
+    ) =>
+        this.props.putIfAbsent(
+              key,
+              () => value,
+            ));
+  }
 
-  Map<String, dynamic> mapMembers(
-    Map<String, ValueObject> vos,
-  ) {
-    //
+  ///
+  @override
+  Map<String, dynamic> toMap() {
     Map<String, dynamic> map = {};
     //
-    vos.forEach(
+    props.forEach(
       (
         key,
         value,
@@ -30,11 +44,11 @@ abstract class Entity implements IValidatable, IDTO {
     return map;
   }
 
-  bool entityIsValid(
-    Map<String, ValueObject> vos,
-  ) {
+  ///
+  @override
+  bool isValid() {
     var valid = true;
-    vos.forEach(
+    props.forEach(
       (
         key,
         value,

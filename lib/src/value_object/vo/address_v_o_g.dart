@@ -1,49 +1,46 @@
 import 'package:sid_d_d/library.dart';
 
-class Person extends Entity {
-  //
+class AddressVOG extends VOGroup {
   final NameVO name;
   //
   final DateVO birthDate;
 
-  Person._(
+  AddressVOG._(
     this.name,
     this.birthDate,
-    String uid,
   ) : super(
-          uid: uid,
-          props: {
+          {
             'name': name,
             'birthDate': birthDate,
           },
         );
 
   ///
-  factory Person({
+  factory AddressVOG({
     required NameVO name,
     required DateVO birthDate,
-    String uid = '',
   }) {
-    return Person._(
+    return AddressVOG._(
       name,
       birthDate,
-      uid,
     );
   }
 
   ///
-  factory Person.fromMap({
+  factory AddressVOG.fromMap({
     required Map<String, dynamic> map,
   }) {
-    if (!map.containsKey('uid') ||
-        !map.containsKey('name') ||
-        !map.containsKey('birthDate')) {
+    if (!map.containsKey('name') || !map.containsKey('birthDate')) {
       throw Error();
     }
-    return Person._(
+    return AddressVOG._(
       NameVO(map['name']),
       DateVO(map['birthDate']),
-      map['uid'],
     );
   }
+
+  // ===========================================================================
+  // FOR Equatable
+  @override
+  List<Object> get props => [name, birthDate];
 }

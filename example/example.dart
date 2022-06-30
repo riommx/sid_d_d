@@ -29,7 +29,7 @@ void main() {
   print(personName == personName2);
  */
   final person = Person(
-    name: personName,
+    name: personName2,
     birthDate: DateVO(DateTime.now().toString()),
   );
 
@@ -38,10 +38,40 @@ void main() {
   print(person.name.getOrElse('ERRO'));
   print(person.name.runtimeType);
 
-  var nome = Validation.name('Adolf Hitler');
+  var nome = Validation.name('Adolf');
   print(nome.getOrElse(() => 'S!D'));
   print(nome.runtimeType);
   var erros = nome.fold((l) => l, (r) => r);
 
-  print(erros);
+  print(person.toMap());
+
+  var mino = Person.fromMap(map: {
+    'uid': '879a9470-f8b0-11ec-8bb4-2367f911d84e',
+    'name': 'Adolf',
+    'birthDate': '2022-06-30 17:09:21.422952',
+  });
+  var mino2 = Person.fromMap(map: {
+    'uid': '879a9470-f8b0-11ec-8bb4-2367f911d84e',
+    'name': 'Adolf',
+    'birthDate': '2022-06-30 17:09:21.422952',
+  });
+
+  print(mino.toMap());
+  print(mino2.toMap());
+
+  print(mino.isValid());
+
+  var mino3 = AddressVOG.fromMap(map: {
+    'name': 'Adolf',
+    'birthDate': '2022-06-30 17:09:21.422952',
+  });
+  var mino4 = AddressVOG.fromMap(map: {
+    'name': 'Adolf',
+    'birthDate': '2022-06-30 17:09:21.422952',
+  });
+
+  print(mino3.toMap());
+  print(mino4.toMap());
+
+  print(mino3 == mino4);
 }
