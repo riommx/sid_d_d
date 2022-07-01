@@ -60,9 +60,9 @@ class Failures {
           ValueFailure.exceedingLength(
             failedValue: value,
             length: value.length,
-            maxLength: options.containsKey('maxLength')
-                ? options['maxLength']
-                : 'ERROR options.containsKey(\'maxLength\')',
+            maxLength: options.containsKey('max')
+                ? options['max']
+                : 'ERROR maxLength options.containsKey(\'max\')',
           ),
         );
         break;
@@ -72,9 +72,9 @@ class Failures {
           ValueFailure.shortLength(
             failedValue: value,
             length: value.length,
-            minLength: options.containsKey('minLength')
-                ? options['minLength']
-                : 'ERROR options.containsKey(\'minLength\')',
+            minLength: options.containsKey('min')
+                ? options['min']
+                : 'ERROR minLength options.containsKey(\'min\')',
           ),
         );
         break;
@@ -95,9 +95,9 @@ class Failures {
         _list.add(
           ValueFailure.invalidRegex(
             failedValue: value,
-            regex: options.containsKey('regex')
-                ? options['regex'].toString()
-                : 'ERROR options.containsKey(\'regex\')',
+            regex: options.containsKey('reg')
+                ? options['reg'].toString()
+                : 'ERROR options.containsKey(\'reg\')',
             type: options.containsKey('type')
                 ? options['type']
                 : 'ERROR options.containsKey(\'type\')',
