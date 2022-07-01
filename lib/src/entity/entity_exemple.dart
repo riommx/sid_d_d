@@ -5,7 +5,6 @@ class Person extends Entity {
   final NameVO name;
   //
   final DateVO birthDate;
-
   Person._(
     this.name,
     this.birthDate,
@@ -35,11 +34,11 @@ class Person extends Entity {
   factory Person.fromMap({
     required Map<String, dynamic> map,
   }) {
-    if (!map.containsKey('uid') ||
-        !map.containsKey('name') ||
-        !map.containsKey('birthDate')) {
-      throw Error();
+    const props = ['uid', 'name', 'birthDate'];
+    for (var prop in props) {
+      if (!map.containsKey(prop)) throw Error();
     }
+
     return Person._(
       NameVO(map['name']),
       DateVO(map['birthDate']),

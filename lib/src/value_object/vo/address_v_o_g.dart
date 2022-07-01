@@ -9,7 +9,7 @@ class AddressVOG extends VOGroup {
     this.name,
     this.birthDate,
   ) : super(
-          {
+          props: {
             'name': name,
             'birthDate': birthDate,
           },
@@ -30,9 +30,11 @@ class AddressVOG extends VOGroup {
   factory AddressVOG.fromMap({
     required Map<String, dynamic> map,
   }) {
-    if (!map.containsKey('name') || !map.containsKey('birthDate')) {
-      throw Error();
+    const props = ['name', 'birthDate'];
+    for (var prop in props) {
+      if (!map.containsKey(prop)) throw Error();
     }
+
     return AddressVOG._(
       NameVO(map['name']),
       DateVO(map['birthDate']),

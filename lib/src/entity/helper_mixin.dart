@@ -1,21 +1,13 @@
-import 'package:meta/meta.dart';
-import 'package:equatable/equatable.dart';
-//
-import 'package:sid_d_d/src/entity/i_d_t_o.dart';
+import 'i_d_t_o.dart';
 import '../validation/i_validatable.dart';
 
-@immutable
-abstract class VOGroup extends Equatable implements IValidatable, IDTO {
-  final Map<String, dynamic> _props;
+mixin Helper implements IValidatable, IDTO {
+  final Map<String, dynamic> properties = {};
 
-  VOGroup(this._props);
-
-  ///
   @override
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = {};
-    //
-    _props.forEach(
+    properties.forEach(
       (
         key,
         value,
@@ -25,15 +17,13 @@ abstract class VOGroup extends Equatable implements IValidatable, IDTO {
         () => value.getOrCrash,
       ),
     );
-    //
     return map;
   }
 
-  ///
   @override
   bool isValid() {
     var valid = true;
-    _props.forEach(
+    properties.forEach(
       (
         key,
         value,
