@@ -5,13 +5,15 @@ class Person extends Entity {
   final NameVO name;
   //
   final DateVO birthDate;
+
+  ///
   Person._(
     this.name,
     this.birthDate,
     String uid,
   ) : super(
           uid: uid,
-          props: {
+          properties: {
             'name': name,
             'birthDate': birthDate,
           },

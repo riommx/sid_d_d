@@ -1,2 +1,2 @@
 export 'entity.dart';
-export 'entity_exemple.dart';
+export 'person_entity_exemple.dart';

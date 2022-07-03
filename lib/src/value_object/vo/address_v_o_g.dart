@@ -2,14 +2,13 @@ import 'package:sid_d_d/library.dart';
 
 class AddressVOG extends VOGroup {
   final NameVO name;
-  //
   final DateVO birthDate;
 
   AddressVOG._(
     this.name,
     this.birthDate,
   ) : super(
-          props: {
+          properties: {
             'name': name,
             'birthDate': birthDate,
           },
@@ -30,19 +29,11 @@ class AddressVOG extends VOGroup {
   factory AddressVOG.fromMap({
     required Map<String, dynamic> map,
   }) {
-    const props = ['name', 'birthDate'];
-    for (var prop in props) {
-      if (!map.containsKey(prop)) throw Error();
-    }
+    VOGroup.mapValidate(map, ['name', 'birthDate']);
 
     return AddressVOG._(
       NameVO(map['name']),
       DateVO(map['birthDate']),
     );
   }
-
-  // ===========================================================================
-  // FOR Equatable
-  @override
-  List<Object> get props => [name, birthDate];
 }

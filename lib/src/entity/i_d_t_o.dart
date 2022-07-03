@@ -9,10 +9,6 @@ abstract class IDTO {
   Map<String, dynamic> toMap();
 }
 
-
-
-
-
 /* //
 abstract class ArtistDto implements _$ArtistDto {
   //

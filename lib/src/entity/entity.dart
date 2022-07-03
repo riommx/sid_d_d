@@ -5,20 +5,20 @@ abstract class Entity with Helper {
   late final UniqueIdVO uid;
   Entity({
     required String uid,
-    required Map<String, dynamic> props,
+    required Map<String, dynamic> properties,
   }) {
     this.uid = UniqueIdVO(uniqueId: uid);
-    properties.putIfAbsent(
-      'uid',
-      () => this.uid,
-    );
+    this.properties.putIfAbsent(
+          'uid',
+          () => this.uid,
+        );
     properties.forEach((
       key,
       value,
     ) =>
-        properties.putIfAbsent(
-          key,
-          () => value,
-        ));
+        this.properties.putIfAbsent(
+              key,
+              () => value,
+            ));
   }
 }
