@@ -60,9 +60,9 @@ class Failures {
           ValueFailure.exceedingLength(
             failedValue: value,
             length: value.length,
-            maxLength: options.containsKey('max')
-                ? options['max']
-                : 'ERROR maxLength options.containsKey(\'max\')',
+            maxLength: options.containsKey('maxLength')
+                ? options['maxLength']
+                : 'ERROR maxLength options.containsKey(\'maxLength\')',
           ),
         );
         break;
@@ -72,9 +72,9 @@ class Failures {
           ValueFailure.shortLength(
             failedValue: value,
             length: value.length,
-            minLength: options.containsKey('min')
-                ? options['min']
-                : 'ERROR minLength options.containsKey(\'min\')',
+            minLength: options.containsKey('minLength')
+                ? options['minLength']
+                : 'ERROR minLength options.containsKey(\'minLength\')',
           ),
         );
         break;
@@ -95,9 +95,9 @@ class Failures {
         _list.add(
           ValueFailure.invalidRegex(
             failedValue: value,
-            regex: options.containsKey('reg')
-                ? options['reg'].toString()
-                : 'ERROR options.containsKey(\'reg\')',
+            regex: options.containsKey('regex')
+                ? options['regex'].toString()
+                : 'ERROR options.containsKey(\'regex\')',
             type: options.containsKey('type')
                 ? options['type']
                 : 'ERROR options.containsKey(\'type\')',
@@ -151,9 +151,9 @@ class Failures {
         _list.add(
           ValueFailure.bellowMinValue(
             failedValue: value,
-            min: options.containsKey('min')
-                ? options['min']
-                : 'ERROR options.containsKey(\'min\')',
+            minValue: options.containsKey('minValue')
+                ? options['minValue']
+                : 'ERROR options.containsKey(\'minValue\')',
           ),
         );
         break;
@@ -162,9 +162,9 @@ class Failures {
         _list.add(
           ValueFailure.overMaxValue(
             failedValue: value,
-            max: options.containsKey('max')
-                ? options['max']
-                : 'ERROR options.containsKey(\'max\')',
+            maxValue: options.containsKey('maxValue')
+                ? options['maxValue']
+                : 'ERROR options.containsKey(\'maxValue\')',
           ),
         );
         break;

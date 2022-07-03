@@ -90,18 +90,19 @@ class _$ValueFailureTearOff {
     );
   }
 
-  OverMaxValue overMaxValue({required String failedValue, required num max}) {
+  OverMaxValue overMaxValue(
+      {required String failedValue, required num maxValue}) {
     return OverMaxValue(
       failedValue: failedValue,
-      max: max,
+      maxValue: maxValue,
     );
   }
 
   BellowMinValue bellowMinValue(
-      {required String failedValue, required num min}) {
+      {required String failedValue, required num minValue}) {
     return BellowMinValue(
       failedValue: failedValue,
-      min: min,
+      minValue: minValue,
     );
   }
 }
@@ -126,8 +127,8 @@ mixin _$ValueFailure {
         exceedingLength,
     required TResult Function(String failedValue) mustBePositive,
     required TResult Function(String failedValue) mustBeNegative,
-    required TResult Function(String failedValue, num max) overMaxValue,
-    required TResult Function(String failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue, num maxValue) overMaxValue,
+    required TResult Function(String failedValue, num minValue) bellowMinValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -144,8 +145,8 @@ mixin _$ValueFailure {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -162,8 +163,8 @@ mixin _$ValueFailure {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -329,8 +330,8 @@ class _$InvalidRegex implements InvalidRegex {
         exceedingLength,
     required TResult Function(String failedValue) mustBePositive,
     required TResult Function(String failedValue) mustBeNegative,
-    required TResult Function(String failedValue, num max) overMaxValue,
-    required TResult Function(String failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue, num maxValue) overMaxValue,
+    required TResult Function(String failedValue, num minValue) bellowMinValue,
   }) {
     return invalidRegex(failedValue, regex, type);
   }
@@ -350,8 +351,8 @@ class _$InvalidRegex implements InvalidRegex {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
   }) {
     return invalidRegex?.call(failedValue, regex, type);
   }
@@ -371,8 +372,8 @@ class _$InvalidRegex implements InvalidRegex {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (invalidRegex != null) {
@@ -554,8 +555,8 @@ class _$NotPassTheValidation implements NotPassTheValidation {
         exceedingLength,
     required TResult Function(String failedValue) mustBePositive,
     required TResult Function(String failedValue) mustBeNegative,
-    required TResult Function(String failedValue, num max) overMaxValue,
-    required TResult Function(String failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue, num maxValue) overMaxValue,
+    required TResult Function(String failedValue, num minValue) bellowMinValue,
   }) {
     return notPassTheValidation(failedValue, message, type);
   }
@@ -575,8 +576,8 @@ class _$NotPassTheValidation implements NotPassTheValidation {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
   }) {
     return notPassTheValidation?.call(failedValue, message, type);
   }
@@ -596,8 +597,8 @@ class _$NotPassTheValidation implements NotPassTheValidation {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (notPassTheValidation != null) {
@@ -757,8 +758,8 @@ class _$NotSingleLine implements NotSingleLine {
         exceedingLength,
     required TResult Function(String failedValue) mustBePositive,
     required TResult Function(String failedValue) mustBeNegative,
-    required TResult Function(String failedValue, num max) overMaxValue,
-    required TResult Function(String failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue, num maxValue) overMaxValue,
+    required TResult Function(String failedValue, num minValue) bellowMinValue,
   }) {
     return notSingleLine(failedValue);
   }
@@ -778,8 +779,8 @@ class _$NotSingleLine implements NotSingleLine {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
   }) {
     return notSingleLine?.call(failedValue);
   }
@@ -799,8 +800,8 @@ class _$NotSingleLine implements NotSingleLine {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (notSingleLine != null) {
@@ -956,8 +957,8 @@ class _$InvalidDateTime implements InvalidDateTime {
         exceedingLength,
     required TResult Function(String failedValue) mustBePositive,
     required TResult Function(String failedValue) mustBeNegative,
-    required TResult Function(String failedValue, num max) overMaxValue,
-    required TResult Function(String failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue, num maxValue) overMaxValue,
+    required TResult Function(String failedValue, num minValue) bellowMinValue,
   }) {
     return invalidDateTime(failedValue);
   }
@@ -977,8 +978,8 @@ class _$InvalidDateTime implements InvalidDateTime {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
   }) {
     return invalidDateTime?.call(failedValue);
   }
@@ -998,8 +999,8 @@ class _$InvalidDateTime implements InvalidDateTime {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (invalidDateTime != null) {
@@ -1128,8 +1129,8 @@ class _$Empty implements Empty {
         exceedingLength,
     required TResult Function(String failedValue) mustBePositive,
     required TResult Function(String failedValue) mustBeNegative,
-    required TResult Function(String failedValue, num max) overMaxValue,
-    required TResult Function(String failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue, num maxValue) overMaxValue,
+    required TResult Function(String failedValue, num minValue) bellowMinValue,
   }) {
     return empty();
   }
@@ -1149,8 +1150,8 @@ class _$Empty implements Empty {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
   }) {
     return empty?.call();
   }
@@ -1170,8 +1171,8 @@ class _$Empty implements Empty {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -1343,8 +1344,8 @@ class _$ShortLength implements ShortLength {
         exceedingLength,
     required TResult Function(String failedValue) mustBePositive,
     required TResult Function(String failedValue) mustBeNegative,
-    required TResult Function(String failedValue, num max) overMaxValue,
-    required TResult Function(String failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue, num maxValue) overMaxValue,
+    required TResult Function(String failedValue, num minValue) bellowMinValue,
   }) {
     return shortLength(failedValue, length, minLength);
   }
@@ -1364,8 +1365,8 @@ class _$ShortLength implements ShortLength {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
   }) {
     return shortLength?.call(failedValue, length, minLength);
   }
@@ -1385,8 +1386,8 @@ class _$ShortLength implements ShortLength {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (shortLength != null) {
@@ -1569,8 +1570,8 @@ class _$ExceedingLength implements ExceedingLength {
         exceedingLength,
     required TResult Function(String failedValue) mustBePositive,
     required TResult Function(String failedValue) mustBeNegative,
-    required TResult Function(String failedValue, num max) overMaxValue,
-    required TResult Function(String failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue, num maxValue) overMaxValue,
+    required TResult Function(String failedValue, num minValue) bellowMinValue,
   }) {
     return exceedingLength(failedValue, length, maxLength);
   }
@@ -1590,8 +1591,8 @@ class _$ExceedingLength implements ExceedingLength {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
   }) {
     return exceedingLength?.call(failedValue, length, maxLength);
   }
@@ -1611,8 +1612,8 @@ class _$ExceedingLength implements ExceedingLength {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (exceedingLength != null) {
@@ -1773,8 +1774,8 @@ class _$MustBePositive implements MustBePositive {
         exceedingLength,
     required TResult Function(String failedValue) mustBePositive,
     required TResult Function(String failedValue) mustBeNegative,
-    required TResult Function(String failedValue, num max) overMaxValue,
-    required TResult Function(String failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue, num maxValue) overMaxValue,
+    required TResult Function(String failedValue, num minValue) bellowMinValue,
   }) {
     return mustBePositive(failedValue);
   }
@@ -1794,8 +1795,8 @@ class _$MustBePositive implements MustBePositive {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
   }) {
     return mustBePositive?.call(failedValue);
   }
@@ -1815,8 +1816,8 @@ class _$MustBePositive implements MustBePositive {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (mustBePositive != null) {
@@ -1973,8 +1974,8 @@ class _$MustBeNegative implements MustBeNegative {
         exceedingLength,
     required TResult Function(String failedValue) mustBePositive,
     required TResult Function(String failedValue) mustBeNegative,
-    required TResult Function(String failedValue, num max) overMaxValue,
-    required TResult Function(String failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue, num maxValue) overMaxValue,
+    required TResult Function(String failedValue, num minValue) bellowMinValue,
   }) {
     return mustBeNegative(failedValue);
   }
@@ -1994,8 +1995,8 @@ class _$MustBeNegative implements MustBeNegative {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
   }) {
     return mustBeNegative?.call(failedValue);
   }
@@ -2015,8 +2016,8 @@ class _$MustBeNegative implements MustBeNegative {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (mustBeNegative != null) {
@@ -2099,7 +2100,7 @@ abstract class $OverMaxValueCopyWith<$Res> {
   factory $OverMaxValueCopyWith(
           OverMaxValue value, $Res Function(OverMaxValue) then) =
       _$OverMaxValueCopyWithImpl<$Res>;
-  $Res call({String failedValue, num max});
+  $Res call({String failedValue, num maxValue});
 }
 
 /// @nodoc
@@ -2115,16 +2116,16 @@ class _$OverMaxValueCopyWithImpl<$Res> extends _$ValueFailureCopyWithImpl<$Res>
   @override
   $Res call({
     Object? failedValue = freezed,
-    Object? max = freezed,
+    Object? maxValue = freezed,
   }) {
     return _then(OverMaxValue(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
               as String,
-      max: max == freezed
-          ? _value.max
-          : max // ignore: cast_nullable_to_non_nullable
+      maxValue: maxValue == freezed
+          ? _value.maxValue
+          : maxValue // ignore: cast_nullable_to_non_nullable
               as num,
     ));
   }
@@ -2133,16 +2134,16 @@ class _$OverMaxValueCopyWithImpl<$Res> extends _$ValueFailureCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OverMaxValue implements OverMaxValue {
-  const _$OverMaxValue({required this.failedValue, required this.max});
+  const _$OverMaxValue({required this.failedValue, required this.maxValue});
 
   @override
   final String failedValue;
   @override
-  final num max;
+  final num maxValue;
 
   @override
   String toString() {
-    return 'ValueFailure.overMaxValue(failedValue: $failedValue, max: $max)';
+    return 'ValueFailure.overMaxValue(failedValue: $failedValue, maxValue: $maxValue)';
   }
 
   @override
@@ -2152,14 +2153,14 @@ class _$OverMaxValue implements OverMaxValue {
             other is OverMaxValue &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue) &&
-            const DeepCollectionEquality().equals(other.max, max));
+            const DeepCollectionEquality().equals(other.maxValue, maxValue));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(failedValue),
-      const DeepCollectionEquality().hash(max));
+      const DeepCollectionEquality().hash(maxValue));
 
   @JsonKey(ignore: true)
   @override
@@ -2182,10 +2183,10 @@ class _$OverMaxValue implements OverMaxValue {
         exceedingLength,
     required TResult Function(String failedValue) mustBePositive,
     required TResult Function(String failedValue) mustBeNegative,
-    required TResult Function(String failedValue, num max) overMaxValue,
-    required TResult Function(String failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue, num maxValue) overMaxValue,
+    required TResult Function(String failedValue, num minValue) bellowMinValue,
   }) {
-    return overMaxValue(failedValue, max);
+    return overMaxValue(failedValue, maxValue);
   }
 
   @override
@@ -2203,10 +2204,10 @@ class _$OverMaxValue implements OverMaxValue {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
   }) {
-    return overMaxValue?.call(failedValue, max);
+    return overMaxValue?.call(failedValue, maxValue);
   }
 
   @override
@@ -2224,12 +2225,12 @@ class _$OverMaxValue implements OverMaxValue {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (overMaxValue != null) {
-      return overMaxValue(failedValue, max);
+      return overMaxValue(failedValue, maxValue);
     }
     return orElse();
   }
@@ -2294,11 +2295,11 @@ class _$OverMaxValue implements OverMaxValue {
 }
 
 abstract class OverMaxValue implements ValueFailure {
-  const factory OverMaxValue({required String failedValue, required num max}) =
-      _$OverMaxValue;
+  const factory OverMaxValue(
+      {required String failedValue, required num maxValue}) = _$OverMaxValue;
 
   String get failedValue;
-  num get max;
+  num get maxValue;
   @JsonKey(ignore: true)
   $OverMaxValueCopyWith<OverMaxValue> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2309,7 +2310,7 @@ abstract class $BellowMinValueCopyWith<$Res> {
   factory $BellowMinValueCopyWith(
           BellowMinValue value, $Res Function(BellowMinValue) then) =
       _$BellowMinValueCopyWithImpl<$Res>;
-  $Res call({String failedValue, num min});
+  $Res call({String failedValue, num minValue});
 }
 
 /// @nodoc
@@ -2326,16 +2327,16 @@ class _$BellowMinValueCopyWithImpl<$Res>
   @override
   $Res call({
     Object? failedValue = freezed,
-    Object? min = freezed,
+    Object? minValue = freezed,
   }) {
     return _then(BellowMinValue(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
               as String,
-      min: min == freezed
-          ? _value.min
-          : min // ignore: cast_nullable_to_non_nullable
+      minValue: minValue == freezed
+          ? _value.minValue
+          : minValue // ignore: cast_nullable_to_non_nullable
               as num,
     ));
   }
@@ -2344,16 +2345,16 @@ class _$BellowMinValueCopyWithImpl<$Res>
 /// @nodoc
 
 class _$BellowMinValue implements BellowMinValue {
-  const _$BellowMinValue({required this.failedValue, required this.min});
+  const _$BellowMinValue({required this.failedValue, required this.minValue});
 
   @override
   final String failedValue;
   @override
-  final num min;
+  final num minValue;
 
   @override
   String toString() {
-    return 'ValueFailure.bellowMinValue(failedValue: $failedValue, min: $min)';
+    return 'ValueFailure.bellowMinValue(failedValue: $failedValue, minValue: $minValue)';
   }
 
   @override
@@ -2363,14 +2364,14 @@ class _$BellowMinValue implements BellowMinValue {
             other is BellowMinValue &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue) &&
-            const DeepCollectionEquality().equals(other.min, min));
+            const DeepCollectionEquality().equals(other.minValue, minValue));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(failedValue),
-      const DeepCollectionEquality().hash(min));
+      const DeepCollectionEquality().hash(minValue));
 
   @JsonKey(ignore: true)
   @override
@@ -2393,10 +2394,10 @@ class _$BellowMinValue implements BellowMinValue {
         exceedingLength,
     required TResult Function(String failedValue) mustBePositive,
     required TResult Function(String failedValue) mustBeNegative,
-    required TResult Function(String failedValue, num max) overMaxValue,
-    required TResult Function(String failedValue, num min) bellowMinValue,
+    required TResult Function(String failedValue, num maxValue) overMaxValue,
+    required TResult Function(String failedValue, num minValue) bellowMinValue,
   }) {
-    return bellowMinValue(failedValue, min);
+    return bellowMinValue(failedValue, minValue);
   }
 
   @override
@@ -2414,10 +2415,10 @@ class _$BellowMinValue implements BellowMinValue {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
   }) {
-    return bellowMinValue?.call(failedValue, min);
+    return bellowMinValue?.call(failedValue, minValue);
   }
 
   @override
@@ -2435,12 +2436,12 @@ class _$BellowMinValue implements BellowMinValue {
         exceedingLength,
     TResult Function(String failedValue)? mustBePositive,
     TResult Function(String failedValue)? mustBeNegative,
-    TResult Function(String failedValue, num max)? overMaxValue,
-    TResult Function(String failedValue, num min)? bellowMinValue,
+    TResult Function(String failedValue, num maxValue)? overMaxValue,
+    TResult Function(String failedValue, num minValue)? bellowMinValue,
     required TResult orElse(),
   }) {
     if (bellowMinValue != null) {
-      return bellowMinValue(failedValue, min);
+      return bellowMinValue(failedValue, minValue);
     }
     return orElse();
   }
@@ -2506,10 +2507,10 @@ class _$BellowMinValue implements BellowMinValue {
 
 abstract class BellowMinValue implements ValueFailure {
   const factory BellowMinValue(
-      {required String failedValue, required num min}) = _$BellowMinValue;
+      {required String failedValue, required num minValue}) = _$BellowMinValue;
 
   String get failedValue;
-  num get min;
+  num get minValue;
   @JsonKey(ignore: true)
   $BellowMinValueCopyWith<BellowMinValue> get copyWith =>
       throw _privateConstructorUsedError;

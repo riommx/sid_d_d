@@ -69,13 +69,13 @@ abstract class ValueFailure with _$ValueFailure {
   //
   const factory ValueFailure.overMaxValue({
     required String failedValue,
-    required num max,
+    required num maxValue,
   }) = OverMaxValue;
 
   //
   const factory ValueFailure.bellowMinValue({
     required String failedValue,
-    required num min,
+    required num minValue,
   }) = BellowMinValue;
 }
 // ******************************************************************
