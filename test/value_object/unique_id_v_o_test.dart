@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:sid_d_d/src/value_object/vo/unique_id_v_o.dart';
+import 'package:sid_d_d/src/validation/unique_id_v_o.dart';
 
 void main() {
   group(

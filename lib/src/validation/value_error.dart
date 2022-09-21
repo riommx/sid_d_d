@@ -1,23 +1,22 @@
+import 'i_value_failure.dart';
+
 // #############################################################################
-// #  Ver: 1.0 - last: 12/01/22
+// #  Ver: 2.0 - last: 21/09/22
 // #  Nullsafety
-// #  Interface to validate a Num
+// #  Exeption for Value
 // #############################################################################
-abstract class INumValidator {
+class ValueError extends Error {
+  final List<IValueFailure> failures;
   //
-  bool positive({required num value});
+  ValueError(this.failures);
   //
-  bool negative({required num value});
-  //
-  bool minValue({
-    required num value,
-    required num min,
-  });
-  //
-  bool maxValue({
-    required num value,
-    required num max,
-  });
+  @override
+  String toString() {
+    const explanation =
+        'Encountered an unexpected ValueFailure at an unrecoverable point.';
+    return Error.safeToString(
+        '$explanation - Terminating. Failures were: ${failures.toString()}');
+  }
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _

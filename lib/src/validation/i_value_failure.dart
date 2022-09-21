@@ -1,18 +1,17 @@
 // #############################################################################
-// #  Ver: 1.0 - last: 12/01/22
-// #  Interface for a all types validator
+// #  Ver: 2.0 - last: 19/09/22
+// #  Nullsafety
+// #  Interface for Value Failure
 // #############################################################################
-abstract class IValidator<T> {
+abstract class IValueFailure {
   //
-  bool regex({
-    required T value,
-    required RegExp reg,
-  });
+  String get value;
   //
-  bool otherValidation({
-    required T value,
-    required bool Function(T value) fun,
-  });
+  Type get type;
+  //
+  String get message;
+  //
+  Map<String, String> get params;
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _

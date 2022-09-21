@@ -1,25 +1,19 @@
+import 'package:dartz/dartz.dart';
+import 'package:uuid/uuid.dart';
+//
+import '../value_object/value_object.dart';
+
 // #############################################################################
-// #  Ver: 1.0 - last: 12/01/22
+// #  Ver: 1.0 - last: 22/06/22
 // #  Nullsafety
-// #  Interface to validate a String
+// #  TODO: Comment class
 // #############################################################################
-abstract class IStringValidator {
+class UniqueIdVO extends ValueObject<String> {
   //
-  bool notEmpty({required String value});
-  //
-  bool singleLine({required String value});
-  //
-  bool dateTime({required String value});
-  //
-  bool minLength({
-    required String value,
-    required int min,
-  });
-  //
-  bool maxLength({
-    required String value,
-    required int max,
-  });
+  // =========================================
+  UniqueIdVO({
+    String uniqueId = '',
+  }) : super(uniqueId.isEmpty ? right(Uuid().v1()) : right(uniqueId));
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _
@@ -35,5 +29,5 @@ abstract class IStringValidator {
 // *  ┈┈┃┊┊┊~~~   ┈┈┈┈        -< Rio de Janeiro - Brazil >-
 // *  ━━╯┊┊┊╲△△△┓┈┈
 // *  ┊┊┊┊╭━━━━━━╯┈┈   --->  May the source be with you!  <---
-// *  
+// *
 // ******************************************************************

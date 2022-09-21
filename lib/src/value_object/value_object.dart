@@ -2,20 +2,20 @@ import 'package:meta/meta.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 //
-import '../validation/i_validatable.dart';
-import '../failures/value_error.dart';
-import 'package:sid_d_d/src/failures/failures.dart';
+import '../validation/i_is_valid.dart';
+import '../validation/i_value_failure.dart';
+import '../validation/value_error.dart';
 
 //
 // #############################################################################
-// #  Ver: 1.0 - last: 12/01/22
+// #  Ver: 2.0 - last: 21/09/22
 // #  Nullsafety
 // #  Base Class for Validated Value Objects
 // #############################################################################
 @immutable
-abstract class ValueObject<T> extends Equatable implements IValidatable {
+abstract class ValueObject<T> extends Equatable implements IIsValid {
   // ====================================
-  final Either<Failures, T> _value;
+  final Either<List<IValueFailure>, T> _value;
 
   // ====================================
   const ValueObject(this._value);
@@ -28,7 +28,7 @@ abstract class ValueObject<T> extends Equatable implements IValidatable {
       );
 
   // ====================================
-  Either<Failures, Unit> get failuresOrUnit => _value.fold(
+  Either<List<IValueFailure>, Unit> get failuresOrUnit => _value.fold(
         (failures) => left(failures),
         (_) => right(unit),
       );

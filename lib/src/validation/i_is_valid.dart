@@ -1,14 +1,10 @@
-import 'package:sid_d_d/library.dart';
-
 // #############################################################################
-// #  Ver: 1.0 - last: 12/01/22
+// #  Ver: 2.0 - last: 17/09/22
 // #  Nullsafety
-// #  Exemple of how to create a String Validated Value Object
+// #  Interface for know if a VO is Right
 // #############################################################################
-class NameSidVO extends ValueObject<String> {
-  //
-  // ===========================================================================
-  NameSidVO(String value) : super(Validation.nameSid(value));
+abstract class IIsValid {
+  bool isValid();
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _
@@ -24,5 +20,5 @@ class NameSidVO extends ValueObject<String> {
 // *  ┈┈┃┊┊┊~~~   ┈┈┈┈        -< Rio de Janeiro - Brazil >-
 // *  ━━╯┊┊┊╲△△△┓┈┈
 // *  ┊┊┊┊╭━━━━━━╯┈┈   --->  May the source be with you!  <---
-// *
+// *  
 // ******************************************************************

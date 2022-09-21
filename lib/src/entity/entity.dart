@@ -1,4 +1,4 @@
-import '../value_object/vo/unique_id_v_o.dart';
+import '../validation/unique_id_v_o.dart';
 import 'helper_mixin.dart';
 
 abstract class Entity with Helper {

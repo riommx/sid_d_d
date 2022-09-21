@@ -1,48 +1,32 @@
-import 'i_num_validator.dart';
-import 'i_validator.dart';
+import 'i_value_failure.dart';
 
 // #############################################################################
-// #  Ver: 1.0 - last: 12/01/22
+// #  Ver: 2.0 - last: 20/09/22
 // #  Nullsafety
-// #  Validator of nums
+// #  Value Failure Base Class
 // #############################################################################
-class NumValidator implements IValidator<num>, INumValidator {
+abstract class ValueFailure implements IValueFailure {
   //
-  NumValidator();
-
+  final dynamic failValue;
+  //
+  final Map<String, String> failParams;
+  //
+  const ValueFailure({
+    required this.failValue,
+    required this.failParams,
+  });
+  //
   @override
-  bool positive({required num value}) => !(value.isNegative);
-
+  Type get type => failValue.runtimeType;
+  //
   @override
-  bool negative({required num value}) => value.isNegative;
-
+  String get value => failValue.toString();
+  //
   @override
-  bool maxValue({
-    required num value,
-    required num max,
-  }) =>
-      value <= max;
-
+  Map<String, String> get params => failParams;
+  //
   @override
-  bool minValue({
-    required num value,
-    required num min,
-  }) =>
-      value >= min;
-
-  @override
-  bool regex({
-    required num value,
-    required RegExp reg,
-  }) =>
-      reg.hasMatch(value.toString());
-
-  @override
-  bool otherValidation({
-    required num value,
-    required bool Function(num value) fun,
-  }) =>
-      fun(value);
+  String get message;
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _
@@ -58,5 +42,5 @@ class NumValidator implements IValidator<num>, INumValidator {
 // *  ┈┈┃┊┊┊~~~   ┈┈┈┈        -< Rio de Janeiro - Brazil >-
 // *  ━━╯┊┊┊╲△△△┓┈┈
 // *  ┊┊┊┊╭━━━━━━╯┈┈   --->  May the source be with you!  <---
-// *  
+// *
 // ******************************************************************

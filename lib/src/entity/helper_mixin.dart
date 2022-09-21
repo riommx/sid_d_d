@@ -1,7 +1,7 @@
+import '../validation/i_is_valid.dart';
 import 'i_d_t_o.dart';
-import '../validation/i_validatable.dart';
 
-mixin Helper implements IValidatable, IDTO {
+mixin Helper implements IIsValid, IDTO {
   final Map<String, dynamic> properties = {};
 
   List<Object> get propsList {

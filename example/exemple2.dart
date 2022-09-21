@@ -1,4 +1,4 @@
-import 'package:sid_d_d/library.dart';
+/* import 'package:sid_d_d/library.dart';
 
 void main() {
   var sid = NameSidVO('Sod3sss');
@@ -13,3 +13,4 @@ void main() {
     print(fail.toString());
   }
 }
+ */

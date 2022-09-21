@@ -1,9 +1,12 @@
+import 'i_value_failure.dart';
+
 // #############################################################################
-// #  Ver: 1.0 - last: 12/01/22
-// #  Interface for know if a VVO is Right
+// #  Ver: 2.0 - last: 21/09/22
+// #  Nullsafety
+// #  TODO: Interface for Validation
 // #############################################################################
-abstract class IValidatable {
-  bool isValid();
+abstract class IValidation<T> {
+  List<IValueFailure> failures(T value);
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _
@@ -19,5 +22,5 @@ abstract class IValidatable {
 // *  ┈┈┃┊┊┊~~~   ┈┈┈┈        -< Rio de Janeiro - Brazil >-
 // *  ━━╯┊┊┊╲△△△┓┈┈
 // *  ┊┊┊┊╭━━━━━━╯┈┈   --->  May the source be with you!  <---
-// *  
+// *
 // ******************************************************************

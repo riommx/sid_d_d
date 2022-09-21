@@ -1,14 +1,11 @@
-import 'package:sid_d_d/library.dart';
-
 // #############################################################################
-// #  Ver: 1.0 - last: 12/01/22
+// #  Ver: 2.0 - last: 19/09/22
 // #  Nullsafety
-// #  Exemple of how to create a String Validated Value Object
+// #  Interface to validate T
 // #############################################################################
-class NameVO extends ValueObject<String> {
+abstract class IIsValueValid<T> {
   //
-  // ===========================================================================
-  NameVO(String value) : super(Validation.name(value));
+  bool isValid(T value);
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _
@@ -24,5 +21,5 @@ class NameVO extends ValueObject<String> {
 // *  ┈┈┃┊┊┊~~~   ┈┈┈┈        -< Rio de Janeiro - Brazil >-
 // *  ━━╯┊┊┊╲△△△┓┈┈
 // *  ┊┊┊┊╭━━━━━━╯┈┈   --->  May the source be with you!  <---
-// *
+// *  
 // ******************************************************************

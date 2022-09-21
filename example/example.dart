@@ -38,10 +38,10 @@ void main() {
   print(person.name.getOrElse('ERRO'));
   print(person.name.runtimeType);
 
-  var nome = Validation.name('Adolf');
-  print(nome.getOrElse(() => 'S!D'));
+  var nome = NameVO('Adolf');
+  print(nome.getOrElse('S!D'));
   print(nome.runtimeType);
-  var erros = nome.fold((l) => l, (r) => r);
+  var erros = nome.failuresOrUnit.fold((l) => l, (r) => r);
 
   print(person.toMap());
 
@@ -60,7 +60,7 @@ void main() {
   print(mino2.toMap());
 
   print(mino.isValid());
-
+/* 
   var mino3 = AddressVOG.fromMap(map: {
     'name': 'Adolf',
     'birthDate': '2022-06-30 17:09:21.422952',
@@ -73,5 +73,5 @@ void main() {
   print(mino3.toMap());
   print(mino4.toMap());
 
-  print(mino3 == mino4);
+  print(mino3 == mino4); */
 }
