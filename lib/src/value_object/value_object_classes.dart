@@ -1,13 +1,22 @@
 import 'package:dartz/dartz.dart';
 import 'package:uuid/uuid.dart';
 //
-import '../value_object/value_object.dart';
+import '../validation/validation_classes.dart';
+import 'value_object.dart';
+import '../validation/library.dart';
 
 // #############################################################################
-// #  Ver: 1.0 - last: 22/06/22
+// #  Ver: 2.0 - last: 15/09/22
 // #  Nullsafety
 // #  TODO: Comment class
 // #############################################################################
+
+class VOHelper {
+  static Either<List<IValueFailure>, String> stringEither(
+          List<IValueFailure> list, String value) =>
+      list.isEmpty ? right(value) : left(list);
+}
+
 class UniqueIdVO extends ValueObject<String> {
   //
   // =========================================
@@ -15,6 +24,27 @@ class UniqueIdVO extends ValueObject<String> {
     String uniqueId = '',
   }) : super(uniqueId.isEmpty ? right(Uuid().v1()) : right(uniqueId));
 }
+
+//==============================================================================
+class DateVO extends ValueObject<String> {
+  //
+  DateVO(String value)
+      : super(VOHelper.stringEither(
+          ValidationDateFormat().failures(value),
+          value,
+        ));
+}
+
+//==============================================================================
+class NameVO extends ValueObject<String> {
+  //
+  NameVO(String value)
+      : super(VOHelper.stringEither(
+          ValidationName().failures(value),
+          value,
+        ));
+}
+
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _
 // *   / ____| | | |  __ \    |__   __| |  ____|  / ____| | |  | |
