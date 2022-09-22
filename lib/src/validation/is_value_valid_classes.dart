@@ -113,7 +113,7 @@ class IsValueValidStringMaxLength implements IIsValueValid<String> {
   const IsValueValidStringMaxLength({required this.maxLength});
   //
   @override // FOR IIsValueValid
-  bool isValid(String value) => value.length >= maxLength;
+  bool isValid(String value) => value.length <= maxLength;
 }
 
 // #############################################################################
@@ -124,7 +124,7 @@ class IsValueValidStringMaxLength implements IIsValueValid<String> {
 class IsValueValidStringSingleLine implements IIsValueValid<String> {
   //
   @override // FOR IIsValueValid
-  bool isValid(String value) => value.contains('\n');
+  bool isValid(String value) => !(value.contains('\n'));
 }
 
 // #############################################################################
