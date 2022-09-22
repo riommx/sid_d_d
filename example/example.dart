@@ -3,9 +3,9 @@ import 'package:sid_d_d/src/entity/address_v_o_g.dart';
 
 void main() {
   final name = NameVO('Sid');
-  print('isValid: ${name.isValid()}');
+  print('isValid: ${name.valid}');
   print(name.getOrElse('ERRO'));
-  if (name.isValid()) {
+  if (name.valid) {
     print(name.getOrCrash);
   }
 
@@ -14,9 +14,9 @@ void main() {
   print(value.fold((l) => l, (r) => r));
 
   final date = DateVO(DateTime.now().toString()); // 'not a date'
-  print('isValid: ${date.isValid()}');
+  print('isValid: ${date.valid}');
   print(date.getOrElse('ERRO'));
-  if (date.isValid()) {
+  if (date.valid) {
     print(date.getOrCrash);
   }
 
@@ -34,7 +34,7 @@ void main() {
     birthDate: DateVO(DateTime.now().toString()),
   );
 
-  print(person.isValid());
+  print(person.valid);
   print(person.uid.getOrCrash);
   print(person.name.getOrElse('ERRO'));
   print(person.name.runtimeType);
@@ -60,7 +60,7 @@ void main() {
   print(mino.toMap());
   print(mino2.toMap());
 
-  print(mino.isValid());
+  print(mino.valid);
 
   var mino3 = AddressVOG.fromMap(map: {
     'name': 'Adolf',

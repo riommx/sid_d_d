@@ -3,8 +3,8 @@
 // #  Nullsafety
 // #  Interface for know if a VO is Right
 // #############################################################################
-abstract class IIsValid {
-  bool isValid();
+abstract class IValid {
+  bool get valid;
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _

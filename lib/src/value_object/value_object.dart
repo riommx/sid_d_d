@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 //
-import '../validation/i_is_valid.dart';
+import 'i_value_object.dart';
+import '../validation/i_valid.dart';
 import '../validation/i_value_failure.dart';
 import '../validation/value_error.dart';
 
@@ -13,27 +14,31 @@ import '../validation/value_error.dart';
 // #  Base Class for Validated Value Objects
 // #############################################################################
 @immutable
-abstract class ValueObject<T> extends Equatable implements IIsValid {
+abstract class ValueObject<T> extends Equatable
+    implements IValueObject<T>, IValid {
   // ====================================
   final Either<List<IValueFailure>, T> _value;
 
   // ====================================
   const ValueObject(this._value);
 
-  // ====================================
+  // ===========================================================================
   /// Throws [UnexpectedValueError] containing the [ValueFailures]
+  @override // FOR IValueObject
   T get getOrCrash => _value.fold(
         (failures) => throw ValueError(failures),
         id, // id = identity - same as writing (right) => right
       );
 
-  // ====================================
+  // ===========================================================================
+  @override // FOR IValueObject
   Either<List<IValueFailure>, Unit> get failuresOrUnit => _value.fold(
         (failures) => left(failures),
         (_) => right(unit),
       );
 
-  // ===================================
+  // ===========================================================================
+  @override // FOR IValueObject
   T getOrElse(T defaultValue) => _value.fold(
         (_) => defaultValue,
         id, // id = identity - same as writing (right) => right
@@ -42,7 +47,7 @@ abstract class ValueObject<T> extends Equatable implements IIsValid {
   // ===========================================================================
   // FOR IValidatable
   @override
-  bool isValid() => _value.isRight();
+  bool get valid => _value.isRight();
 
   // ===========================================================================
   // FOR Equatable
