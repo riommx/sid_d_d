@@ -1,7 +1,8 @@
 import 'package:sid_d_d/library.dart';
+import 'package:sid_d_d/src/entity/address_v_o_g.dart';
 
 void main() {
-  /*  final name = NameSidVO('Sid');
+  final name = NameVO('Sid');
   print('isValid: ${name.isValid()}');
   print(name.getOrElse('ERRO'));
   if (name.isValid()) {
@@ -10,7 +11,7 @@ void main() {
 
   var value = name.failuresOrUnit;
   print('failuresOrUnit');
-  print(value.fold((l) => l.list, (r) => r));
+  print(value.fold((l) => l, (r) => r));
 
   final date = DateVO(DateTime.now().toString()); // 'not a date'
   print('isValid: ${date.isValid()}');
@@ -21,13 +22,13 @@ void main() {
 
   var datev = date.failuresOrUnit;
   print('failuresOrUnit');
-  print(datev.fold((l) => l.list, (r) => r));
- */
+  print(datev.fold((l) => l, (r) => r));
+
   var personName = NameVO('Adolf Hitler');
   var personName2 = NameVO('Adolf');
-/*   print('igualdade');
+  print('igualdade');
   print(personName == personName2);
- */
+
   final person = Person(
     name: personName2,
     birthDate: DateVO(DateTime.now().toString()),
@@ -42,7 +43,7 @@ void main() {
   print(nome.getOrElse('S!D'));
   print(nome.runtimeType);
   var erros = nome.failuresOrUnit.fold((l) => l, (r) => r);
-
+  print(erros);
   print(person.toMap());
 
   var mino = Person.fromMap(map: {
@@ -60,7 +61,7 @@ void main() {
   print(mino2.toMap());
 
   print(mino.isValid());
-/* 
+
   var mino3 = AddressVOG.fromMap(map: {
     'name': 'Adolf',
     'birthDate': '2022-06-30 17:09:21.422952',
@@ -73,5 +74,5 @@ void main() {
   print(mino3.toMap());
   print(mino4.toMap());
 
-  print(mino3 == mino4); */
+  print(mino3 == mino4);
 }

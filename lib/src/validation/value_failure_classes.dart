@@ -11,11 +11,11 @@ class ValueFailureDynamicFunction extends ValueFailure {
 
   ValueFailureDynamicFunction({
     required dynamic failValue,
-    required bool Function(dynamic value) function,
+    required String function,
     required this.failMessage,
   }) : super(
           failValue: failValue,
-          failParams: {'Function': function.toString()},
+          failParams: {'Function': function},
         );
   //
   @override

@@ -57,10 +57,11 @@ class ValidationName implements IValidation<String> {
     }
     //
     bool fun(v) => v != 'Adolf Hitler';
+    var funLiteral = 'bool fun(v) => v != \'Adolf Hitler\';';
     if (IsValueValidDynamicFunction(function: fun).isValid(value)) {
       list.add(ValueFailureDynamicFunction(
         failValue: value,
-        function: fun,
+        function: funLiteral,
         failMessage: 'Name can\'t be Adolf Hitler',
       ));
     }

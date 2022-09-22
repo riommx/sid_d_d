@@ -14,6 +14,7 @@ class ValueError extends Error {
   String toString() {
     const explanation =
         'Encountered an unexpected ValueFailure at an unrecoverable point.';
+
     return Error.safeToString(
         '$explanation - Terminating. Failures were: ${failures.toString()}');
   }

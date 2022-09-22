@@ -27,6 +27,18 @@ abstract class ValueFailure implements IValueFailure {
   //
   @override
   String get message;
+  //
+  @override
+  String toString() {
+    // TODO: implement toString
+    var str = '';
+    str += '$runtimeType: $message - value: $value - type: $type - $params';
+    str += '';
+    str += '';
+    str += '';
+    str += '';
+    return str;
+  }
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _
