@@ -176,9 +176,9 @@ class ValueFailureStringSingleLine extends ValueFailure {
 // #  Nullsafety
 // #  Value Failure String Not Empty
 // #############################################################################
-class ValueFailureStringNotEmpty extends ValueFailure {
+class ValueFailureStringIsNotEmpty extends ValueFailure {
   //
-  ValueFailureStringNotEmpty({
+  ValueFailureStringIsNotEmpty({
     required String failValue,
   }) : super(
           failValue: failValue,
@@ -186,7 +186,7 @@ class ValueFailureStringNotEmpty extends ValueFailure {
         );
   //
   @override
-  String get message => 'Fail to pass the String Not Empty validation';
+  String get message => 'Fail to pass the String Is Not Empty validation';
 }
 
 // #############################################################################

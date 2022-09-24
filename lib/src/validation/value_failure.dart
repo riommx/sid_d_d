@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 import 'i_value_failure.dart';
 
 // #############################################################################
@@ -5,7 +7,7 @@ import 'i_value_failure.dart';
 // #  Nullsafety
 // #  Value Failure Base Class
 // #############################################################################
-abstract class ValueFailure implements IValueFailure {
+abstract class ValueFailure extends Equatable implements IValueFailure {
   //
   final dynamic failValue;
   //
@@ -28,17 +30,26 @@ abstract class ValueFailure implements IValueFailure {
   @override
   String get message;
   //
-  @override
+/*   @override
   String toString() {
     // TODO: implement toString
     var str = '';
     str += '$runtimeType: $message - value: $value - type: $type - $params';
-    str += '';
-    str += '';
-    str += '';
-    str += '';
     return str;
-  }
+  } */
+
+  // ===========================================================================
+  // FOR Equatable
+  @override
+  bool get stringify => true;
+
+  // ===========================================================================
+  // FOR Equatable
+  @override
+  List<Object> get props => [
+        failValue,
+        failParams,
+      ];
 }
 // ******************************************************************
 // *    _____   _   _____      _______   ______    _____   _    _

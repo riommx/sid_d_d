@@ -26,22 +26,22 @@ class ValidationName implements IValidation<String> {
   List<IValueFailure> failures(String value) {
     var list = <IValueFailure>[];
     //
-    if (IsValueValidStringNotEmpty().isValid(value)) {
-      list.add(ValueFailureStringNotEmpty(failValue: value));
+    if (!IsValueValidStringNotEmpty().isValid(value)) {
+      list.add(ValueFailureStringIsNotEmpty(failValue: value));
     }
     //
-    if (IsValueValidStringSingleLine().isValid(value)) {
+    if (!IsValueValidStringSingleLine().isValid(value)) {
       list.add(ValueFailureStringSingleLine(failValue: value));
     }
     //
-    if (const IsValueValidStringMinLength(minLength: 4).isValid(value)) {
+    if (!const IsValueValidStringMinLength(minLength: 4).isValid(value)) {
       list.add(ValueFailureStringMinLength(
         failValue: value,
         minLength: 4,
       ));
     }
     //
-    if (const IsValueValidStringMaxLength(maxLength: 10).isValid(value)) {
+    if (!const IsValueValidStringMaxLength(maxLength: 10).isValid(value)) {
       list.add(ValueFailureStringMaxLength(
         failValue: value,
         maxLength: 10,
@@ -49,20 +49,20 @@ class ValidationName implements IValidation<String> {
     }
     //
     var reg = RegExp(r'^[a-zA-Z]+$');
-    if (IsValueValidStringRegExp(regExp: reg).isValid(value)) {
+    if (!IsValueValidStringRegExp(regExp: reg).isValid(value)) {
       list.add(ValueFailureStringRegExp(
         failValue: value,
         regExp: reg,
       ));
     }
     //
-    bool fun(v) => v != 'Adolf Hitler';
-    var funLiteral = 'bool fun(v) => v != \'Adolf Hitler\';';
-    if (IsValueValidDynamicFunction(function: fun).isValid(value)) {
+    bool fun(v) => v != 'abcdefg';
+    var funLiteral = 'bool fun(v) => v != \'abcdefg\';';
+    if (!IsValueValidDynamicFunction(function: fun).isValid(value)) {
       list.add(ValueFailureDynamicFunction(
         failValue: value,
         function: funLiteral,
-        failMessage: 'Name can\'t be Adolf Hitler',
+        failMessage: 'Name can\'t be abcdefg',
       ));
     }
     //
