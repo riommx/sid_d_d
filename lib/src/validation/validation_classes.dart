@@ -48,7 +48,7 @@ class ValidationName implements IValidation<String> {
       ));
     }
     //
-    var reg = RegExp(r'^[a-zA-Z]+$');
+    var reg = RegExp(r'^[a-zA-Z\s]+$');
     if (!IsValueValidStringRegExp(regExp: reg).isValid(value)) {
       list.add(ValueFailureStringRegExp(
         failValue: value,
@@ -56,13 +56,13 @@ class ValidationName implements IValidation<String> {
       ));
     }
     //
-    bool fun(v) => v != 'abcdefg';
-    var funLiteral = 'bool fun(v) => v != \'abcdefg\';';
+    bool fun(v) => v != 'Hitler';
+    var funLiteral = 'bool fun(v) => v != \'Hitler\';';
     if (!IsValueValidDynamicFunction(function: fun).isValid(value)) {
       list.add(ValueFailureDynamicFunction(
         failValue: value,
         function: funLiteral,
-        failMessage: 'Name can\'t be abcdefg',
+        failMessage: 'Name can\'t be Hitler',
       ));
     }
     //

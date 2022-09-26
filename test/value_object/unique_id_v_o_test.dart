@@ -1,5 +1,5 @@
-/* import 'package:test/test.dart';
-import 'package:sid_d_d/src/validation/unique_id_v_o.dart';
+import 'package:test/test.dart';
+import 'package:sid_d_d/src/value_object/value_object_classes.dart';
 
 void main() {
   group(
@@ -39,15 +39,15 @@ void main() {
         'Is Valid ',
         () {
           expect(
-            id1.isValid(),
+            id1.valid,
             true,
           );
           expect(
-            id2.isValid(),
+            id2.valid,
             true,
           );
           expect(
-            id3.isValid(),
+            id3.valid,
             true,
           );
         },
@@ -55,4 +55,3 @@ void main() {
     },
   );
 }
- */

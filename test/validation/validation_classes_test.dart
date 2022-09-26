@@ -73,12 +73,12 @@ void main() {
         ),
       ]);
       expect(
-        ValidationName().failures('abcdefg'),
+        ValidationName().failures('Hitler'),
         [
           ValueFailureDynamicFunction(
-            failValue: 'abcdefg',
-            function: 'bool fun(v) => v != \'abcdefg\';',
-            failMessage: 'Name can\'t be abcdefg',
+            failValue: 'Hitler',
+            function: 'bool fun(v) => v != \'Hitler\';',
+            failMessage: 'Name can\'t be Hitler',
           )
         ],
       );

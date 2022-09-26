@@ -78,13 +78,17 @@ void main() {
     });
 
     test('Regular Expression String Test', () {
-      var reg = RegExp(r'^[a-zA-Z0-9]+$');
+      var reg = RegExp(r'^[a-zA-Z0-9\s]+$');
       expect(
         IsValueValidStringRegExp(regExp: reg).isValid('abc123%'),
         false,
       );
       expect(
         IsValueValidStringRegExp(regExp: reg).isValid('abc123'),
+        true,
+      );
+      expect(
+        IsValueValidStringRegExp(regExp: reg).isValid('abc 123'),
         true,
       );
     });
